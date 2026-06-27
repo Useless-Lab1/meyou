@@ -6,6 +6,9 @@
 <title>핀볼 게임 · 미유라디오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<!-- lazygyu/roulette (MIT License) vendored bundle -->
+<script type="importmap">{"imports":{"14w6b":"./roulette/kubin.f3647b70.png","9F06a":"./roulette/chamru.d6926a56.png","aRf6a":"./roulette/waldokun.7e88dd59.png","ao29o":"./roulette/Box2D.simd.8f5913cc.js","b21ls":"./roulette/Box2D.b9b16b27.wasm","dRxiZ":"./roulette/Box2D.742de2ae.js","g5g75":"./roulette/ff.7fdc9e82.svg","h5gW1":"./roulette/junyoop.d27f0cbf.png","huS8a":"./roulette/kkwak.673a610d.png","ikqOI":"./roulette/Box2D.simd.dd31b167.wasm"}}</script>
+<link rel="stylesheet" href="./roulette/lazygyu-roulette.891d671b.css">
 <style>
 :root {
   --pure:    #FFFFFF;
@@ -1041,6 +1044,115 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .pball-status-msg{
   font-size:12px; color:var(--smoky); letter-spacing:.5px; margin-bottom:4px;
 }
+
+/* ══ MARBLE ROULETTE MODAL ══ */
+.marble-modal{
+  position:fixed;inset:0;z-index:2000;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;transition:opacity .25s;
+}
+.marble-modal.is-open{pointer-events:all;opacity:1;}
+.marble-modal-backdrop{
+  position:absolute;inset:0;background:rgba(10,14,22,.72);backdrop-filter:blur(4px);
+}
+.marble-modal-shell{
+  position:relative;z-index:1;
+  width:94vw;height:92vh;
+  background:rgba(22,28,40,.97);
+  border-radius:18px;border:1px solid rgba(255,255,255,.09);
+  display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,.6);
+}
+.marble-modal-header{
+  flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.marble-modal-title{
+  font-family:'Gowun Batang',serif;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.88);letter-spacing:2px;
+}
+.marble-modal-close{
+  background:rgba(255,255,255,.08);border:none;border-radius:50%;
+  width:30px;height:30px;cursor:pointer;color:rgba(255,255,255,.6);
+  font-size:14px;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.marble-modal-close:hover{background:rgba(255,255,255,.18);}
+.marble-modal-body{
+  flex:1;min-height:0;display:flex;overflow:hidden;
+}
+.marble-roulette-frame{
+  flex:1;min-width:0;position:relative;overflow:hidden;
+}
+.marble-roulette-host{
+  width:100%;height:100%;position:relative;overflow:hidden;
+}
+.marble-roulette-host canvas{
+  position:relative!important;inset:unset!important;
+  width:100%!important;height:100%!important;display:block!important;
+}
+.marble-settings-panel{
+  flex-shrink:0;width:240px;
+  background:rgba(255,255,255,.03);border-left:1px solid rgba(255,255,255,.06);
+  padding:14px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;
+}
+.msp-section-title{
+  font-family:'Noto Serif KR',serif;font-size:11px;letter-spacing:2px;
+  color:rgba(255,255,255,.4);text-transform:uppercase;
+}
+.marble-selected-list{display:flex;flex-direction:column;gap:6px;}
+.marble-selected-item{
+  background:rgba(255,255,255,.06);border-radius:10px;padding:8px 10px;
+  display:flex;align-items:center;gap:8px;
+}
+.msi-label{flex:1;font-size:12px;color:rgba(255,255,255,.75);min-width:0;word-break:break-all;line-height:1.3;}
+.marble-ball-stepper{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.mbs-btn{
+  background:rgba(255,255,255,.1);border:none;border-radius:6px;
+  width:22px;height:22px;cursor:pointer;color:rgba(255,255,255,.7);font-size:13px;
+  display:flex;align-items:center;justify-content:center;transition:background .15s;
+}
+.mbs-btn:hover{background:rgba(255,255,255,.22);}
+.marble-ball-input{
+  width:36px;text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:6px;color:rgba(255,255,255,.88);font-size:12px;padding:2px 4px;
+}
+.msp-ball-total{font-size:12px;color:rgba(255,255,255,.45);text-align:right;}
+.msp-batch-row{display:flex;gap:4px;}
+.msp-batch-btn{
+  flex:1;font-size:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:5px 4px;color:rgba(255,255,255,.6);cursor:pointer;
+  transition:background .15s;
+}
+.msp-batch-btn:hover{background:rgba(255,255,255,.15);}
+.msp-winner-row{display:flex;gap:6px;}
+.msp-winner-btn{
+  flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:6px;font-size:12px;color:rgba(255,255,255,.5);cursor:pointer;
+  transition:all .18s;
+}
+.msp-winner-btn.active{
+  background:rgba(143,168,196,.25);border-color:rgba(143,168,196,.5);color:rgba(255,255,255,.9);
+}
+.msp-actions{display:flex;gap:6px;}
+.msp-actions .btn-primary{flex:1;padding:9px 10px;font-size:13px;}
+.msp-actions .pb-ghost-btn{flex-shrink:0;}
+.marble-result-panel{
+  flex:1;display:flex;align-items:center;justify-content:center;min-height:60px;
+}
+.mr-result{text-align:center;}
+.mr-result-label{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.35);margin-bottom:6px;}
+.mr-result-name{
+  font-family:'Gowun Batang',serif;font-size:18px;font-weight:700;
+  color:rgba(255,255,255,.95);letter-spacing:1px;word-break:break-all;
+}
+.msp-notice{font-size:10px;color:rgba(255,255,255,.2);text-align:center;margin-top:auto;}
+@media(max-width:700px){
+  .marble-modal-shell{width:100vw;height:100vh;border-radius:0;}
+  .marble-modal-body{flex-direction:column;}
+  .marble-roulette-frame{flex:1;min-height:0;}
+  .marble-settings-panel{width:100%;max-height:220px;flex-direction:row;flex-wrap:wrap;gap:6px;}
+}
 </style>
 </head>
 <body>
@@ -1084,27 +1196,47 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   <div class="pball-launch-row">
     <button class="btn-primary" id="pb-launch-btn" onclick="launchPinball()" disabled>🎱 핀볼 발사!</button>
   </div>
+</main>
 
-  <!-- ── 인라인 게임 영역 ── -->
-  <div id="pball-game-area" style="display:none; padding:0 20px 40px;">
-    <div class="pball-game-box" style="position:relative;">
-      <button onclick="document.getElementById('pball-game-area').style.display='none'" style="position:absolute;top:12px;right:14px;background:rgba(167,180,198,.18);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;color:var(--slate);display:flex;align-items:center;justify-content:center;transition:background .2s;" onmouseover="this.style.background='rgba(167,180,198,.35)'" onmouseout="this.style.background='rgba(167,180,198,.18)'">✕</button>
-      <div class="pball-game-title">🔮 크리스탈 핀볼</div>
-      <div class="pball-status-msg" id="pb-sub">핀볼이 떨어지는 중...</div>
-      <canvas id="pball-canvas" width="600" height="420" style="border-radius:14px;display:block;margin:10px auto;max-width:100%;"></canvas>
-      <div id="pb-reveal-area" style="display:none;">
-        <div class="result-wrap" id="pb-result" style="display:none;">
-          <div class="result-label">🎉 운명의 선택</div>
-          <div class="result-text" id="pb-result-text"></div>
-        </div>
-        <button class="reveal-btn" id="pb-reveal-btn" onclick="revealPballResult()">✦ 결과 공개 ✦</button>
+<!-- ══ MARBLE ROULETTE MODAL ══ -->
+<div class="marble-modal" id="marble-modal">
+  <div class="marble-modal-backdrop" id="marble-modal-backdrop"></div>
+  <div class="marble-modal-shell">
+    <div class="marble-modal-header">
+      <span class="marble-modal-title">🔮 미유 마블 룰렛</span>
+      <button class="marble-modal-close" id="marble-modal-close-btn">✕</button>
+    </div>
+    <div class="marble-modal-body">
+      <!-- 왼쪽: 마블 캔버스 -->
+      <div class="marble-roulette-frame">
+        <div class="marble-roulette-host" id="marble-roulette-canvas-host"></div>
       </div>
-      <div class="cta-row" style="margin-top:14px;justify-content:center;">
-        <button class="btn-primary" onclick="runPballAnim()">🎱 다시 발사!</button>
+      <!-- 오른쪽: 설정 패널 -->
+      <div class="marble-settings-panel">
+        <div class="msp-section-title">선택 항목 & 공 개수</div>
+        <div class="marble-selected-list" id="marble-selected-list"></div>
+        <div class="msp-ball-total" id="msp-ball-total">총 0개</div>
+        <div class="msp-batch-row">
+          <button class="msp-batch-btn" onclick="mrBatchSet(15)">전체 15</button>
+          <button class="msp-batch-btn" onclick="mrBatchDelta(1)">전체 +1</button>
+          <button class="msp-batch-btn" onclick="mrBatchDelta(-1)">전체 -1</button>
+        </div>
+        <div class="msp-section-title" style="margin-top:14px;">당첨 기준</div>
+        <div class="msp-winner-row">
+          <button class="msp-winner-btn active" id="btn-first-winner" onclick="setWinnerMode('first')">First</button>
+          <button class="msp-winner-btn" id="btn-last-winner" onclick="setWinnerMode('last')">Last</button>
+        </div>
+        <div class="msp-actions">
+          <button class="btn-primary" id="mr-start-btn" onclick="startMarbleRoulette()">▶ 시작</button>
+          <button class="pb-ghost-btn" onclick="resetMarbleRoulette()">초기화</button>
+        </div>
+        <div class="marble-result-panel" id="marble-result-panel"></div>
+        <div class="msp-notice">© lazygyu (MIT) — <a href="licenses/lazygyu-roulette-LICENSE" target="_blank" style="color:inherit;opacity:.6;">라이선스</a></div>
       </div>
     </div>
   </div>
-</main>
+</div>
+<script type="module" src="./roulette/lazygyu-roulette.bcfdeb71.js"></script>
 <script>
 
 let currentTier = null;
@@ -1297,84 +1429,150 @@ function initPball(){
   updateLaunchBtn();
 }
 
-// ──────────────────────── WEIGHTED RANDOM ────────────────────────
+// ──────────────────────── MARBLE ROULETTE MODAL ────────────────────────
 
-function weightedRandom(items){
-  const pool=items.filter(it=>Number(it.balls)>0);
-  const total=pool.reduce((sum,it)=>sum+Number(it.balls),0);
-  if(total<=0)return null;
-  let cursor=Math.random()*total;
-  for(const it of pool){
-    cursor-=Number(it.balls);
-    if(cursor<=0)return it;
-  }
-  return pool[pool.length-1];
-}
+// stub for lazygyu localization (not needed in embedded mode)
+window.translateElement = function(){};
 
-function applyRotorShift(slotIndex,slotCount){
-  if(Math.random()<0.75)return slotIndex; // 75% 원래 슬롯 유지
-  const candidates=[];
-  if(slotIndex>0)candidates.push(slotIndex-1);
-  if(slotIndex<slotCount-1)candidates.push(slotIndex+1);
-  if(candidates.length===0)return slotIndex;
-  return candidates[Math.floor(Math.random()*candidates.length)];
-}
+let mrItems = [];
+let mrWinnerMode = 'first';
+let mrGoalListener = null;
 
-// ──────────────────────── LAUNCH ────────────────────────
-
-let pbResult2='';
-
-function buildSlots(){
-  // 선택된 3개 상품 + 벌칙 1개 = 최대 4개 슬롯
-  const items=selBalls.map(i=>PINBALL_ITEMS[i]);
+function getSelectedPinballItems(){
+  const items = selBalls.map(i=>({
+    id:'item-'+i, label:PINBALL_ITEMS[i].tx, type:'reward', balls:15
+  }));
   if(selPenPin!==null){
-    const p=PENALTIES[selPenPin];
-    items.push({ic:p.icon, tx:p.text, isPenalty:true});
+    items.push({id:'pen-'+selPenPin, label:PENALTIES[selPenPin].text, type:'penalty', balls:15});
   }
-  // 슬롯 순서 섞기
-  for(let i=items.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [items[i],items[j]]=[items[j],items[i]];
-  }
-  const winSlot=Math.floor(Math.random()*items.length);
-  return {items, winSlot};
-}
-
-function prepareGame(){
-  document.getElementById('pb-sub').textContent='크리스탈 구슬이 내려가는 중...';
-  document.getElementById('pb-reveal-area').style.display='none';
-  document.getElementById('pb-result').style.display='none';
-  document.getElementById('pb-reveal-btn').style.display='block';
+  return items;
 }
 
 function launchPinball(){
-  if(!selBalls.length){alert('상품을 선택해주세요!');return;}
-  const {items, winSlot}=buildSlots();
-  prepareGame();
-  const gameArea=document.getElementById('pball-game-area');
-  gameArea.style.display='block';
-  gameArea.scrollIntoView({behavior:'smooth',block:'nearest'});
-  setTimeout(()=>drawPinball(items,winSlot),300);
+  const selected = getSelectedPinballItems();
+  if(!selected.length){ alert('상품을 선택해주세요!'); return; }
+  openMarbleModal(selected);
 }
 
-function runPballAnim(){
-  if(!selBalls.length)return;
-  const {items, winSlot}=buildSlots();
-  prepareGame();
-  drawPinball(items,winSlot);
+function openMarbleModal(selectedItems){
+  mrItems = selectedItems.map(it=>({...it, balls:15}));
+  mrWinnerMode = 'first';
+  renderMarbleSettings();
+  document.getElementById('marble-modal').classList.add('is-open');
+  document.body.style.overflow='hidden';
+  document.getElementById('marble-result-panel').innerHTML='';
+  // update winner mode buttons
+  document.getElementById('btn-first-winner').classList.add('active');
+  document.getElementById('btn-last-winner').classList.remove('active');
+  // inject marbles after roulette is ready
+  waitAndInjectMarbles();
+  // listen for result
+  if(mrGoalListener) window.roulette && window.roulette.removeEventListener('goal',mrGoalListener);
+  mrGoalListener = (e)=>handleMarbleResult(e.detail.winner);
+  const attach = ()=>{
+    if(window.roulette&&window.roulette.isReady){ window.roulette.addEventListener('goal',mrGoalListener); }
+    else { setTimeout(attach,150); }
+  };
+  attach();
 }
 
-function revealPballResult(){
-  document.getElementById('pb-reveal-btn').style.display='none';
-  const rv=document.getElementById('pb-result');
-  rv.style.display='block';
-  document.getElementById('pb-result-text').innerHTML=pbResult2;
+function closeMarbleModal(){
+  document.getElementById('marble-modal').classList.remove('is-open');
+  document.body.style.overflow='';
+  if(mrGoalListener&&window.roulette){ window.roulette.removeEventListener('goal',mrGoalListener); mrGoalListener=null; }
 }
 
-// ──────────────────────── CANVAS ANIMATION ────────────────────────
+function renderMarbleSettings(){
+  const total = mrItems.reduce((s,it)=>s+it.balls,0);
+  document.getElementById('msp-ball-total').textContent='총 '+total+'개';
+  document.getElementById('marble-selected-list').innerHTML = mrItems.map(it=>`
+    <div class="marble-selected-item">
+      <span class="msi-label">${it.label}</span>
+      <div class="marble-ball-stepper">
+        <button class="mbs-btn" onclick="updateBallCount('${it.id}',${it.balls-1})">−</button>
+        <input class="marble-ball-input" type="number" min="0" max="99" value="${it.balls}"
+          onchange="updateBallCount('${it.id}',parseInt(this.value)||0)">
+        <button class="mbs-btn" onclick="updateBallCount('${it.id}',${it.balls+1})">+</button>
+      </div>
+    </div>`).join('');
+}
 
-function drawPinball(items, winSlot){
-  const canvas=document.getElementById('pball-canvas');
+function updateBallCount(itemId, value){
+  const item = mrItems.find(it=>it.id===itemId);
+  if(!item) return;
+  item.balls = Math.max(0, Math.min(99, isNaN(value)?0:value));
+  renderMarbleSettings();
+  waitAndInjectMarbles();
+}
+
+function mrBatchSet(val){
+  mrItems.forEach(it=>it.balls=val);
+  renderMarbleSettings(); waitAndInjectMarbles();
+}
+function mrBatchDelta(d){
+  mrItems.forEach(it=>it.balls=Math.max(0,Math.min(99,it.balls+d)));
+  renderMarbleSettings(); waitAndInjectMarbles();
+}
+
+function waitAndInjectMarbles(){
+  const _do=()=>{
+    if(!window.roulette||!window.roulette.isReady){ setTimeout(_do,150); return; }
+    updateRouletteInputFromItems();
+  };
+  _do();
+}
+
+function updateRouletteInputFromItems(){
+  const names = mrItems
+    .filter(it=>it.balls>0)
+    .map(it=>it.balls>1?`${it.label}*${it.balls}`:it.label);
+  if(!names.length) return;
+  window.roulette.setMarbles(names);
+  const total = window.roulette.getCount();
+  if(mrWinnerMode==='last') window.roulette.setWinningRank(total-1);
+  else window.roulette.setWinningRank(0);
+}
+
+function setWinnerMode(mode){
+  mrWinnerMode = mode;
+  document.getElementById('btn-first-winner').classList.toggle('active', mode==='first');
+  document.getElementById('btn-last-winner').classList.toggle('active', mode==='last');
+  waitAndInjectMarbles();
+}
+
+function startMarbleRoulette(){
+  if(!window.roulette||!window.roulette.isReady){ alert('마블 룰렛이 아직 로딩 중입니다.'); return; }
+  const total = window.roulette.getCount();
+  if(!total){ alert('참가 공이 없습니다.'); return; }
+  if(mrWinnerMode==='last') window.roulette.setWinningRank(total-1);
+  else window.roulette.setWinningRank(0);
+  window.roulette.start();
+  document.getElementById('marble-result-panel').innerHTML='';
+}
+
+function resetMarbleRoulette(){
+  mrItems.forEach(it=>it.balls=15);
+  renderMarbleSettings();
+  waitAndInjectMarbles();
+  document.getElementById('marble-result-panel').innerHTML='';
+}
+
+function handleMarbleResult(winnerName){
+  document.getElementById('marble-result-panel').innerHTML=`
+    <div class="mr-result">
+      <div class="mr-result-label">🎉 당첨!</div>
+      <div class="mr-result-name">${winnerName}</div>
+    </div>`;
+}
+
+// ──────────────────────── UTILS (legacy kept for snow/etc) ────────────────────────
+
+function drawPinball_REMOVED(){
+  // replaced by marble modal
+  void 0;
+}
+function _pball_dummy(){
+  const canvas=document.getElementById('pball-canvas-noop');
   const ctx=canvas.getContext('2d');
   const W=canvas.width, H=canvas.height;
   const n=items.length;
@@ -1609,6 +1807,12 @@ function trunc(s,n){return s.length>n?s.slice(0,n)+'…':s;}
 
 document.addEventListener('DOMContentLoaded',function(){
   initPball();
+  // modal ESC + backdrop
+  document.getElementById('marble-modal-backdrop').addEventListener('click', closeMarbleModal);
+  document.getElementById('marble-modal-close-btn').addEventListener('click', closeMarbleModal);
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closeMarbleModal();
+  });
 });
 </script>
 </body>
