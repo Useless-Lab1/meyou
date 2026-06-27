@@ -36,7 +36,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 #page-intro{
   background: linear-gradient(160deg, #f8fafc 0%, #e8eef5 40%, #d8e4f0 100%);
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  min-height:100vh; text-align:center; padding:40px 20px;
+  min-height:100vh; text-align:center; padding:102px 20px 40px;
   position:relative; overflow:hidden;
 }
 #page-intro.active{display:flex;}
@@ -886,9 +886,67 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   .menu-card{width:160px;padding:24px 14px 20px;}
   .ball-grid{grid-template-columns:repeat(2,1fr);}
 }
+
+/* ══════════════════════════════════
+   GLOBAL NAV BAR
+══════════════════════════════════ */
+.g-nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:62px;
+  background:rgba(22,28,40,0.93);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 36px;
+}
+.g-nav-brand{
+  font-family:'Gowun Batang',serif;
+  font-size:15px;font-weight:700;
+  color:rgba(255,255,255,0.88);
+  letter-spacing:3px;text-decoration:none;
+  transition:opacity .2s;
+  flex:1;
+}
+.g-nav-brand:last-child{text-align:right;}
+.g-nav-brand:hover{opacity:.7;}
+.g-nav-links{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.g-nav-link{
+  font-family:'Noto Serif KR',serif;
+  font-size:13px;font-weight:500;
+  color:rgba(255,255,255,0.45);
+  text-decoration:none;
+  padding:8px 18px;border-radius:22px;
+  transition:all .22s;
+  letter-spacing:1.5px;
+}
+.g-nav-link:hover{
+  color:rgba(255,255,255,0.88);
+  background:rgba(255,255,255,0.08);
+}
+.g-nav-link.nav-active{
+  color:rgba(255,255,255,0.95);
+  background:rgba(255,255,255,0.11);
+}
+@media(max-width:480px){
+  .g-nav{padding:0 18px;}
+  .g-nav-brand{font-size:13px;letter-spacing:2px;}
+  .g-nav-link{font-size:12px;padding:7px 12px;}
+}
 </style>
 </head>
 <body>
+
+<nav class="g-nav">
+  <a class="g-nav-brand" href="index.html">미유라디오</a>
+  <div class="g-nav-links">
+    <a class="g-nav-link" href="ladder.html">사다리</a>
+    <a class="g-nav-link" href="pinball.html">핀볼</a>
+    <a class="g-nav-link" href="reaction.html">리액션</a>
+  </div>
+  <a class="g-nav-brand" href="index.html">미유라디오</a>
+</nav>
+
 <canvas id="snow-canvas"></canvas>
 
 <!-- ════ INTRO ════ -->
@@ -900,13 +958,13 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   <p class="intro-subtitle">오늘도, 당신의 마음이 평온해지길</p>
   <div class="intro-divider"></div>
   <div class="menu-cards">
-    <div class="menu-card" onclick="goTo('ladder')">
+    <div class="menu-card" onclick="location.href='ladder.html'">
       <span class="menu-card-icon">🪜</span>
       <div class="menu-card-title">사다리 타기</div>
       <div class="menu-card-desc">후원 선물에서<br>운명의 상품을</div>
       <div class="menu-card-line"></div>
     </div>
-    <div class="menu-card" onclick="goTo('pinball')">
+    <div class="menu-card" onclick="location.href='pinball.html'">
       <span class="menu-card-icon">🎱</span>
       <div class="menu-card-title">핀볼 게임</div>
       <div class="menu-card-desc">공을 굴려<br>당첨을 정해봐</div>
