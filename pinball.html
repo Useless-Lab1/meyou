@@ -1140,12 +1140,15 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .marble-result-panel{
   flex:1;display:flex;align-items:center;justify-content:center;min-height:60px;
 }
-.mr-result{text-align:center;}
-.mr-result-label{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.35);margin-bottom:6px;}
+.mr-result{text-align:center;padding:10px 0;}
+.mr-result-label{font-size:12px;letter-spacing:3px;color:rgba(255,255,255,.45);margin-bottom:10px;text-transform:uppercase;}
 .mr-result-name{
-  font-family:'Gowun Batang',serif;font-size:18px;font-weight:700;
-  color:rgba(255,255,255,.95);letter-spacing:1px;word-break:break-all;
+  font-family:'Gowun Batang',serif;font-size:28px;font-weight:700;
+  color:#fff;letter-spacing:1px;word-break:keep-all;line-height:1.35;
+  text-shadow:0 0 24px rgba(143,200,255,.6),0 2px 8px rgba(0,0,0,.4);
+  animation:mr-pop .4s cubic-bezier(.34,1.56,.64,1);
 }
+@keyframes mr-pop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
 .msp-notice{font-size:10px;color:rgba(255,255,255,.2);text-align:center;margin-top:auto;}
 @media(max-width:700px){
   .marble-modal-shell{width:100vw;height:100vh;border-radius:0;}
@@ -1529,8 +1532,9 @@ function updateRouletteInputFromItems(){
   if(!names.length) return;
   window.roulette.setMarbles(names);
   const total = window.roulette.getCount();
-  if(mrWinnerMode==='last') window.roulette.setWinningRank(total-1);
-  else window.roulette.setWinningRank(0);
+  const rank = mrWinnerMode==='last' ? total-1 : 0;
+  window.roulette.setWinningRank(rank);
+  if(window.options) window.options.winningRank = rank;
 }
 
 function setWinnerMode(mode){
@@ -1544,8 +1548,9 @@ function startMarbleRoulette(){
   if(!window.roulette||!window.roulette.isReady){ alert('마블 룰렛이 아직 로딩 중입니다.'); return; }
   const total = window.roulette.getCount();
   if(!total){ alert('참가 공이 없습니다.'); return; }
-  if(mrWinnerMode==='last') window.roulette.setWinningRank(total-1);
-  else window.roulette.setWinningRank(0);
+  const rank = mrWinnerMode==='last' ? total-1 : 0;
+  window.roulette.setWinningRank(rank);
+  if(window.options) window.options.winningRank = rank;
   window.roulette.start();
   document.getElementById('marble-result-panel').innerHTML='';
 }
