@@ -1,0 +1,55 @@
+﻿target_path,source_file,note
+assets/common/logo-badge.png,미유_라디오_꽃_배지_디자인.png,메인 로고 배지
+assets/common/floral-corner-tl.png,햇살_같은_꽃장식_코너.png,좌상단 꽃 코너
+assets/common/floral-corner-tr.png,화려한_꽃_장식_코너.png,우상단 꽃 코너
+assets/common/floral-corner-bl.png,화려한_꽃_장식_코너_디자인.png,좌하단 꽃 코너
+assets/common/floral-corner-br.png,화려한_꽃_장식_화살표.png,우하단 꽃 코너
+assets/common/deco-vine-horizontal.png,봄날의_꽃과_리본_장식.png,가로 잎사귀/덩굴 장식
+assets/common/deco-ribbon-label.png,컬러풀한_양초_리본_배너.png,타이틀/라벨용 리본
+assets/common/deco-sparkle-set.png,햇살과_반짝임_장식_아이콘_모음.png,반짝이/햇살 포인트 묶음
+assets/common/pattern-picnic-check.png,부드러운_크림색_체크_무늬.png,피크닉 체크 패턴
+assets/common/prop-sunflower-bouquet.png,햇살_가득한_해바라기_꽃다발.png,해바라기 꽃다발
+assets/common/prop-daisy-cluster.png,화이트_데이지_꽃다발_일러스트.png,데이지 꽃 묶음
+assets/common/prop-lemonade-glass.png,상큼한_레모네이드_한_잔.png,레모네이드 컵
+assets/common/prop-picnic-basket.png,햇살_가득한_꽃_바구니.png,피크닉 바구니
+assets/common/prop-radio.png,빈티지_노란_라디오.png,빈티지 라디오
+assets/common/prop-gift-box.png,노란색_리본과_꽃이_장식된_선물_박스.png,선물상자
+assets/common/deco-balloon-yellow.png,노란색_풍선_다발.png,노란 풍선
+assets/common/deco-bunting.png,부드러운_색의_깃발_장식.png,가랜드/깃발
+assets/common/deco-cloud-soft.png,부드러운_구름과_햇살의_풍경.png,구름 장식
+assets/index/hero-main.png,햇살_속_소풍과_해바라기.png,인트로 메인 인물/피크닉 비주얼
+assets/index/hero-bg-sunflower-field.png,여름_햇살_속_소풍_풍경.png,인트로 배경 꽃밭
+assets/index/hero-props-left.png,햇살_가득한_피크닉_풍경.png,좌측 소품 묶음
+assets/index/hero-props-right.png,햇살_가득한_꽃과_레트로_라디오.png,우측 소품 묶음
+assets/index/card-ladder-preview.png,햇살_가득한_바카라와_꽃들.png,사다리 진입 카드 썸네일
+assets/index/card-pinball-preview.png,햇살_가득한_소풍_핀볼_게임.png,핀볼 진입 카드 썸네일
+assets/index/card-reaction-preview.png,a_clean_bright_pastel_graphic_collage_ui_asset.png,매도/애교 진입 카드 썸네일
+assets/index/banner-radio-time.png,여름_소풍의_꿈같은_풍경.png,방송시간 배너
+assets/index/banner-event.png,햇살_가득한_여름의_보상_여정.png,이벤트/공지 배너
+assets/ladder/meyou-center-halfbody.png,소녀와_꽃다발의_여름_분위기.png,사다리 중앙 인물 컷아웃
+assets/ladder/reward-1426.png,황금_수정과_꽃_장식.png,1426 카드 썸네일
+assets/ladder/reward-2826.png,상큼한_레모네이드와_꽃들.png,2826 카드 썸네일
+assets/ladder/reward-5726.png,햇살_가득한_해바라기와_데이지_꽃다발.png,5726 카드 썸네일
+assets/ladder/reward-12426.png,빈티지_라디오와_꽃_장식.png,12426 카드 썸네일
+assets/ladder/deco-ladder-sunflower.png,햇살_가득한_꽃다발_표지_디자인.png,사다리 카드용 해바라기 장식
+assets/ladder/deco-ladder-ticket.png,햇살_가득한_피크닉_티켓.png,사다리 티켓 장식
+assets/ladder/deco-ladder-gift.png,화려한_꽃_장식_선물_상자.png,결과/보상 선물 장식
+assets/ladder/result-badge-sunshine.png,행복한_태양_메달.png,결과창 선샤인 배지
+assets/pinball/pinball-board-bg.png,햇살_가득한_해바라기_보드게임.png,핀볼 보드 배경
+assets/pinball/pinball-sun-face.png,귀여운_햇살과_꽃_장식.png,중앙 햇님 마스코트
+assets/pinball/cat-left.png,햇살_속의_귀여운_아기_고양이.png,좌측 캐릭터/장식
+assets/pinball/cat-right.png,귀여운_꽃_달린_새끼_고양이.png,우측 캐릭터/장식
+assets/pinball/badge-x2.png,황금_배지와_꽃_장식.png,x2 보너스 배지
+assets/pinball/badge-plus30.png,봄의_기쁨을_담은_배지.png,+30 보너스 배지
+assets/pinball/badge-plus50.png,환호의_50을_더하다.png,+50 보너스 배지
+assets/pinball/badge-jackpot-200.png,행운의_200_잭팟_배지.png,잭팟 +200 배지
+assets/pinball/pinball-panel-deco.png,봄_느낌의_꽃이_장식된_사이드바.png,우측 패널 장식
+assets/reaction/avatar.png,부드러운_햇살_속_꽃다발_초상화.png,채팅 프로필 아바타
+assets/reaction/aegyo-hero.png,애교_모드의_귀여운_표정.png,애교 히어로
+assets/reaction/roast-hero.png,매도_mode_sassy_sunflower_vibes.png,매도 히어로
+assets/reaction/brand-mark.png,미유_라디오_온_에어_배지.png,리액션 브랜드마크
+assets/reaction/choice-aegyo-frame-1.png,봄의_꽃구름_프레임.png,애교 선택 카드 프레임 1
+assets/reaction/choice-aegyo-frame-2.png,햇살_가득한_봄의_프레임.png,애교 선택 카드 프레임 2
+assets/reaction/choice-roast-frame-1.png,아기자기한_여름_꽃무늬_프레임.png,매도 선택 카드 프레임 1
+assets/reaction/choice-roast-frame-2.png,해바라기와_여름_테마_카드_프레임.png,매도 선택 카드 프레임 2
+assets/reaction/deco-chat-reaction.png,귀여운_파스텔_스티커_디자인.png,채팅/하트/꽃 리액션 장식
