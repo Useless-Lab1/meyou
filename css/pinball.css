@@ -1,0 +1,309 @@
+.sub-page-wrap{
+  background:transparent;
+  margin-top:62px;
+  height:calc(100vh - 62px);
+  padding:0;
+  position:relative; overflow-y:auto; overflow-x:hidden;
+  display:flex; flex-direction:column;
+  isolation:isolate;
+}
+.section-head{ flex-shrink:0; padding:20px 160px 10px; position:relative; z-index:3; text-align:center; min-height:96px; }
+.pinball-layout{ flex:1; min-height:0; padding:0 20px 0; align-items:stretch; }
+.ball-grid{ grid-template-columns:repeat(6,1fr); grid-auto-rows:1fr; flex:1; min-height:0; }
+.section-title-main{ font-size:clamp(20px,2.6vw,36px); }
+#pball-left{ display:flex; flex-direction:column; min-height:0; overflow:hidden; }
+.penalty-panel{ overflow-y:auto; height:100%; box-sizing:border-box; }
+
+/* ════ PINBALL SELECT LAYOUT ════ */
+.pball-select-area{
+  display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:10px;
+  padding:0 20px; flex:1; min-height:0; overflow:hidden;
+  position:relative; z-index:3;
+}
+.pball-left-col{
+  display:flex; flex-direction:column; gap:8px; min-height:0; overflow:hidden;
+  position:relative; z-index:3;
+}
+.pball-right-col{ display:flex; flex-direction:column; min-height:0; overflow:hidden; position:relative; z-index:3; }
+.pball-col-header{
+  display:flex; align-items:baseline; gap:8px; flex-shrink:0;
+}
+.pball-col-title{
+  font-family:'Noto Serif KR',serif; font-size:13px; font-weight:600; color:var(--slate);
+}
+.pball-pick-hint{ font-size:11px; color:var(--smoky); }
+
+/* ball grid — 6 columns, fills remaining height */
+.ball-grid{
+  display:grid; grid-template-columns:repeat(6,1fr); gap:6px;
+  flex:1; min-height:0; align-content:start; overflow-y:auto;
+  padding-top:2px;
+}
+.ball-card{
+  border-radius:10px;
+  background:rgba(255,255,255,.10);
+  border:1.5px solid rgba(180,190,230,.18);
+  padding:6px 4px 5px;
+  cursor:pointer; text-align:center;
+  position:relative;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+  transition:all .22s cubic-bezier(.34,1.4,.64,1);
+  backdrop-filter:blur(8px);
+  box-shadow:0 2px 6px rgba(107,124,147,.06);
+}
+.ball-card:hover{
+  border-color:rgba(180,190,230,.5);
+  box-shadow:0 8px 22px rgba(107,124,147,.15);
+  background:rgba(255,255,255,.18);
+}
+.ball-card.selected{
+  background:linear-gradient(135deg,rgba(180,190,230,.18),rgba(180,190,230,.12));
+  border-color:var(--accent);
+  box-shadow:0 0 0 2.5px rgba(180,190,230,.25),0 4px 16px rgba(0,0,0,.3);
+}
+.ball-n{
+  position:absolute; top:3px; left:5px;
+  width:15px; height:15px; border-radius:50%;
+  background:rgba(180,190,230,.22);
+  color:var(--slate); font-size:8px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  line-height:1;
+}
+.ball-card.selected .ball-n{
+  background:rgba(180,190,230,.4); color:#fff;
+}
+.ball-sel-badge{
+  position:absolute; top:3px; right:5px;
+  width:15px; height:15px; border-radius:50%;
+  background:linear-gradient(135deg,var(--slate),var(--accent)); color:#fff;
+  font-size:8px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.ball-ic{ font-size:22px; filter:drop-shadow(0 2px 4px rgba(107,124,147,.12)); }
+.ball-tx{ font-size:11px; font-weight:500; color:var(--ink); line-height:1.25; word-break:keep-all; }
+
+.pball-sel-row{
+  display:flex; align-items:center; justify-content:space-between;
+  flex-shrink:0; padding:4px 2px 0;
+}
+.pball-sel-count{ font-size:12px; color:var(--smoky); }
+.pball-sel-count span{ color:var(--slate); font-weight:600; }
+.pb-ghost-btn{
+  padding:4px 12px; border-radius:50px; border:none; cursor:pointer;
+  font-size:11px; color:var(--smoky); background:rgba(180,190,230,.15);
+  transition:background .2s;
+}
+.pb-ghost-btn:hover{ background:rgba(180,190,230,.3); }
+
+.penalty-panel{
+  background:rgba(255,255,255,.09); border:1px solid rgba(180,190,230,.2);
+  border-radius:14px; padding:10px 8px;
+  height:100%; box-sizing:border-box; overflow-y:auto;
+  backdrop-filter:blur(10px); display:flex; flex-direction:column; gap:5px;
+}
+.pen-item{
+  display:flex; align-items:center; gap:8px; padding:8px 10px;
+  border-radius:10px; cursor:pointer;
+  border:1.5px solid rgba(180,190,230,.18);
+  background:rgba(255,255,255,.12);
+  transition:all .2s;
+  font-size:13px; color:rgba(238,234,255,.9); font-weight:500; line-height:1.3;
+}
+.pen-item:hover{ border-color:rgba(180,190,230,.45); background:rgba(255,255,255,.16); transform:translateY(-1px); }
+.pen-item.selected{ background:rgba(200,184,154,.18); border-color:var(--gold); box-shadow:0 0 0 2px rgba(200,184,154,.25),0 4px 14px rgba(200,184,154,.12); }
+.p-icon{ font-size:18px; flex-shrink:0; }
+.pball-launch-row{
+  flex-shrink:0; padding:6px 20px 10px;
+  position:relative; z-index:3;
+  display:grid; grid-template-columns:180px 1fr 180px;
+  align-items:center; gap:10px;
+}
+
+/* ════ GAME BOX ════ */
+.pball-game-box{
+  background:rgba(255,255,255,.11); border-radius:22px;
+  padding:20px; max-width:680px; margin:0 auto; text-align:center;
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(180,190,230,.25);
+  box-shadow:0 12px 48px rgba(107,124,147,.12);
+}
+.pball-game-title{
+  font-family:'Gowun Batang',serif; font-size:18px; font-weight:700;
+  color:var(--ink); letter-spacing:1px; margin-bottom:6px;
+}
+.pball-status-msg{
+  font-size:12px; color:var(--smoky); letter-spacing:.5px; margin-bottom:4px;
+}
+
+/* ══ MARBLE ROULETTE MODAL ══ */
+.marble-modal{
+  position:fixed;inset:0;z-index:2000;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;transition:opacity .25s;
+}
+.marble-modal.is-open{pointer-events:all;opacity:1;}
+.marble-modal-backdrop{
+  position:absolute;inset:0;background:rgba(10,14,22,.72);backdrop-filter:blur(4px);
+}
+.marble-modal-shell{
+  position:relative;z-index:1;
+  width:94vw;max-width:1000px;height:88vh;
+  background:rgba(22,28,40,.97);
+  border-radius:18px;border:1px solid rgba(255,255,255,.13);
+  display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,.6);
+}
+.marble-modal-header{
+  flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.11);
+}
+.marble-modal-title{
+  font-family:'Gowun Batang',serif;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.88);letter-spacing:2px;
+}
+.marble-modal-close{
+  background:rgba(255,255,255,.13);border:none;border-radius:50%;
+  width:30px;height:30px;cursor:pointer;color:rgba(255,255,255,.6);
+  font-size:14px;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.marble-modal-close:hover{background:rgba(255,255,255,.18);}
+.marble-modal-body{
+  flex:1;min-height:0;display:flex;overflow:hidden;
+}
+.marble-roulette-frame{
+  flex:1;min-width:0;position:relative;overflow:hidden;
+}
+.marble-roulette-frame::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;
+  height:42%;
+  background:linear-gradient(to bottom,transparent 0%,rgba(22,28,40,.97) 100%);
+  pointer-events:none;z-index:5;
+}
+.marble-roulette-host{
+  width:100%;height:100%;position:relative;overflow:hidden;
+}
+.marble-roulette-host canvas{
+  position:relative!important;inset:unset!important;
+  width:100%!important;height:100%!important;display:block!important;
+}
+.marble-settings-panel{
+  flex-shrink:0;width:240px;
+  background:rgba(255,255,255,.03);border-left:1px solid rgba(255,255,255,.15);
+  padding:14px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;
+}
+.msp-section-title{
+  font-family:'Noto Serif KR',serif;font-size:11px;letter-spacing:2px;
+  color:rgba(255,255,255,.4);text-transform:uppercase;
+}
+.marble-selected-list{display:flex;flex-direction:column;gap:6px;}
+.marble-selected-item{
+  background:rgba(255,255,255,.15);border-radius:10px;padding:8px 10px;
+  display:flex;align-items:center;gap:8px;
+}
+.msi-label{flex:1;font-size:12px;color:rgba(255,255,255,.75);min-width:0;word-break:break-all;line-height:1.3;}
+.marble-ball-stepper{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.mbs-btn{
+  background:rgba(255,255,255,.1);border:none;border-radius:6px;
+  width:22px;height:22px;cursor:pointer;color:rgba(255,255,255,.7);font-size:13px;
+  display:flex;align-items:center;justify-content:center;transition:background .15s;
+}
+.mbs-btn:hover{background:rgba(255,255,255,.22);}
+.marble-ball-input{
+  width:48px;text-align:center;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);
+  border-radius:6px;color:rgba(255,255,255,.88);font-size:13px;padding:3px 4px;
+}
+.msp-ball-total{font-size:12px;color:rgba(255,255,255,.45);text-align:right;}
+.msp-batch-row{display:flex;gap:4px;}
+.msp-batch-btn{
+  flex:1;font-size:11px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:5px 4px;color:rgba(255,255,255,.6);cursor:pointer;
+  transition:background .15s;
+}
+.msp-batch-btn:hover{background:rgba(255,255,255,.15);}
+.msp-winner-row{display:flex;gap:6px;}
+.msp-winner-btn{
+  flex:1;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:6px;font-size:12px;color:rgba(255,255,255,.5);cursor:pointer;
+  transition:all .18s;
+}
+.msp-winner-btn.active{
+  background:rgba(180,190,230,.25);border-color:rgba(180,190,230,.5);color:rgba(255,255,255,.9);
+}
+.msp-actions{display:flex;gap:6px;}
+.msp-actions .btn-primary{flex:1;padding:9px 10px;font-size:13px;}
+.msp-actions .pb-ghost-btn{flex-shrink:0;}
+.marble-result-panel{
+  flex:1;display:flex;align-items:center;justify-content:center;min-height:60px;
+}
+.mr-result{text-align:center;padding:10px 0;}
+.mr-result-label{font-size:12px;letter-spacing:3px;color:rgba(255,255,255,.45);margin-bottom:10px;text-transform:uppercase;}
+.mr-result-name{
+  font-family:'Gowun Batang',serif;font-size:28px;font-weight:700;
+  color:#fff;letter-spacing:1px;word-break:keep-all;line-height:1.35;
+  text-shadow:0 0 24px rgba(143,200,255,.6),0 2px 8px rgba(0,0,0,.4);
+  animation:mr-pop .4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes mr-pop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+.msp-notice{font-size:10px;color:rgba(255,255,255,.2);text-align:center;margin-top:auto;}
+@media(max-width:700px){
+  .marble-modal-shell{width:100vw;height:100vh;border-radius:0;}
+  .marble-modal-body{flex-direction:column;}
+  .marble-roulette-frame{flex:1;min-height:0;}
+  .marble-settings-panel{width:100%;max-height:220px;flex-direction:row;flex-wrap:wrap;gap:6px;}
+}
+
+/* ════ 타이틀 서브라벨 ════ */
+.pball-title-sub{
+  display:inline-block; margin-top:5px;
+  padding:3px 14px; border-radius:50px;
+  font-size:11.5px; font-weight:500; letter-spacing:2px;
+  color:var(--slate); background:rgba(180,190,230,.12);
+  border:1px solid rgba(180,190,230,.22);
+}
+
+/* ════ 고양이 장식 (제목 좌우 배치) ════ */
+.pinball-cat-deco{
+  position:absolute; top:0; left:0; right:0; height:120px;
+  pointer-events:none; z-index:4; overflow:visible;
+}
+.pinball-cat{
+  position:absolute; top:8px; width:100px; height:auto;
+  opacity:.6; pointer-events:none;
+}
+.pinball-cat-left{ left:16px; transform:scaleX(-1); }
+.pinball-cat-right{ right:16px; }
+@media(max-width:900px){ .pinball-cat{ width:68px; opacity:.4; } .section-head{ padding-left:100px; padding-right:100px; } }
+@media(max-width:600px){ .pinball-cat{ display:none; } .section-head{ padding-left:20px; padding-right:20px; } }
+
+/* ════ 하단 가이드 박스 ════ */
+.pball-guide-box{
+  background:rgba(255,255,255,.07); border:1px solid rgba(180,190,230,.16);
+  border-radius:10px; padding:6px 12px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.pball-guide-title{
+  font-size:9px; letter-spacing:2px; color:var(--smoky); text-transform:uppercase;
+}
+.pball-guide-rule{
+  font-size:12px; color:var(--slate); font-weight:500; line-height:1.4;
+}
+.pball-guide-rule b{ color:var(--ink); }
+.pball-launch-spacer{ width:180px; }
+
+/* ════ 반응형 ════ */
+@media(max-width:900px){
+  .pball-select-area{ grid-template-columns:1fr; gap:10px; }
+  .pball-right-col{ max-height:220px; }
+  .ball-grid{ grid-template-columns:repeat(4,1fr); }
+  .pball-launch-row{ grid-template-columns:1fr; justify-items:center; gap:8px; }
+  .pball-guide-box{ width:100%; max-width:360px; }
+  .pball-launch-spacer{ display:none; }
+}
+@media(max-width:600px){
+  .ball-grid{ grid-template-columns:repeat(3,1fr); gap:6px; }
+  .ball-ic{ font-size:24px; }
+  .ball-tx{ font-size:11px; }
+  .pball-select-area{ padding:0 12px; }
+  .pball-launch-row{ padding:8px 12px 12px; }
+}

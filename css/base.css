@@ -1,0 +1,15 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--ink);overflow-x:hidden;}
+
+#snow-canvas{display:none!important;}
+
+.meyou-snow-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+@keyframes meyou-snowfall{
+  0%{transform:translateY(-10px) translateX(0);opacity:0;}
+  8%{opacity:1;}92%{opacity:.5;}
+  100%{transform:translateY(100vh) translateX(30px);opacity:0;}
+}
+
+.page{display:none;min-height:100vh;position:relative;z-index:1;}
+.page.active{display:block;}
