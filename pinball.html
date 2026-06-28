@@ -111,7 +111,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .menu-card{
   width:200px; padding:32px 20px 28px;
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.11);
   border:1px solid rgba(180,190,230,.25);
   border-radius:20px; cursor:pointer; text-align:center;
   backdrop-filter:blur(16px);
@@ -121,7 +121,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .menu-card::before{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.05),transparent);
+  background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
   border-radius:20px;
 }
 .menu-card:hover{
@@ -162,7 +162,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   font-size:12px; color:var(--smoky); letter-spacing:1px;
   padding:8px 18px; border-radius:20px;
   border:1px solid rgba(180,190,230,.3);
-  background:rgba(255,255,255,.05); backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.15); backdrop-filter:blur(8px);
   transition:all .2s;
 }
 .back-btn:hover{color:var(--slate);border-color:var(--smoky);}
@@ -211,7 +211,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 
 /* 모든 카드: 동일한 높이, 스크롤 없이 전부 표시 */
 .tier-card{
-  background:rgba(255,255,255,.05);
+  background:rgba(255,255,255,.15);
   border:1.5px solid rgba(180,190,230,.22);
   border-radius:20px;
   padding:22px 18px 20px;
@@ -225,7 +225,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .tier-card::before{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(160deg,rgba(255,255,255,.05),transparent);
+  background:linear-gradient(160deg,rgba(255,255,255,.15),transparent);
   border-radius:20px; pointer-events:none;
 }
 .tier-card:hover{
@@ -236,7 +236,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 
 /* 포커스 카드 */
 .tier-card.focused{
-  background:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.18);
   border-color:var(--accent);
   border-width:2px;
   box-shadow:0 18px 52px rgba(107,124,147,.18), 0 0 0 4px rgba(180,190,230,.13);
@@ -339,7 +339,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 /* expanded tier panel — tier-row 바로 아래 full width */
 .tier-expanded{
   margin:20px 28px 28px;
-  background:rgba(255,255,255,.08);
+  background:rgba(255,255,255,.13);
   border:1.5px solid rgba(180,190,230,.3);
   border-radius:20px;
   padding:32px 32px 28px;
@@ -378,7 +378,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .item-chip{
   padding:12px 15px; border-radius:12px;
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.11);
   border:1px solid rgba(180,190,230,.2);
   font-size:13px; color:var(--ink); cursor:pointer;
   transition:all .22s cubic-bezier(.34,1.56,.64,1);
@@ -407,7 +407,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .penalty-chip{
   padding:11px 14px; border-radius:12px;
-  background:rgba(255,255,255,.05);
+  background:rgba(255,255,255,.15);
   border:1px solid rgba(180,190,230,.2);
   font-size:13px; color:var(--ink); cursor:pointer;
   transition:all .22s cubic-bezier(.34,1.56,.64,1);
@@ -502,7 +502,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .num-ball{
   width:52px;height:52px;border-radius:50%;
-  background:rgba(255,255,255,.08);
+  background:rgba(255,255,255,.13);
   border:1.5px solid rgba(180,190,230,.3);
   display:flex;align-items:center;justify-content:center;
   font-family:'Gowun Batang',serif;font-size:20px;font-weight:700;color:var(--ink);
@@ -523,7 +523,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 
 /* result reveal */
 .result-wrap{
-  background:rgba(255,255,255,.06); border:1px solid rgba(180,190,230,.3);
+  background:rgba(255,255,255,.11); border:1px solid rgba(180,190,230,.3);
   border-radius:16px; padding:20px; text-align:center; margin-bottom:18px;
 }
 .result-label{font-size:11px;letter-spacing:3px;color:var(--slate);margin-bottom:8px;text-transform:uppercase;}
@@ -555,7 +555,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .lm-item-tag{
   padding:7px 16px; border-radius:20px;
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.11);
   border:1px solid rgba(180,190,230,.3);
   font-size:12px; color:var(--ink);
   font-family:'Noto Serif KR',serif;
@@ -616,13 +616,13 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 
 .reveal-btn{
   padding:11px 36px; border-radius:50px; cursor:pointer;
-  background:rgba(255,255,255,.08); border:1.5px solid rgba(180,190,230,.4);
+  background:rgba(255,255,255,.13); border:1.5px solid rgba(180,190,230,.4);
   font-size:13px; color:var(--slate); letter-spacing:1px;
   font-family:'Noto Serif KR',serif;
   box-shadow:0 4px 14px rgba(107,124,147,.1);
   transition:all .25s; display:block; margin:0 auto;
 }
-.reveal-btn:hover{background:rgba(255,255,255,.10);transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,124,147,.15);}
+.reveal-btn:hover{background:rgba(255,255,255,.15);transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,124,147,.15);}
 
 /* ════════════════════════════════
    PINBALL PAGE
@@ -636,14 +636,14 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .ball-card{
   border-radius:10px;
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.11);
   border:1.5px solid rgba(180,190,230,.25);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   cursor:pointer; text-align:center; padding:10px 4px;
   box-shadow:0 2px 8px rgba(107,124,147,.08);
   transition:all .2s ease;
 }
-.ball-card:hover{background:rgba(255,255,255,.10);border-color:var(--accent);box-shadow:0 4px 14px rgba(107,124,147,.15);}
+.ball-card:hover{background:rgba(255,255,255,.15);border-color:var(--accent);box-shadow:0 4px 14px rgba(107,124,147,.15);}
 .ball-card.selected{
   background:linear-gradient(135deg,rgba(180,190,230,.18),rgba(180,190,230,.12));
   border-color:var(--accent);
@@ -654,7 +654,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .ball-tx{font-size:20px;font-weight:500;color:var(--ink);line-height:1.3;word-break:keep-all;}
 
 .penalty-panel{
-  background:rgba(255,255,255,.06); border:1px solid rgba(180,190,230,.25);
+  background:rgba(255,255,255,.11); border:1px solid rgba(180,190,230,.25);
   border-radius:18px; padding:20px; backdrop-filter:blur(12px);
 }
 .panel-title{
@@ -665,11 +665,11 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   display:flex;align-items:center;gap:8px;padding:10px 12px;
   border-radius:10px; cursor:pointer;
   border:1px solid rgba(180,190,230,.15);
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.08);
   margin-bottom:6px; transition:all .2s;
   font-size:13px;color:var(--ink);
 }
-.pen-item:hover{border-color:rgba(180,190,230,.35);background:rgba(255,255,255,.06);}
+.pen-item:hover{border-color:rgba(180,190,230,.35);background:rgba(255,255,255,.11);}
 .pen-item.selected{background:rgba(200,184,154,.1);border-color:var(--gold);}
 .pen-note{
   margin-top:14px;padding:12px;border-radius:10px;
@@ -686,7 +686,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 /* ── 모드 토글 ── */
 .r-toggle{
   display:flex;gap:0;justify-content:center;margin-bottom:24px;
-  border-radius:50px; background:rgba(255,255,255,.05);
+  border-radius:50px; background:rgba(255,255,255,.15);
   border:1px solid rgba(180,190,230,.25); padding:4px;
   width:fit-content; margin-left:auto;margin-right:auto;
 }
@@ -722,7 +722,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .mode-banner::before{
   content:''; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse at 80% 50%, rgba(255,255,255,.05) 0%, transparent 65%);
+  background:radial-gradient(ellipse at 80% 50%, rgba(255,255,255,.15) 0%, transparent 65%);
 }
 .banner-em{font-size:58px;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(0,0,0,.1));}
 .banner-text{flex:1;}
@@ -753,12 +753,12 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .random-btn{
   padding:8px 22px; border-radius:50px; cursor:pointer;
-  border:1.5px solid rgba(180,190,230,.3); background:rgba(255,255,255,.06);
+  border:1.5px solid rgba(180,190,230,.3); background:rgba(255,255,255,.11);
   font-size:12px; color:var(--slate); transition:all .22s;
   font-family:'Noto Serif KR',serif; letter-spacing:.3px;
   box-shadow:0 2px 8px rgba(107,124,147,.08);
 }
-.random-btn:hover{background:rgba(255,255,255,.10);border-color:rgba(180,190,230,.5);transform:translateY(-1px);}
+.random-btn:hover{background:rgba(255,255,255,.15);border-color:rgba(180,190,230,.5);transform:translateY(-1px);}
 
 /* ── 키워드 그리드 ── */
 .kw-grid{
@@ -774,7 +774,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 /* 애교 기본 */
 .kw-grid.love-grid .kw-btn{
-  background:rgba(255,255,255,.05); border-color:rgba(200,180,215,.25); color:var(--ink);
+  background:rgba(255,255,255,.15); border-color:rgba(200,180,215,.25); color:var(--ink);
 }
 .kw-grid.love-grid .kw-btn:hover{
   background:rgba(252,235,248,.8); border-color:rgba(200,150,210,.4);
@@ -986,7 +986,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .ball-card{
   border-radius:16px;
-  background:rgba(255,255,255,.08);
+  background:rgba(255,255,255,.13);
   border:1.5px solid rgba(180,190,230,.18);
   padding:12px 6px 10px;
   cursor:pointer; text-align:center;
@@ -999,7 +999,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .ball-card:hover{
   border-color:rgba(180,190,230,.5);
   box-shadow:0 8px 22px rgba(107,124,147,.15);
-  background:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.18);
 }
 .ball-card.selected{
   background:linear-gradient(135deg,rgba(180,190,230,.18),rgba(180,190,230,.12));
@@ -1041,7 +1041,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .pb-ghost-btn:hover{ background:rgba(180,190,230,.3); }
 
 .penalty-panel{
-  background:rgba(255,255,255,.06); border:1px solid rgba(180,190,230,.2);
+  background:rgba(255,255,255,.11); border:1px solid rgba(180,190,230,.2);
   border-radius:16px; padding:14px 12px;
   height:100%; box-sizing:border-box; overflow-y:auto;
   backdrop-filter:blur(10px); display:flex; flex-direction:column; gap:0;
@@ -1050,11 +1050,11 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   display:flex; align-items:center; gap:12px; padding:13px 14px;
   border-radius:14px; cursor:pointer;
   border:1.5px solid rgba(180,190,230,.15);
-  background:rgba(255,255,255,.05);
+  background:rgba(255,255,255,.15);
   margin-bottom:7px; transition:all .2s;
   font-size:15px; color:var(--ink); font-weight:500;
 }
-.pen-item:hover{ border-color:rgba(180,190,230,.4); background:rgba(255,255,255,.08); transform:translateY(-1px); }
+.pen-item:hover{ border-color:rgba(180,190,230,.4); background:rgba(255,255,255,.13); transform:translateY(-1px); }
 .pen-item.selected{ background:rgba(200,184,154,.15); border-color:var(--gold); box-shadow:0 0 0 2px rgba(200,184,154,.2); }
 .p-icon{ font-size:28px; flex-shrink:0; }
 .pball-launch-row{
@@ -1064,7 +1064,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 
 /* ════ GAME BOX ════ */
 .pball-game-box{
-  background:rgba(255,255,255,.06); border-radius:22px;
+  background:rgba(255,255,255,.11); border-radius:22px;
   padding:20px; max-width:680px; margin:0 auto; text-align:center;
   backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
   border:1px solid rgba(180,190,230,.25);
@@ -1092,20 +1092,20 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   position:relative;z-index:1;
   width:94vw;height:92vh;
   background:rgba(22,28,40,.97);
-  border-radius:18px;border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;border:1px solid rgba(255,255,255,.13);
   display:flex;flex-direction:column;overflow:hidden;
   box-shadow:0 24px 80px rgba(0,0,0,.6);
 }
 .marble-modal-header{
   flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
-  padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);
+  padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.11);
 }
 .marble-modal-title{
   font-family:'Gowun Batang',serif;font-size:15px;font-weight:700;
   color:rgba(255,255,255,.88);letter-spacing:2px;
 }
 .marble-modal-close{
-  background:rgba(255,255,255,.08);border:none;border-radius:50%;
+  background:rgba(255,255,255,.13);border:none;border-radius:50%;
   width:30px;height:30px;cursor:pointer;color:rgba(255,255,255,.6);
   font-size:14px;display:flex;align-items:center;justify-content:center;
   transition:background .2s;
@@ -1126,7 +1126,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .marble-settings-panel{
   flex-shrink:0;width:240px;
-  background:rgba(255,255,255,.03);border-left:1px solid rgba(255,255,255,.05);
+  background:rgba(255,255,255,.03);border-left:1px solid rgba(255,255,255,.15);
   padding:14px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;
 }
 .msp-section-title{
@@ -1135,7 +1135,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .marble-selected-list{display:flex;flex-direction:column;gap:6px;}
 .marble-selected-item{
-  background:rgba(255,255,255,.05);border-radius:10px;padding:8px 10px;
+  background:rgba(255,255,255,.15);border-radius:10px;padding:8px 10px;
   display:flex;align-items:center;gap:8px;
 }
 .msi-label{flex:1;font-size:12px;color:rgba(255,255,255,.75);min-width:0;word-break:break-all;line-height:1.3;}
@@ -1147,20 +1147,20 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .mbs-btn:hover{background:rgba(255,255,255,.22);}
 .marble-ball-input{
-  width:48px;text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  width:48px;text-align:center;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);
   border-radius:6px;color:rgba(255,255,255,.88);font-size:13px;padding:3px 4px;
 }
 .msp-ball-total{font-size:12px;color:rgba(255,255,255,.45);text-align:right;}
 .msp-batch-row{display:flex;gap:4px;}
 .msp-batch-btn{
-  flex:1;font-size:11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  flex:1;font-size:11px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.1);
   border-radius:8px;padding:5px 4px;color:rgba(255,255,255,.6);cursor:pointer;
   transition:background .15s;
 }
 .msp-batch-btn:hover{background:rgba(255,255,255,.15);}
 .msp-winner-row{display:flex;gap:6px;}
 .msp-winner-btn{
-  flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  flex:1;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.1);
   border-radius:8px;padding:6px;font-size:12px;color:rgba(255,255,255,.5);cursor:pointer;
   transition:all .18s;
 }
@@ -1201,6 +1201,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   </div>
   <a class="g-nav-brand" href="index.html">미유라디오</a>
 </nav>
+<canvas id="snow-canvas" style="display:none"></canvas>
 <div class="meyou-snow-bg" id="meyou-snow" aria-hidden="true"></div>
 <main class="sub-page-wrap">
   <div class="section-head">
