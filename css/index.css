@@ -58,8 +58,10 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   display:flex; align-items:center; justify-content:center;
   position:relative;
 }
-.intro-logo-wrap::before{
-  content:'🦢'; font-size:42px; filter:drop-shadow(0 2px 8px rgba(107,124,147,.2));
+.intro-logo-wrap img{
+  width:80px; height:80px; border-radius:50%;
+  object-fit:contain;
+  filter:drop-shadow(0 2px 8px rgba(107,124,147,.2));
 }
 
 .intro-tag{

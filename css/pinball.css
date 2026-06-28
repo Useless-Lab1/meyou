@@ -80,7 +80,7 @@
   display:flex; align-items:center; justify-content:center;
 }
 .ball-ic{ font-size:22px; filter:drop-shadow(0 2px 4px rgba(107,124,147,.12)); }
-.ball-tx{ font-size:11px; font-weight:500; color:var(--ink); line-height:1.25; word-break:keep-all; }
+.ball-tx{ font-size:11px; font-weight:500; color:var(--ink); line-height:1.25; word-break:keep-all; overflow-wrap:anywhere; }
 
 .pball-sel-row{
   display:flex; align-items:center; justify-content:space-between;
