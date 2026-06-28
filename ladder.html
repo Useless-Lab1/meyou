@@ -945,7 +945,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 
 
 /* ══ PAGE WRAP ══ */
-.sub-page-wrap{background:#080610;min-height:100vh;padding:80px 0 40px;position:relative;overflow-x:hidden;}
+.sub-page-wrap{background:transparent;min-height:100vh;padding:80px 0 40px;position:relative;overflow-x:hidden;isolation:isolate;}
 
 /* ══ TIER ROW ══ */
 .section-head{text-align:center;padding:14px 20px 10px;}
@@ -954,18 +954,55 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .section-orn::after{background:linear-gradient(90deg,var(--smoky),transparent);}
 .section-title-main{font-family:'Gowun Batang',serif;font-size:clamp(18px,3vw,24px);font-weight:700;color:var(--ink);}
 
-.tier-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0 24px;}
-.tier-card{background:rgba(255,255,255,.11);border:1.5px solid rgba(180,190,230,.22);border-radius:20px;padding:20px 16px 18px;cursor:pointer;position:relative;backdrop-filter:blur(14px);box-shadow:0 4px 20px rgba(107,124,147,.07);transition:all .3s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column;align-items:center;}
-.tier-card::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.15),transparent);border-radius:20px;pointer-events:none;}
-.tier-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(107,124,147,.14);border-color:rgba(143,168,196,.38);}
-.tier-num{font-family:'Gowun Batang',serif;font-size:30px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:4px;}
+/* ── 5열 그리드: 패널 0.95fr×4, 중앙 0.85fr (패널보다 살짝 좁게) ── */
+.tier-row{display:grid;grid-template-columns:minmax(200px,0.95fr) minmax(200px,0.95fr) minmax(280px,0.85fr) minmax(200px,0.95fr) minmax(200px,0.95fr);gap:12px;padding:0 20px;align-items:start;}
+/* JS가 순서대로 채우므로 3,4번 카드를 col 4,5로 밀어냄 */
+#tier-row .tier-card:nth-child(3){grid-column:4;}
+#tier-row .tier-card:nth-child(4){grid-column:5;}
+
+/* 글래스 카드 리디자인 */
+.tier-card{
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.38);
+  border-radius:24px;
+  padding:18px 12px 16px;
+  cursor:pointer; position:relative;
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 12px 40px rgba(180,150,220,.10), 0 0 0 1px rgba(255,255,255,.08) inset;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  display:flex; flex-direction:column; align-items:center;
+}
+.tier-card::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(160deg,rgba(255,255,255,.18) 0%,rgba(180,190,230,.06) 55%,transparent 100%);
+  border-radius:24px; pointer-events:none;
+}
+.tier-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 52px rgba(200,150,230,.18);
+  border-color:rgba(255,180,220,.44);
+}
+.tier-card.focused{
+  background:rgba(255,255,255,.20);
+  border-color:rgba(255,180,220,.72);
+  box-shadow:0 20px 60px rgba(200,130,230,.24), 0 0 0 3px rgba(255,180,220,.16);
+  z-index:5;
+}
+
+.tier-num{font-family:'Gowun Batang',serif;font-size:clamp(28px,2.4vw,50px);font-weight:700;color:var(--ink);text-align:center;margin-bottom:4px;}
 .tier-star{font-size:10px;color:var(--slate);letter-spacing:3px;text-align:center;margin-bottom:8px;}
-.tier-rule-badge{display:block;text-align:center;padding:5px 12px;border-radius:20px;font-size:11.5px;font-weight:500;letter-spacing:.6px;background:rgba(180,190,230,.12);color:var(--slate);border:1px solid rgba(180,190,230,.28);margin-bottom:10px;}
-.tier-list-divider{width:80%;height:1px;margin:0 auto 8px;background:linear-gradient(90deg,transparent,rgba(180,190,230,.4),transparent);}
-.tier-items-list{width:100%;display:flex;flex-direction:column;gap:3px;}
-.tier-item-row{display:flex;align-items:center;justify-content:center;padding:3px 6px;border-bottom:1px solid rgba(180,190,230,.1);}
+.tier-rule-badge{
+  display:block; text-align:center; padding:5px 12px; border-radius:20px;
+  font-size:11.5px; font-weight:500; letter-spacing:.6px;
+  background:rgba(255,180,220,.12); color:rgba(220,200,240,.9);
+  border:1px solid rgba(255,180,220,.28); margin-bottom:10px;
+}
+.tier-card.focused .tier-rule-badge{background:rgba(255,180,220,.22);border-color:rgba(255,180,220,.55);color:var(--ink);}
+.tier-list-divider{width:80%;height:1px;margin:0 auto 8px;background:linear-gradient(90deg,transparent,rgba(255,200,230,.35),transparent);}
+.tier-items-list{width:100%;display:flex;flex-direction:column;gap:2px;}
+.tier-item-row{display:flex;align-items:center;justify-content:center;padding:3px 6px;border-bottom:1px solid rgba(200,180,220,.12);}
 .tier-item-row:last-child{border-bottom:none;}
-.tier-item-text{font-size:12.5px;color:var(--slate);line-height:1.4;text-align:center;}
+.tier-item-text{font-size:clamp(11px,.88vw,15px);color:rgba(200,210,240,.82);line-height:1.45;text-align:center;}
 
 /* ══ TIER MODAL ══ */
 /* ══ TIER MODAL ══ */
@@ -1091,8 +1128,8 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .nl-wrap{display:flex;flex-direction:column;gap:0;}
 .nl-hint{text-align:center;font-size:11.5px;color:var(--smoky);letter-spacing:.5px;margin-bottom:10px;}
 
-.nl-numbers-row{display:flex;padding:0;position:relative;}
-.nl-num-btn{flex:1;display:flex;align-items:center;justify-content:center;}
+.nl-numbers-row{display:flex;padding:0 4px;justify-content:space-between;position:relative;margin-bottom:4px;}
+.nl-num-btn{flex:none;width:40px;display:flex;align-items:center;justify-content:center;}
 .nl-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Gowun Batang',serif;font-size:16px;font-weight:700;cursor:pointer;border:2px solid rgba(180,190,230,.35);background:rgba(255,255,255,.13);color:var(--ink);transition:all .22s;margin:0 auto;}
 .nl-num:hover{border-color:var(--accent);transform:scale(1.08);}
 .nl-num.nl-selected{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 14px rgba(143,168,196,.4);}
@@ -1118,14 +1155,16 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   pointer-events:none;
 }
 
-.nl-items-area{cursor:pointer;user-select:none;margin-top:8px;border-radius:10px;padding:6px 0 2px;position:relative;transition:background .2s;}
+.nl-items-area{cursor:pointer;user-select:none;margin-top:6px;border-radius:10px;padding:4px 4px 2px;position:relative;transition:background .2s;}
 .nl-items-area:hover{background:rgba(180,190,230,.06);}
-.nl-items-row{display:flex;}
-.nl-item-btn{flex:1;display:flex;align-items:center;justify-content:center;}
+.nl-items-row{display:flex;gap:4px;}
+.nl-item-btn{flex:1;min-width:0;display:flex;align-items:stretch;}
 .nl-item{
-  width:100%;min-height:52px;padding:8px 4px;border-radius:10px;
+  width:100%;min-height:52px;padding:10px 8px;border-radius:10px;
   border:1.5px solid rgba(180,190,230,.25);background:rgba(255,255,255,.11);
-  font-size:11.5px;color:var(--ink);text-align:center;word-break:keep-all;line-height:1.4;
+  font-size:clamp(11px,1.2vw,15px);color:var(--ink);text-align:center;
+  word-break:keep-all;overflow-wrap:anywhere;line-height:1.25;
+  display:flex;align-items:center;justify-content:center;
   transition:filter .4s,background .4s,box-shadow .3s;
 }
 .nl-item.blur-on{
@@ -1162,7 +1201,77 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:rgba(180,190,230,.3);border-radius:3px;}
-@media(max-width:640px){.tier-row{grid-template-columns:repeat(2,1fr);}.tier-num{font-size:24px;}}
+
+/* ════ LADDER STAGE ════ */
+.ladder-stage{
+  position:relative;
+  flex:1; min-height:0;
+  padding:0 0 24px;
+}
+
+/* ── 중앙 인물 오버레이 ── */
+.ladder-center-figure{
+  position:absolute;
+  top:-24px; bottom:0;
+  left:50%; transform:translateX(-50%);
+  width:min(500px, 33vw);
+  z-index:4;
+  pointer-events:none;
+  display:flex; align-items:flex-start; justify-content:center;
+  overflow:visible;
+  background:transparent!important;
+}
+.ladder-figure-img{
+  display:block;
+  width:100%;
+  background:transparent!important;
+  object-fit:contain;
+  /* 흰 배경 PNG → radial 마스크로 인물 중심만 남기고 가장자리 페이드 */
+  -webkit-mask-image:
+    radial-gradient(ellipse 78% 96% at 50% 36%,
+      black 42%,
+      rgba(0,0,0,.88) 58%,
+      rgba(0,0,0,.45) 76%,
+      transparent 92%);
+  mask-image:
+    radial-gradient(ellipse 78% 96% at 50% 36%,
+      black 42%,
+      rgba(0,0,0,.88) 58%,
+      rgba(0,0,0,.45) 76%,
+      transparent 92%);
+  filter:drop-shadow(0 0 36px rgba(255,190,220,.42)) drop-shadow(0 8px 32px rgba(0,0,0,.6));
+}
+
+/* ── 배경 장식 레이어 ── */
+.ladder-bg-deco{
+  position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden;
+}
+.ld-deco{
+  position:absolute; opacity:.16; user-select:none;
+  animation:ld-float 9s ease-in-out infinite;
+}
+@keyframes ld-float{
+  0%,100%{transform:translateY(0) rotate(-4deg) scale(1);}
+  50%{transform:translateY(-16px) rotate(5deg) scale(1.06);}
+}
+
+/* ════ 반응형 ════ */
+@media(max-width:1200px){
+  .tier-row{grid-template-columns:minmax(180px,0.95fr) minmax(180px,0.95fr) minmax(240px,0.8fr) minmax(180px,0.95fr) minmax(180px,0.95fr); gap:9px; padding:0 16px;}
+  .ladder-center-figure{width:min(380px,26vw);}
+}
+@media(max-width:900px){
+  .tier-row{grid-template-columns:minmax(160px,0.95fr) minmax(160px,0.95fr) minmax(190px,0.7fr) minmax(160px,0.95fr) minmax(160px,0.95fr); gap:7px; padding:0 12px;}
+  .ladder-center-figure{width:min(260px,20vw);}
+}
+@media(max-width:640px){
+  /* 모바일: 2열 + 인물 숨김 */
+  .tier-row{grid-template-columns:repeat(2,1fr)!important; gap:10px; padding:0 14px;}
+  #tier-row .tier-card:nth-child(3){grid-column:auto!important;}
+  #tier-row .tier-card:nth-child(4){grid-column:auto!important;}
+  .ladder-center-figure{display:none;}
+  .tier-num{font-size:24px;}
+}
 </style>
 </head>
 <body>
@@ -1181,12 +1290,35 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 <div class="meyou-snow-bg" id="meyou-snow" aria-hidden="true"></div>
 
 <main class="sub-page-wrap">
+  <!-- 배경 장식 레이어 -->
+  <div class="ladder-bg-deco" aria-hidden="true">
+    <span class="ld-deco" style="left:4%;top:22%;font-size:22px;animation-delay:0s">🧸</span>
+    <span class="ld-deco" style="left:13%;top:56%;font-size:18px;animation-delay:2.4s">🎟️</span>
+    <span class="ld-deco" style="left:19%;top:80%;font-size:20px;animation-delay:1.2s">🎀</span>
+    <span class="ld-deco" style="right:5%;top:24%;font-size:24px;animation-delay:3.1s">🎈</span>
+    <span class="ld-deco" style="right:16%;top:62%;font-size:16px;animation-delay:1.8s">💗</span>
+    <span class="ld-deco" style="right:23%;top:84%;font-size:20px;animation-delay:.7s">🎡</span>
+    <span class="ld-deco" style="left:48%;top:10%;font-size:20px;animation-delay:4.3s">☁️</span>
+    <span class="ld-deco" style="left:35%;top:90%;font-size:13px;animation-delay:2.9s">✨</span>
+    <span class="ld-deco" style="left:7%;top:40%;font-size:13px;animation-delay:.9s">✨</span>
+    <span class="ld-deco" style="right:9%;top:48%;font-size:17px;animation-delay:3.7s">🎪</span>
+    <span class="ld-deco" style="left:28%;top:14%;font-size:14px;animation-delay:5.1s">💫</span>
+    <span class="ld-deco" style="right:32%;top:18%;font-size:14px;animation-delay:1.5s">🌸</span>
+  </div>
+
   <div class="section-head">
     <div class="section-orn">LADDER GAME</div>
     <div class="section-title-main">미유 사다리</div>
   </div>
 
-  <div class="tier-row" id="tier-row"></div>
+  <div class="ladder-stage">
+    <div class="tier-row" id="tier-row"></div>
+    <!-- 중앙 인물 슬롯 (이미지 없으면 자동 숨김) -->
+    <div class="ladder-center-figure" aria-hidden="true">
+      <img class="ladder-figure-img" src="/assets/ladder/meyou-center-halfbody.png" alt=""
+           onerror="this.style.display='none'">
+    </div>
+  </div>
 </main>
 
 <!-- ══ TIER MODAL ══ -->

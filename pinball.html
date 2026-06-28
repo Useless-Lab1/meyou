@@ -952,22 +952,23 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 <style>
 .sub-page-wrap{
   background:transparent;
+  margin-top:62px;
   height:calc(100vh - 62px);
   padding:0;
   position:relative; overflow-y:auto; overflow-x:hidden;
   display:flex; flex-direction:column;
   isolation:isolate;
 }
-.section-head{ flex-shrink:0; padding:10px 20px 6px; position:relative; z-index:3; }
+.section-head{ flex-shrink:0; padding:20px 160px 10px; position:relative; z-index:3; text-align:center; min-height:96px; }
 .pinball-layout{ flex:1; min-height:0; padding:0 20px 0; align-items:stretch; }
-.ball-grid{ grid-template-columns:repeat(5,1fr); grid-auto-rows:1fr; flex:1; min-height:0; }
-.section-title-main{ font-size:clamp(14px,2vw,20px); }
+.ball-grid{ grid-template-columns:repeat(6,1fr); grid-auto-rows:1fr; flex:1; min-height:0; }
+.section-title-main{ font-size:clamp(20px,2.6vw,36px); }
 #pball-left{ display:flex; flex-direction:column; min-height:0; overflow:hidden; }
 .penalty-panel{ overflow-y:auto; height:100%; box-sizing:border-box; }
 
 /* ════ PINBALL SELECT LAYOUT ════ */
 .pball-select-area{
-  display:grid; grid-template-columns:1fr 210px; gap:14px;
+  display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:10px;
   padding:0 20px; flex:1; min-height:0; overflow:hidden;
   position:relative; z-index:3;
 }
@@ -984,23 +985,23 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .pball-pick-hint{ font-size:11px; color:var(--smoky); }
 
-/* ball grid — 5 columns, fills remaining height */
+/* ball grid — 6 columns, fills remaining height */
 .ball-grid{
-  display:grid; grid-template-columns:repeat(5,1fr); gap:11px;
+  display:grid; grid-template-columns:repeat(6,1fr); gap:6px;
   flex:1; min-height:0; align-content:start; overflow-y:auto;
-  padding-top:6px;
+  padding-top:2px;
 }
 .ball-card{
-  border-radius:16px;
-  background:rgba(255,255,255,.13);
+  border-radius:10px;
+  background:rgba(255,255,255,.10);
   border:1.5px solid rgba(180,190,230,.18);
-  padding:12px 6px 10px;
+  padding:6px 4px 5px;
   cursor:pointer; text-align:center;
   position:relative;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
   transition:all .22s cubic-bezier(.34,1.4,.64,1);
   backdrop-filter:blur(8px);
-  box-shadow:0 2px 10px rgba(107,124,147,.08);
+  box-shadow:0 2px 6px rgba(107,124,147,.06);
 }
 .ball-card:hover{
   border-color:rgba(180,190,230,.5);
@@ -1013,10 +1014,10 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   box-shadow:0 0 0 2.5px rgba(180,190,230,.25),0 4px 16px rgba(0,0,0,.3);
 }
 .ball-n{
-  position:absolute; top:5px; left:7px;
-  width:18px; height:18px; border-radius:50%;
-  background:rgba(180,190,230,.25);
-  color:var(--slate); font-size:9px; font-weight:700;
+  position:absolute; top:3px; left:5px;
+  width:15px; height:15px; border-radius:50%;
+  background:rgba(180,190,230,.22);
+  color:var(--slate); font-size:8px; font-weight:700;
   display:flex; align-items:center; justify-content:center;
   line-height:1;
 }
@@ -1024,14 +1025,14 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   background:rgba(180,190,230,.4); color:#fff;
 }
 .ball-sel-badge{
-  position:absolute; top:5px; right:7px;
-  width:18px; height:18px; border-radius:50%;
+  position:absolute; top:3px; right:5px;
+  width:15px; height:15px; border-radius:50%;
   background:linear-gradient(135deg,var(--slate),var(--accent)); color:#fff;
-  font-size:9px; font-weight:700;
+  font-size:8px; font-weight:700;
   display:flex; align-items:center; justify-content:center;
 }
-.ball-ic{ font-size:40px; filter:drop-shadow(0 2px 4px rgba(107,124,147,.15)); }
-.ball-tx{ font-size:20px; font-weight:600; color:var(--ink); line-height:1.35; word-break:keep-all; }
+.ball-ic{ font-size:22px; filter:drop-shadow(0 2px 4px rgba(107,124,147,.12)); }
+.ball-tx{ font-size:11px; font-weight:500; color:var(--ink); line-height:1.25; word-break:keep-all; }
 
 .pball-sel-row{
   display:flex; align-items:center; justify-content:space-between;
@@ -1047,26 +1048,27 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 .pb-ghost-btn:hover{ background:rgba(180,190,230,.3); }
 
 .penalty-panel{
-  background:rgba(255,255,255,.11); border:1px solid rgba(180,190,230,.2);
-  border-radius:16px; padding:14px 12px;
+  background:rgba(255,255,255,.09); border:1px solid rgba(180,190,230,.2);
+  border-radius:14px; padding:10px 8px;
   height:100%; box-sizing:border-box; overflow-y:auto;
-  backdrop-filter:blur(10px); display:flex; flex-direction:column; gap:0;
+  backdrop-filter:blur(10px); display:flex; flex-direction:column; gap:5px;
 }
 .pen-item{
-  display:flex; align-items:center; gap:12px; padding:13px 14px;
-  border-radius:14px; cursor:pointer;
-  border:1.5px solid rgba(180,190,230,.15);
-  background:rgba(255,255,255,.15);
-  margin-bottom:7px; transition:all .2s;
-  font-size:15px; color:var(--ink); font-weight:500;
+  display:flex; align-items:center; gap:8px; padding:8px 10px;
+  border-radius:10px; cursor:pointer;
+  border:1.5px solid rgba(180,190,230,.18);
+  background:rgba(255,255,255,.12);
+  transition:all .2s;
+  font-size:13px; color:rgba(238,234,255,.9); font-weight:500; line-height:1.3;
 }
-.pen-item:hover{ border-color:rgba(180,190,230,.4); background:rgba(255,255,255,.13); transform:translateY(-1px); }
-.pen-item.selected{ background:rgba(200,184,154,.15); border-color:var(--gold); box-shadow:0 0 0 2px rgba(200,184,154,.2); }
-.p-icon{ font-size:28px; flex-shrink:0; }
+.pen-item:hover{ border-color:rgba(180,190,230,.45); background:rgba(255,255,255,.16); transform:translateY(-1px); }
+.pen-item.selected{ background:rgba(200,184,154,.18); border-color:var(--gold); box-shadow:0 0 0 2px rgba(200,184,154,.25),0 4px 14px rgba(200,184,154,.12); }
+.p-icon{ font-size:18px; flex-shrink:0; }
 .pball-launch-row{
-  flex-shrink:0; padding:10px 20px 12px;
+  flex-shrink:0; padding:6px 20px 10px;
   position:relative; z-index:3;
-  display:flex; justify-content:center;
+  display:grid; grid-template-columns:180px 1fr 180px;
+  align-items:center; gap:10px;
 }
 
 /* ════ GAME BOX ════ */
@@ -1097,7 +1099,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .marble-modal-shell{
   position:relative;z-index:1;
-  width:94vw;height:92vh;
+  width:94vw;max-width:1000px;height:88vh;
   background:rgba(22,28,40,.97);
   border-radius:18px;border:1px solid rgba(255,255,255,.13);
   display:flex;flex-direction:column;overflow:hidden;
@@ -1123,6 +1125,12 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 }
 .marble-roulette-frame{
   flex:1;min-width:0;position:relative;overflow:hidden;
+}
+.marble-roulette-frame::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;
+  height:42%;
+  background:linear-gradient(to bottom,transparent 0%,rgba(22,28,40,.97) 100%);
+  pointer-events:none;z-index:5;
 }
 .marble-roulette-host{
   width:100%;height:100%;position:relative;overflow:hidden;
@@ -1196,6 +1204,61 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   .marble-roulette-frame{flex:1;min-height:0;}
   .marble-settings-panel{width:100%;max-height:220px;flex-direction:row;flex-wrap:wrap;gap:6px;}
 }
+
+/* ════ 타이틀 서브라벨 ════ */
+.pball-title-sub{
+  display:inline-block; margin-top:5px;
+  padding:3px 14px; border-radius:50px;
+  font-size:11.5px; font-weight:500; letter-spacing:2px;
+  color:var(--slate); background:rgba(180,190,230,.12);
+  border:1px solid rgba(180,190,230,.22);
+}
+
+/* ════ 고양이 장식 (제목 좌우 배치) ════ */
+.pinball-cat-deco{
+  position:absolute; top:0; left:0; right:0; height:120px;
+  pointer-events:none; z-index:4; overflow:visible;
+}
+.pinball-cat{
+  position:absolute; top:8px; width:100px; height:auto;
+  opacity:.6; pointer-events:none;
+}
+.pinball-cat-left{ left:16px; transform:scaleX(-1); }
+.pinball-cat-right{ right:16px; }
+@media(max-width:900px){ .pinball-cat{ width:68px; opacity:.4; } .section-head{ padding-left:100px; padding-right:100px; } }
+@media(max-width:600px){ .pinball-cat{ display:none; } .section-head{ padding-left:20px; padding-right:20px; } }
+
+/* ════ 하단 가이드 박스 ════ */
+.pball-guide-box{
+  background:rgba(255,255,255,.07); border:1px solid rgba(180,190,230,.16);
+  border-radius:10px; padding:6px 12px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.pball-guide-title{
+  font-size:9px; letter-spacing:2px; color:var(--smoky); text-transform:uppercase;
+}
+.pball-guide-rule{
+  font-size:12px; color:var(--slate); font-weight:500; line-height:1.4;
+}
+.pball-guide-rule b{ color:var(--ink); }
+.pball-launch-spacer{ width:180px; }
+
+/* ════ 반응형 ════ */
+@media(max-width:900px){
+  .pball-select-area{ grid-template-columns:1fr; gap:10px; }
+  .pball-right-col{ max-height:220px; }
+  .ball-grid{ grid-template-columns:repeat(4,1fr); }
+  .pball-launch-row{ grid-template-columns:1fr; justify-items:center; gap:8px; }
+  .pball-guide-box{ width:100%; max-width:360px; }
+  .pball-launch-spacer{ display:none; }
+}
+@media(max-width:600px){
+  .ball-grid{ grid-template-columns:repeat(3,1fr); gap:6px; }
+  .ball-ic{ font-size:24px; }
+  .ball-tx{ font-size:11px; }
+  .pball-select-area{ padding:0 12px; }
+  .pball-launch-row{ padding:8px 12px 12px; }
+}
 </style>
 </head>
 <body>
@@ -1211,9 +1274,16 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 <canvas id="snow-canvas" style="display:none"></canvas>
 <div class="meyou-snow-bg" id="meyou-snow" aria-hidden="true"></div>
 <main class="sub-page-wrap">
+  <!-- ── 고양이 장식 (pointer-events:none, 이미지 없으면 숨김) ── -->
+  <div class="pinball-cat-deco" aria-hidden="true">
+    <img class="pinball-cat pinball-cat-left" src="/assets/pinball/cat-left.png" alt="" onerror="this.style.display='none'">
+    <img class="pinball-cat pinball-cat-right" src="/assets/pinball/cat-right.png" alt="" onerror="this.style.display='none'">
+  </div>
+
   <div class="section-head">
     <div class="section-orn">PINBALL GAME</div>
     <div class="section-title-main">SOS 핀볼 게임</div>
+    <div class="pball-title-sub">3택 1 벌칙</div>
   </div>
 
   <!-- ── 선택 영역 ── -->
@@ -1236,8 +1306,14 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
       </div>
     </div>
   </div>
+
   <div class="pball-launch-row">
+    <div class="pball-guide-box">
+      <div class="pball-guide-title">진행 방식</div>
+      <div class="pball-guide-rule">당첨 <b>3개</b> 선택 · 벌칙 <b>1개</b> 선택</div>
+    </div>
     <button class="btn-primary" id="pb-launch-btn" onclick="launchPinball()" disabled>🎱 핀볼 발사!</button>
+    <div class="pball-launch-spacer"></div>
   </div>
 </main>
 
@@ -1500,14 +1576,14 @@ function launchPinball(){
 
 function openMarbleModal(selectedItems){
   mrItems = selectedItems.map(it=>({...it, balls:15}));
-  mrWinnerMode = 'first';
+  mrWinnerMode = 'last';
   renderMarbleSettings();
   document.getElementById('marble-modal').classList.add('is-open');
   document.body.style.overflow='hidden';
   document.getElementById('marble-result-panel').innerHTML='';
   // update winner mode buttons
-  document.getElementById('btn-first-winner').classList.add('active');
-  document.getElementById('btn-last-winner').classList.remove('active');
+  document.getElementById('btn-first-winner').classList.remove('active');
+  document.getElementById('btn-last-winner').classList.add('active');
   // inject marbles after roulette is ready
   waitAndInjectMarbles();
   // listen for result
