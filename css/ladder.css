@@ -1,6 +1,6 @@
 /* ════ NAV OVERRIDES ════ */
 .g-nav {
-  background: linear-gradient(135deg, rgba(255,245,210,0.30), rgba(240,220,160,0.22));
+  background: linear-gradient(to right,rgba(255,248,220,0) 0%,rgba(255,248,220,0.22) 18%,rgba(255,244,210,0.52) 42%,rgba(255,240,190,0.72) 68%,rgba(250,232,170,0.85) 100%);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   border-bottom: 1px solid rgba(200,160,60,0.18);
