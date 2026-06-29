@@ -10,8 +10,9 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: url('../assets/ladder/ladder-bg.jpg') center 62px / cover no-repeat;
-  background-color: #a8cce8;
+  background:
+    url('../assets/ladder/ladder-bg.jpg') center 62px / cover no-repeat,
+    linear-gradient(to right, rgba(246,245,243,.92) 0%, rgba(157,195,231,.92) 48%, rgba(115,166,211,.92) 100%);
 }
 
 /* ════ PAGE WRAPPER ════ */
