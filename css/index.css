@@ -107,7 +107,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
 /* ── HERO LAYER (left character) ── */
 .intro-hero-layer{
   position:absolute;
-  left:0;bottom:0;
+  left:-5vw;bottom:0;
   height:calc(100svh - 62px);
   max-height:920px;
   z-index:3;
