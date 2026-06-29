@@ -29,7 +29,7 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: url('../assets/ladder/ladder-bg.jpg') center top / cover no-repeat;
+  background: url('../assets/ladder/ladder-bg.jpg') center 62px / cover no-repeat;
 }
 
 /* ════ PAGE WRAPPER ════ */
