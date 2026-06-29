@@ -11,6 +11,7 @@
   inset: 0;
   z-index: -1;
   background: url('../assets/ladder/ladder-bg.jpg') center 62px / cover no-repeat;
+  background-color: #a8cce8;
 }
 
 /* ════ PAGE WRAPPER ════ */
