@@ -27,7 +27,7 @@
 /* ════ PAGE BACKGROUND ════ */
 .ladder-bg {
   position: fixed;
-  inset: 0;
+  top: 62px; left: 0; right: 0; bottom: 0;
   z-index: -1;
   background: url('../assets/ladder/ladder-bg.jpg') center top / cover no-repeat;
 }
