@@ -147,7 +147,7 @@ body{background:var(--mist);font-family:'Noto Sans KR',sans-serif;color:var(--in
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   padding:12px 14px 12px 14px;
-  margin-left:clamp(220px,40%,580px);
+  margin-left:clamp(280px,48%,660px);
   margin-right:clamp(16px,3vw,40px);
   align-self:center;
   flex:0 0 auto;
