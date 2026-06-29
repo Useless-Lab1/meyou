@@ -73,21 +73,52 @@ body{
 }
 .hero-corner-tl{ top:-10px; left:-10px; }
 .hero-corner-tr{ top:-10px; right:-10px; transform:scaleX(-1); }
-.pball-hero-steps{
-  display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center;
-}
-.pball-step-chip{
-  background:rgba(255,210,50,.3);
-  border:1.5px solid rgba(255,190,40,.5);
-  border-radius:50px;
-  padding:7px 18px;
+.pb-panel-tagline{
   font-family:'Cafe24 Ssurround',sans-serif;
-  font-size:clamp(11px,1vw,14px); font-weight:700;
+  font-size:clamp(9px,.85vw,11px);
+  letter-spacing:5px;
+  color:rgba(180,120,0,.6);
+  text-transform:uppercase;
+}
+.pball-hero-steps{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;
+}
+.pball-step-card{
+  display:flex; flex-direction:column; align-items:center; gap:5px;
+  background:linear-gradient(160deg, rgba(255,248,210,.65) 0%, rgba(255,235,150,.5) 100%);
+  border:1.5px solid rgba(255,200,50,.45);
+  border-radius:20px;
+  padding:16px 22px;
+  min-width:clamp(90px,9vw,120px);
+  box-shadow:0 2px 12px rgba(220,160,0,.1), inset 0 1px 0 rgba(255,255,255,.5);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.pball-step-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 6px 20px rgba(220,160,0,.2), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.step-card-num{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(22px,2.8vw,36px);
+  line-height:1;
+  color:rgba(200,140,0,.55);
+}
+.step-card-label{
+  font-family:'Cafe24 Ssurround',sans-serif;
+  font-size:clamp(11px,.95vw,13px); font-weight:700;
   color:rgba(80,45,0,.9);
-  box-shadow:0 2px 8px rgba(200,140,0,.1);
+  white-space:nowrap;
+}
+.step-card-desc{
+  font-family:'Noto Serif KR',serif;
+  font-size:clamp(9px,.75vw,11px);
+  color:rgba(100,60,0,.55);
+  text-align:center; line-height:1.5;
 }
 .pball-step-arrow{
-  color:rgba(200,140,0,.7); font-size:16px; font-weight:700;
+  color:rgba(200,140,0,.6); font-size:18px; font-weight:700;
+  margin-top:-16px;
 }
 .hero-divider{
   width:clamp(200px,40vw,420px); height:auto; opacity:.85;
