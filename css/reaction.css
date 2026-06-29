@@ -6,7 +6,7 @@ body{ overflow:hidden; height:100vh; }
   display:flex; flex-direction:column;
   align-items:center; justify-content:flex-start;
   gap:clamp(12px,1.8vh,28px);
-  padding:clamp(28px,5.5vh,80px) 40px 20px;
+  padding:clamp(28px,5.5vh,80px) 40px clamp(30px,8vh,80px);
   z-index:10;
 }
 .rc-main-title{
@@ -21,6 +21,7 @@ body{ overflow:hidden; height:100vh; }
   display:flex; gap:clamp(16px,2.5vw,40px);
   align-items:stretch; justify-content:center;
   width:100%; max-width:960px;
+  margin-top:auto;
 }
 .rc-mode-card{
   position:relative;
