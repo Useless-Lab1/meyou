@@ -10,6 +10,8 @@
 /* ── BODY BACKGROUND ── */
 body{
   background:url('../assets/pinball/pb-bg.jpg') center center / cover no-repeat fixed;
+  overflow:hidden;
+  height:100vh;
 }
 
 /* ── SUB-PAGE-WRAP ── */
