@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>힐링 소통 미유라디오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
 <nav class="g-nav">
-  <a class="g-nav-brand" href="index.html">미유라디오</a>
+  <a class="g-nav-brand" href="index.html">MEYOU RADIO</a>
   <div class="g-nav-links">
-    <a class="g-nav-link" href="ladder.html">사다리</a>
-    <a class="g-nav-link" href="pinball.html">핀볼</a>
-    <a class="g-nav-link" href="reaction.html">리액션</a>
+    <a class="g-nav-link" href="ladder.html">🌻 사다리</a>
+    <a class="g-nav-link" href="pinball.html">🌻 핀볼</a>
+    <a class="g-nav-link" href="reaction.html">🌻 리액션</a>
   </div>
-  <a class="g-nav-brand" href="index.html">미유라디오</a>
+  <a class="g-nav-brand" href="index.html">MEYOU RADIO</a>
 </nav>
 
 <canvas id="snow-canvas"></canvas>
@@ -50,34 +50,37 @@
     <div class="intro-badge-wrap">
       <img src="assets/common/logo-badge.png" alt="MEYOU RADIO" class="intro-logo-img">
     </div>
-    <div class="intro-ornament">SOOP 미유라디오 전용 인터랙티브</div>
-    <h1 class="intro-title">힐링 소통<br>MEYOU RADIO</h1>
+    <div class="intro-ornament">미유의 해바라기 밭에 오신걸 환영합니다</div>
+    <h1 class="intro-title"><span class="title-kr">힐링 소통</span><br><span class="title-en">MEYOU RADIO</span></h1>
     <p class="intro-subtitle">오늘도, 당신의 마음이 평온해지길</p>
 
     <div class="menu-cards">
       <div class="menu-card" onclick="location.href='ladder.html'">
-        <div class="card-deco-img">
-          <img src="assets/index/banner-event.png" alt="">
+        <img class="card-bg-img" src="assets/index/card-ladder-preview.png" alt="">
+        <div class="card-overlay"></div>
+        <div class="card-text-wrap">
+          <div class="card-tag">LADDER</div>
+          <div class="menu-card-title">사다리 타기</div>
+          <div class="menu-card-desc">사다리를 타서<br>상품을 얻어봐</div>
         </div>
-        <div class="menu-card-title">사다리 타기</div>
-        <div class="menu-card-desc">후원 선물에서<br>운명의 상품을</div>
-        <div class="card-tag">LADDER</div>
       </div>
       <div class="menu-card" onclick="location.href='pinball.html'">
-        <div class="card-deco-img">
-          <img src="assets/pinball/pinball-sun-face.png" alt="">
+        <img class="card-bg-img" src="assets/index/card-pinball-preview.png" alt="">
+        <div class="card-overlay"></div>
+        <div class="card-text-wrap">
+          <div class="card-tag">PINBALL</div>
+          <div class="menu-card-title">핀볼 게임</div>
+          <div class="menu-card-desc">공을 굴려<br>당첨을 정해봐</div>
         </div>
-        <div class="menu-card-title">핀볼 게임</div>
-        <div class="menu-card-desc">공을 굴려<br>당첨을 정해봐</div>
-        <div class="card-tag">PINBALL</div>
       </div>
       <div class="menu-card" onclick="location.href='reaction.html'">
-        <div class="card-deco-img">
-          <img src="assets/reaction/avatar.png" alt="">
+        <img class="card-bg-img" src="assets/index/card-reaction-preview.png" alt="">
+        <div class="card-overlay"></div>
+        <div class="card-text-wrap">
+          <div class="card-tag">REACTION</div>
+          <div class="menu-card-title">매도 / 애교</div>
+          <div class="menu-card-desc">미유의 리액션을<br>직접 받아봐</div>
         </div>
-        <div class="menu-card-title">매도 / 애교</div>
-        <div class="menu-card-desc">미유의 리액션을<br>직접 받아봐</div>
-        <div class="card-tag">REACTION</div>
       </div>
     </div>
   </div>
