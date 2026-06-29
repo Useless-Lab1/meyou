@@ -5,15 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>핀볼 게임 · 미유라디오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-<!-- lazygyu/roulette (MIT License) vendored bundle -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Gowun+Batang:wght@400;700&family=Cafe24+Ssurround&display=swap" rel="stylesheet">
 <script type="importmap">{"imports":{"14w6b":"./roulette/kubin.f3647b70.png","9F06a":"./roulette/chamru.d6926a56.png","aRf6a":"./roulette/waldokun.7e88dd59.png","ao29o":"./roulette/Box2D.simd.8f5913cc.js","b21ls":"./roulette/Box2D.b9b16b27.wasm","dRxiZ":"./roulette/Box2D.742de2ae.js","g5g75":"./roulette/ff.7fdc9e82.svg","h5gW1":"./roulette/junyoop.d27f0cbf.png","huS8a":"./roulette/kkwak.673a610d.png","ikqOI":"./roulette/Box2D.simd.dd31b167.wasm"}}</script>
 <link rel="stylesheet" href="./roulette/lazygyu-roulette.891d671b.css">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/components.css?v=2">
 <link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/pinball.css?v=2">
+<link rel="stylesheet" href="css/pinball.css?v=3">
 </head>
 <body>
 <nav class="g-nav">
@@ -26,52 +25,96 @@
   <a class="g-nav-brand" href="index.html">미유라디오</a>
 </nav>
 <canvas id="snow-canvas" style="display:none"></canvas>
-<div class="meyou-snow-bg" id="meyou-snow" aria-hidden="true"></div>
+
 <main class="sub-page-wrap">
-  <!-- ── 고양이 장식 (pointer-events:none, 이미지 없으면 숨김) ── -->
+  <!-- 고양이 장식 -->
   <div class="pinball-cat-deco" aria-hidden="true">
-    <img class="pinball-cat pinball-cat-left" src="/assets/pinball/cat-left.png" alt="" onerror="this.style.display='none'">
-    <img class="pinball-cat pinball-cat-right" src="/assets/pinball/cat-right.png" alt="" onerror="this.style.display='none'">
+    <img class="pinball-cat pinball-cat-left" src="assets/pinball/cat-left.png" alt="" onerror="this.style.display='none'">
+    <img class="pinball-cat pinball-cat-right" src="assets/pinball/cat-right.png" alt="" onerror="this.style.display='none'">
   </div>
 
+  <!-- 섹션 헤더: SOS 핀볼 게임 이미지 타이틀 -->
   <div class="section-head">
-    <div class="section-orn">PINBALL GAME</div>
-    <div class="section-title-main">SOS 핀볼 게임</div>
-    <div class="pball-title-sub">3택 1 벌칙</div>
+    <img class="pball-main-title" src="assets/pinball/pb-title-sos.png" alt="SOS 핀볼 게임" onerror="this.style.display='none'">
+    <div class="pball-title-sub">공을 발사해 상품을 획득하라!</div>
   </div>
 
-  <!-- ── 선택 영역 ── -->
-  <div class="pball-select-area">
-    <div class="pball-left-col" id="pball-left">
-      <div class="pball-col-header">
-        <span class="pball-col-title">당첨 리스트</span>
-        <span class="pball-pick-hint">최대 3개 선택</span>
+  <!-- 히어로 영역 -->
+  <div class="pball-hero">
+    <div class="pball-hero-board">
+      <img class="hero-corner hero-corner-tl" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="hero-corner hero-corner-tr" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <div class="pball-hero-steps">
+        <div class="pball-step-chip">🎁 상품 선택</div>
+        <div class="pball-step-arrow">→</div>
+        <div class="pball-step-chip">⚡ 벌칙 선택</div>
+        <div class="pball-step-arrow">→</div>
+        <div class="pball-step-chip">🎱 핀볼 발사!</div>
       </div>
-      <div class="ball-grid" id="pball-grid"></div>
-      <div class="pball-sel-row">
-        <span class="pball-sel-count" id="pball-status"><span>0</span> / 3 선택</span>
-        <button class="pb-ghost-btn" onclick="clearPball()">초기화</button>
-      </div>
+      <img class="hero-divider" src="assets/pinball/pb-divider.png" aria-hidden="true" onerror="this.style.display='none'">
+      <button class="btn-pball-start" onclick="openPballStep(1)">🎱 핀볼 시작!</button>
     </div>
-    <div class="pball-right-col">
-      <div class="penalty-panel">
-        <div class="panel-title">벌칙 (선택)</div>
-        <div id="pen-list"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="pball-launch-row">
-    <div class="pball-guide-box">
-      <div class="pball-guide-title">진행 방식</div>
-      <div class="pball-guide-rule">당첨 <b>3개</b> 선택 · 벌칙 <b>1개</b> 선택</div>
-    </div>
-    <button class="btn-primary" id="pb-launch-btn" onclick="launchPinball()" disabled>🎱 핀볼 발사!</button>
-    <div class="pball-launch-spacer"></div>
   </div>
 </main>
 
-<!-- ══ MARBLE ROULETTE MODAL ══ -->
+<!-- ══ STEP 1 : 상품 선택 ══ -->
+<div class="pball-step-modal" id="pball-step1">
+  <div class="pball-modal-backdrop" onclick="closePballModal()"></div>
+  <div class="pball-modal-shell">
+    <div class="pball-modal-header">
+      <div class="pball-step-nav">
+        <span class="step-dot active">1</span>
+        <span class="step-line"></span>
+        <span class="step-dot">2</span>
+        <span class="step-line"></span>
+        <span class="step-dot">3</span>
+      </div>
+      <div class="pball-modal-title">🎁 상품 선택</div>
+      <button class="pball-modal-close" onclick="closePballModal()">✕</button>
+    </div>
+    <div class="pball-modal-body">
+      <div class="pball-pick-info">최대 <b>3개</b> 선택 후 다음 단계로!</div>
+      <div class="ball-grid" id="pball-grid"></div>
+    </div>
+    <div class="pball-modal-footer">
+      <div class="pball-sel-count" id="pball-status"><span>0</span> / 3 선택됨</div>
+      <div class="pball-footer-btns">
+        <button class="pb-ghost-btn" onclick="clearPball()">초기화</button>
+        <button class="btn-pball-next" id="btn-step1-next" onclick="openPballStep(2)" disabled>벌칙 선택 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STEP 2 : 벌칙 선택 ══ -->
+<div class="pball-step-modal" id="pball-step2">
+  <div class="pball-modal-backdrop" onclick="closePballModal()"></div>
+  <div class="pball-modal-shell pball-step2-shell">
+    <div class="pball-modal-header">
+      <div class="pball-step-nav">
+        <span class="step-dot done">✓</span>
+        <span class="step-line done"></span>
+        <span class="step-dot active">2</span>
+        <span class="step-line"></span>
+        <span class="step-dot">3</span>
+      </div>
+      <img class="step2-penalty-badge" src="assets/pinball/pb-penalty-badge.png" alt="벌칙" onerror="this.outerHTML='<div class=\'pball-modal-title\'>⚡ 벌칙 선택</div>'">
+      <button class="pball-modal-close" onclick="closePballModal()">✕</button>
+    </div>
+    <div class="pball-modal-body">
+      <div class="pball-pick-info">최대 <b>1개</b> 선택 · 없어도 발사 가능!</div>
+      <div class="pen-grid" id="pen-list"></div>
+    </div>
+    <div class="pball-modal-footer">
+      <button class="pb-ghost-btn" onclick="openPballStep(1)">← 상품 다시 선택</button>
+      <button class="btn-pball-launch" onclick="launchPinball()">
+        <img src="assets/pinball/pb-btn-launch.png" alt="발사" class="btn-launch-img" onerror="this.parentElement.innerHTML='🎱 핀볼 발사!'">
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MARBLE ROULETTE MODAL (Step 3) ══ -->
 <div class="marble-modal" id="marble-modal">
   <div class="marble-modal-backdrop" id="marble-modal-backdrop"></div>
   <div class="marble-modal-shell">
@@ -80,11 +123,9 @@
       <button class="marble-modal-close" id="marble-modal-close-btn">✕</button>
     </div>
     <div class="marble-modal-body">
-      <!-- 왼쪽: 마블 캔버스 -->
       <div class="marble-roulette-frame">
         <div class="marble-roulette-host" id="marble-roulette-canvas-host"></div>
       </div>
-      <!-- 오른쪽: 설정 패널 -->
       <div class="marble-settings-panel">
         <div class="msp-section-title">선택 항목 & 공 개수</div>
         <div class="marble-selected-list" id="marble-selected-list"></div>
@@ -110,6 +151,6 @@
   </div>
 </div>
 <script type="module" src="./roulette/lazygyu-roulette.24bcefaf.js"></script>
-<script src="js/pinball.js"></script>
+<script src="js/pinball.js?v=3"></script>
 </body>
 </html>

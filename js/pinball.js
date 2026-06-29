@@ -136,6 +136,19 @@ const ROAST_DATA = [
   {keyword:"끝",text:"이제 매도 좀 해달라고 하는 거 그만해. 질리지도 않니?\n내가 너 같은 찐따한테 매도해주려고 스트리머 된 게 아니야.\n아무리 매도가 좋다지만 내 입장에서는 기분 정말 더러워.\n네가 채팅 칠 때마다 내 손가락이 떨려, 분노 때문이 아니라 혐오감 때문에.\n제발 부탁인데 다른 방 가서 놀아. 너 같은 건 나도 감당하기 힘들어.\n마지막으로 한마디만 할게. 너 진짜 싫어. 진심으로.\n이제 다시는 내 방송에서 네 이름 안 봤으면 좋겠다. 영원히."}
 ];
 
+// ──────────────────────── STEP FLOW ────────────────────────
+function openPballStep(n) {
+  document.querySelectorAll('.pball-step-modal').forEach(m => m.classList.remove('is-open'));
+  const modal = document.getElementById('pball-step' + n);
+  if (modal) modal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePballModal() {
+  document.querySelectorAll('.pball-step-modal').forEach(m => m.classList.remove('is-open'));
+  document.body.style.overflow = '';
+}
+
 // ──────────────────────── PINBALL SELECT SYSTEM ────────────────────────
 
 let selBalls = [];
@@ -143,11 +156,13 @@ let selPenPin = null;
 
 function renderBallGrid() {
   document.getElementById('pball-status').innerHTML =
-    `<span>${selBalls.length}</span> / 3 선택`;
+    `<span>${selBalls.length}</span> / 3 선택됨`;
+  const delays = [0, 0.5, 1.0, 1.5, 0.25, 0.75, 1.25, 1.75, 0.4, 0.9, 1.4, 0.15, 0.65, 1.15, 1.65, 0.35, 0.85];
   document.getElementById('pball-grid').innerHTML = PINBALL_ITEMS.map((it, i) => {
     const selIdx = selBalls.indexOf(i);
     const isSel = selIdx > -1;
-    return `<div class="ball-card${isSel ? ' selected' : ''}" onclick="toggleBall(${i})">
+    const delay = delays[i % delays.length];
+    return `<div class="ball-card${isSel ? ' selected' : ''}" onclick="toggleBall(${i})" style="animation-delay:${delay}s">
       <div class="ball-n">${i + 1}</div>
       ${isSel ? `<div class="ball-sel-badge">${selIdx + 1}</div>` : ''}
       <div class="ball-ic">${it.ic}</div>
@@ -184,13 +199,19 @@ function clearPball() {
 }
 
 function updateLaunchBtn() {
-  document.getElementById('pb-launch-btn').disabled = selBalls.length === 0;
+  const nextBtn = document.getElementById('btn-step1-next');
+  if (nextBtn) nextBtn.disabled = selBalls.length === 0;
 }
 
 function initPball() {
   renderBallGrid();
   renderPenList();
   updateLaunchBtn();
+  // wire marble modal close
+  const closeBtn = document.getElementById('marble-modal-close-btn');
+  const backdrop = document.getElementById('marble-modal-backdrop');
+  if (closeBtn) closeBtn.addEventListener('click', closeMarbleModal);
+  if (backdrop) backdrop.addEventListener('click', closeMarbleModal);
 }
 
 // ──────────────────────── MARBLE ROULETTE MODAL ────────────────────────
@@ -215,6 +236,7 @@ function getSelectedPinballItems() {
 function launchPinball() {
   const selected = getSelectedPinballItems();
   if (!selected.length) { alert('상품을 선택해주세요!'); return; }
+  closePballModal();
   openMarbleModal(selected);
 }
 
