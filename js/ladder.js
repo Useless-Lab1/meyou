@@ -2,26 +2,37 @@
 const TIERS = [
   { num:'1426', rule:'3택 2벌칙', pick:3, penPick:2,
     sub:'상품 3개 선택 후 벌칙 2개 선택',
-    items:['달달음성편지','손글씨방편','애교쟁이방편','예쁜방셀','모닝콜(30분)','술먹방권','야식먹방','역구독1개월+구독닉','귀여운그림 그려주기','내마음100','전데30분','방종권/쉴드권','나만의배너(상단or하단)','나만의 프로필','미공개 일상뮤(쪽지)','나만의 플레이리스트VOD','랜덤뮤픽🎁','사다리업그레이드[열]']
+    items:['원하는 음성편지 5분','손글씨방편','애교쟁이 방편','예쁜방셀','모닝콜(30분)','술먹방권','야식먹방','역구독1개월+구독닉','내마음 100','전데 30분','방종권/쉴드권','나만의배너(상단or하단) 1단','나만의 프로필','미공개 일상뮤(쪽지)','랜덤뮤픽','사다리업그레이드[열]']
   },
   { num:'2826', rule:'3택 1벌칙', pick:3, penPick:1,
     sub:'상품 3개 선택 후 벌칙 1개 선택',
-    items:['내마음200','주말 낮방송','원하는 스타일 방셀','애정듬뿍방편','미유의 책방+손편지','필.승.애.교.','2일 달달음성메세지','방명록 일주일 내꼬','일주일 쪽지 안부','널 생각하며 보내🎁','게임데이트(2시간)','무비데이트(디코)','전데30분x2개','전용시그제작+전용노래','뮤군동1픽','휴방권/반납권','소환권(2시간)','역구독3개월','너만의 노래녹음본']
+    items:['내마음 200','주말 낮방송','예쁜움짤방셀','미유의 책방+손편지','필.승.애.교.','2일 달달음성메세지','방명록 일주일 내꼬','일주일 카톡권','랜덤뮤픽','게임데이트(2시간)','무비데이트(디코)','전데30분x2개','전용시그제작+전용노래','뮤굳둥 1픽','휴방권/반납권','소환권(2시간)','역구독 3개월']
   },
   { num:'5726', rule:'4택 벌칙X', pick:4, penPick:0,
     sub:'상품 4개 선택 (벌칙 없음)',
-    items:['정성가득예쁜방셀','1:1책읽어주기(쪽수협의)','재워주세요(잠들기전)','완전 너만 생각해','커플 아이템(악세사리 제외)','듬뿍뮤슨맛3첩🎁','달달뮤슴씨🍪','향기로운 미유🌸','내마음400','1:1랜선 데이트(3시간)','너만의 브이로그 뮤비','하루 게임 미션 방송','2주 애정집착 카톡','하루 방송 소환권(4시간)','방송국 풀옵션(프사+배너)']
+    items:['정성가득예쁜방셀','잠들기전 전데','널 생각한 뮤픽','커플 아이템(악세사리 제외)','달달뮤 3종','정성 든든뮤','뮤향기','내마음 400','1:1랜선 데이트(3시간)','하루 게임 미션 방송','2주 애정 집착 카톡','하루 방송 소환권(4시간)','풀옵션(프사+상하단배너)']
   },
   { num:'12426', rule:'3택 벌칙X', pick:3, penPick:0,
     sub:'상품 3개 선택 (벌칙 없음)',
-    items:['스페셜 방셀 3종 세트','군동 3종 세트','프로필 촬영+인화사진 전달','일주일 미유의 비밀 일기','달달뮤슴씨 스페셜 에디션 5종','미유 손맛 끝.판.왕','2주 노휴방권','24시간 노방송/쉴드(날짜협의)','너가 원하는 지역+여행일기','원하는 사다리 협의']
+    items:['스페셜 방셀 3종 세트','뮤굳둥 3종 세트','프로필 촬영+인화사진 전달','일주일 미유의 하루일기','달달뮤 5종','든든뮤 끝판왕','2주 노휴방권','24시간 노방종/쉴드(날짜협의)','네가 원하는 지역 여행+일기','내마음 1000','카톡권(열혈)','원하는 사다리 협의']
   }
 ];
 
 const PENALTIES = [
-  {icon:'🎁',text:'시그선물'},{icon:'🔄',text:'또타기'},{icon:'👤',text:'구독닉변경'},
-  {icon:'🍽️',text:'저메추'},{icon:'💌',text:'역방편'},{icon:'⭐',text:'역잉팅'},
-  {icon:'✏️',text:'상메바꾸기'},{icon:'🎊',text:'뮤배너하기'}
+  {icon:'🏷️',text:'구독닉 변경'},
+  {icon:'🛡️',text:'3일 뮤지킴이(실패시 벌칙)'},
+  {icon:'💌',text:'역방편'},
+  {icon:'🎨',text:'뮤배너하기'},
+  {icon:'✏️',text:'상메 바꾸기'},
+  {icon:'🖌️',text:'뮤 그리기'},
+  {icon:'📅',text:'역 일일애칭'},
+  {icon:'🍽️',text:'뮤의 저메추 먹기(인증샷)'},
+  {icon:'🎁',text:'뮤에게 선물하기'},
+  {icon:'🎀',text:'시그선물'},
+  {icon:'👕',text:'역임티선물'},
+  {icon:'📞',text:'역소환권'},
+  {icon:'📝',text:'역쪽편'},
+  {icon:'🔄',text:'또타기'}
 ];
 
 const PINBALL_ITEMS = [
@@ -131,19 +142,63 @@ let nlAnimating = false;
 let nlRafId = null;
 
 // ════ TIER CARDS ════
+function makeTierCard(t, i){
+  return `
+    <div class="tier-card" onclick="openTierModal(${i})" id="tc-${i}">
+      <div class="card-vine-tl" aria-hidden="true"></div>
+      <div class="card-vine-tr" aria-hidden="true"></div>
+      <div class="card-num-header">
+        <img class="card-num-img" src="assets/ladder/num-${t.num}.png" alt="${t.num}">
+      </div>
+      <div class="card-body">
+        <div class="tier-rule-badge">${t.rule}</div>
+        <div class="tier-list-divider">
+          <img class="divider-vine-img" src="assets/ladder/divider-vine.png" alt="">
+        </div>
+        <div class="tier-items-list">
+          ${t.items.map(it => `<div class="tier-item-row"><span class="tier-item-text">${it}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+function makePenaltyCard(){
+  const inline = PENALTIES.map(p => p.text).join(' · ');
+  return `
+    <div class="tier-card penalty-display-card">
+      <div class="card-vine-tl" aria-hidden="true"></div>
+      <div class="card-vine-tr" aria-hidden="true"></div>
+      <div class="penalty-content-group">
+        <div class="penalty-card-header">
+          <div class="penalty-title-wrap">
+            <img class="penalty-title-img" src="assets/ladder/penalty-title.png" alt="벌칙">
+          </div>
+        </div>
+        <div class="card-body penalty-card-body">
+          <div class="tier-list-divider">
+            <img class="divider-vine-img" src="assets/ladder/divider-vine.png" alt="">
+          </div>
+          <p class="penalty-inline-text">${inline}</p>
+        </div>
+      </div>
+    </div>`;
+}
+
 function initLadder(){
   const row = document.getElementById('tier-row');
-  row.innerHTML = TIERS.map((t,i) => `
-    <div class="tier-card" onclick="openTierModal(${i})" id="tc-${i}">
-      <div class="tier-num">${t.num}</div>
-      <div class="tier-star">★</div>
-      <div class="tier-rule-badge">${t.rule}</div>
-      <div class="tier-list-divider"></div>
-      <div class="tier-items-list">
-        ${t.items.map(it => `<div class="tier-item-row"><div class="tier-item-text">${it}</div></div>`).join('')}
-      </div>
-    </div>
-  `).join('');
+  row.innerHTML =
+    `<div class="tier-left-group">` +
+      makeTierCard(TIERS[0], 0) +
+      makeTierCard(TIERS[1], 1) +
+    `</div>` +
+    `<div class="ladder-center-slot"></div>` +
+    `<div class="tier-right-group">` +
+      `<div class="tier-right-cards">` +
+        makeTierCard(TIERS[2], 2) +
+        makeTierCard(TIERS[3], 3) +
+      `</div>` +
+      makePenaltyCard() +
+    `</div>`;
 }
 
 // ════ TIER MODAL ════
@@ -505,6 +560,7 @@ function nlReset(){
 // ── SNOW ──
 (function(){
   const c = document.getElementById('snow-canvas');
+  if(!c) return;
   const ctx = c.getContext('2d');
   let flakes = [];
   function resize(){c.width=innerWidth;c.height=innerHeight;}

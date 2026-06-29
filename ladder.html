@@ -5,45 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>사다리 타기 · 미유라디오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/animations.css">
-<link rel="stylesheet" href="css/ladder.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Nanum+Myeongjo:wght@400;700&family=Cafe24+Ssurround&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css?v=2">
+<link rel="stylesheet" href="css/base.css?v=2">
+<link rel="stylesheet" href="css/components.css?v=2">
+<link rel="stylesheet" href="css/animations.css?v=2">
+<link rel="stylesheet" href="css/ladder.css?v=42">
 </head>
 <body>
 
+<div class="ladder-bg" aria-hidden="true"></div>
+
 <nav class="g-nav">
-  <a class="g-nav-brand" href="index.html">미유라디오</a>
+  <a class="g-nav-brand" href="index.html">MEYOU RADIO</a>
   <div class="g-nav-links">
-    <a class="g-nav-link nav-active" href="ladder.html">사다리</a>
-    <a class="g-nav-link" href="pinball.html">핀볼</a>
-    <a class="g-nav-link" href="reaction.html">리액션</a>
+    <a class="g-nav-link nav-active" href="ladder.html">🌻 사다리</a>
+    <a class="g-nav-link" href="pinball.html">🌻 핀볼</a>
+    <a class="g-nav-link" href="reaction.html">🌻 리액션</a>
   </div>
-  <a class="g-nav-brand" href="index.html">미유라디오</a>
+  <a class="g-nav-brand" href="index.html">MEYOU RADIO</a>
 </nav>
 
-<canvas id="snow-canvas" style="display:none"></canvas>
-<div class="meyou-snow-bg" id="meyou-snow" aria-hidden="true"></div>
-
-<main class="sub-page-wrap">
-  <!-- 배경 장식 레이어 -->
-  <div class="ladder-bg-deco" aria-hidden="true">
-    <span class="ld-deco" style="left:4%;top:22%;font-size:22px;animation-delay:0s">🧸</span>
-    <span class="ld-deco" style="left:13%;top:56%;font-size:18px;animation-delay:2.4s">🎟️</span>
-    <span class="ld-deco" style="left:19%;top:80%;font-size:20px;animation-delay:1.2s">🎀</span>
-    <span class="ld-deco" style="right:5%;top:24%;font-size:24px;animation-delay:3.1s">🎈</span>
-    <span class="ld-deco" style="right:16%;top:62%;font-size:16px;animation-delay:1.8s">💗</span>
-    <span class="ld-deco" style="right:23%;top:84%;font-size:20px;animation-delay:.7s">🎡</span>
-    <span class="ld-deco" style="left:48%;top:10%;font-size:20px;animation-delay:4.3s">☁️</span>
-    <span class="ld-deco" style="left:35%;top:90%;font-size:13px;animation-delay:2.9s">✨</span>
-    <span class="ld-deco" style="left:7%;top:40%;font-size:13px;animation-delay:.9s">✨</span>
-    <span class="ld-deco" style="right:9%;top:48%;font-size:17px;animation-delay:3.7s">🎪</span>
-    <span class="ld-deco" style="left:28%;top:14%;font-size:14px;animation-delay:5.1s">💫</span>
-    <span class="ld-deco" style="right:32%;top:18%;font-size:14px;animation-delay:1.5s">🌸</span>
-  </div>
-
+<main class="ladder-page-wrap">
   <div class="section-head">
     <div class="section-orn">LADDER GAME</div>
     <div class="section-title-main">미유 사다리</div>
@@ -51,11 +34,9 @@
 
   <div class="ladder-stage">
     <div class="tier-row" id="tier-row"></div>
-    <!-- 중앙 인물 슬롯 (이미지 없으면 자동 숨김) -->
-    <div class="ladder-center-figure" aria-hidden="true">
-      <img class="ladder-figure-img" src="/assets/ladder/meyou-center-halfbody.png" alt=""
-           onerror="this.style.display='none'">
-    </div>
+  </div>
+  <div class="ladder-notice">
+    휴방권/방종권은 기념일 혹은 이벤트날 사용 불가 !&nbsp;&nbsp;유통기한은 한달, 그 후로는 소멸 !&nbsp;&nbsp;전 사다리 하위 메뉴 선택 가능 !
   </div>
 </main>
 
@@ -129,6 +110,6 @@
   </div>
 </div>
 
-<script src="js/ladder.js"></script>
+<script src="js/ladder.js?v=25"></script>
 </body>
 </html>
