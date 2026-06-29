@@ -18,7 +18,7 @@ body{
   margin-top:62px;
   height:calc(100vh - 62px);
   padding:0;
-  position:relative; overflow-y:auto; overflow-x:hidden;
+  position:relative; overflow:hidden;
   display:flex; flex-direction:column;
   isolation:isolate;
 }
@@ -51,8 +51,8 @@ body{
 /* ── HERO ── */
 .pball-hero{
   flex:1; min-height:0;
-  display:flex; align-items:flex-end; justify-content:center;
-  padding:10px 30px 60px;
+  display:flex; align-items:center; justify-content:center;
+  padding:10px 30px 30px;
   position:relative; z-index:3;
 }
 .pball-hero-board{
