@@ -26,10 +26,10 @@ body{
 /* ── SECTION HEAD ── */
 .section-head{
   flex-shrink:0;
-  padding:50px 80px 12px;
+  padding:50px 80px 4px;
   position:relative; z-index:3;
   text-align:center;
-  display:flex; flex-direction:column; align-items:center; gap:10px;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
 }
 .pball-main-title{
   height:clamp(100px,16vw,210px);
