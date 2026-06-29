@@ -29,7 +29,8 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: url('../assets/ladder/ladder-bg.jpg') center center / cover no-repeat;
+  background: url('../assets/ladder/ladder-bg.jpg') center center / 75% auto no-repeat;
+  background-color: #b8d4ef;
 }
 
 /* ════ PAGE WRAPPER ════ */
