@@ -238,14 +238,7 @@ body[data-view="aegyo"] .copy-btn:hover { border-color: #ec6fab; color: #ec6fab;
 body[data-view="aegyo"] .copy-btn.copied { border-color: #4a8840; color: #4a8840; }
 .card-lines { display: none; }
 .empty { padding: 36px; text-align: center; font-size: 13px; opacity: 0.35; }
-/* SNOW */
-.snow { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-body:not([data-view="home"]) .snow { display: none; }
-@keyframes snowfall {
-  0% { transform: translateY(-10px) translateX(0); opacity: 0; }
-  8% { opacity: 1; } 92% { opacity: 0.5; }
-  100% { transform: translateY(100vh) translateX(30px); opacity: 0; }
-}
+.snow { display: none; }
 /* FOOTER */
 .section-footer { text-align: center; padding: 40px 24px 64px; font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; }
 body[data-view="roast"] .section-footer { color: rgba(130,70,70,0.2); }
