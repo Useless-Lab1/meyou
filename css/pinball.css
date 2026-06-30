@@ -338,8 +338,8 @@ body{
   filter:drop-shadow(0 4px 18px rgba(255,190,0,.55));
 }
 .ball-card.selected{
-  transform:scale(1.22);
-  filter:drop-shadow(0 0 2px rgba(255,230,0,1)) drop-shadow(0 0 10px rgba(255,215,0,.95)) drop-shadow(0 0 22px rgba(255,185,0,.75));
+  transform:scale(1.12);
+  animation:none;
   z-index:2;
 }
 .ball-ic{
