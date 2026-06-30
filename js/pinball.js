@@ -163,9 +163,11 @@ function renderBallGrid() {
     const isSel = selIdx > -1;
     const delay = delays[i % delays.length];
     return `<div class="ball-card${isSel ? ' selected' : ''}" onclick="toggleBall(${i})" style="animation-delay:${delay}s">
-      <img class="ball-frame-img" src="assets/pinball/pb-circle-frame.png" alt="">
-      <div class="ball-ic">${it.ic}</div>
-      <div class="ball-tx">${it.tx.replace('|', '<br>')}</div>
+      <img class="ball-frame-img" src="assets/pinball/pb-oval-frame.png" alt="">
+      <div class="ball-content">
+        <span class="ball-ic">${it.ic}</span>
+        <span class="ball-tx">${it.tx.replace('|', ' ')}</span>
+      </div>
     </div>`;
   }).join('');
 }
