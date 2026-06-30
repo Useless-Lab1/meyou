@@ -105,6 +105,8 @@ body {
   transition: background 0.5s, color 0.4s;
 }
 body[data-view="roast"] { background: transparent; color: #ccc6c0; overflow-y: auto; height: auto; }
+body[data-view="roast"] .rc-bg { background-image: url('../assets/reaction/roast-bg.png'); background-position: center center; }
+body[data-view="aegyo"] .rc-bg { background-image: url('../assets/reaction/aegyo-bg.png'); background-position: center center; }
 body[data-view="aegyo"] { background: transparent; color: #3c1f2e; overflow-y: auto; height: auto; }
 #aegyo { padding-top: 62px; }
 body::after { display: none; }
