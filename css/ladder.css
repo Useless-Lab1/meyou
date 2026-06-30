@@ -667,14 +667,14 @@ body{ background: #b8d8f0; }
 }
 .nl-prize-frame-img {
   width: 100%; height: auto; display: block;
-  filter: sepia(0.55) saturate(2.2) hue-rotate(2deg) brightness(0.95)
-          drop-shadow(0 4px 14px rgba(140,90,0,.35));
+  filter: drop-shadow(0 6px 18px rgba(120,80,0,.30));
 }
 .nl-win-item {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   font-family: 'Cafe24 Ssurround', 'Noto Serif KR', serif;
   font-size: clamp(18px, 4.5vw, 26px); font-weight: 700;
-  color: #4A2800; width: 58%; text-align: center; word-break: keep-all; line-height: 1.3;
+  color: #3D1E00; width: 58%; text-align: center; word-break: keep-all; line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(255,230,150,.60);
   margin: 0;
 }
 .nl-all-results {
