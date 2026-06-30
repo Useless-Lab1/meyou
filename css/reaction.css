@@ -177,11 +177,11 @@ body[data-view="aegyo"] .tab.active { background: linear-gradient(135deg, #ec6fa
 .hero-img-col { position: relative; overflow: hidden; min-width: 0; display: flex; align-items: center; justify-content: center; }
 .roast-hero .hero-img-col { order: 2; background: #060408; }
 .aegyo-hero .hero-img-col { order: 1; background: #fff3f7; }
-.hero-img-col img { width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); }
+.hero-img-col img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); }
 .hero-img-col::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
 .roast-hero .hero-img-col::after { background: linear-gradient(90deg, #060408 0%, rgba(6,4,8,0.55) 12%, transparent 30%, transparent 70%, rgba(6,4,8,0.4) 88%, #060408 100%); }
 
-.aegyo-hero .hero-img-col::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 28%; background: linear-gradient(to top, #fff3f7 0%, rgba(255,243,247,0.85) 40%, transparent 100%); z-index: 1; pointer-events: none; }
+.aegyo-hero .hero-img-col::before { display: none; }
 .aegyo-hero .hero-img-col::after { background: linear-gradient(90deg, #fff3f7 0%, rgba(255,243,247,0.55) 12%, transparent 30%, transparent 70%, rgba(255,243,247,0.4) 88%, #fff3f7 100%); }
 .section-hero-content { display: contents; }
 .hero-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; }
