@@ -570,7 +570,7 @@ body{ background: #b8d8f0; }
   position: absolute; inset: 0;
   background:
     center/contain no-repeat url('../assets/ladder/ladder-board-blur-cover.png'),
-    linear-gradient(145deg, rgba(180,110,20,.75) 0%, rgba(90,45,5,.82) 100%);
+    linear-gradient(145deg, rgba(230,185,55,.97) 0%, rgba(190,130,25,.98) 100%);
   border-radius: 8px;
   display: flex; align-items: flex-end; justify-content: center;
   padding-bottom: 16px; cursor: pointer;
@@ -680,17 +680,17 @@ body{ background: #b8d8f0; }
 }
 .nl-result-row {
   display: flex; align-items: center; gap: 10px; justify-content: center;
-  font-size: 14px; color: rgba(100,52,8,.65);
+  font-size: 14px; color: rgba(140,82,8,.88);
   font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif; font-weight: 700;
 }
 .nl-result-row .rr-num {
   font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 16px; font-weight: 700;
-  color: #4A2800; min-width: 28px;
+  color: #8B4E00; min-width: 28px;
 }
-.nl-result-row .rr-arrow { color: rgba(180,120,20,.50); }
-.nl-result-row .rr-item { color: rgba(100,52,8,.65); }
-.nl-result-row.rr-mine { color: #4A2800; }
-.nl-result-row.rr-mine .rr-item { color: #D4780A; font-weight: 700; }
+.nl-result-row .rr-arrow { color: rgba(190,130,20,.80); }
+.nl-result-row .rr-item { color: rgba(140,82,8,.88); }
+.nl-result-row.rr-mine { color: #7A3D00; }
+.nl-result-row.rr-mine .rr-item { color: #C86800; font-weight: 700; }
 
 /* ════ 반응형 ════ */
 @media(max-width:1200px) {

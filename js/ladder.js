@@ -394,7 +394,7 @@ function drawLadder(pathUpTo, pathPositions){
   ctx.clearRect(0,0,PW,H);
   const m = getLadderMetrics();
 
-  ctx.strokeStyle = 'rgba(107,124,147,0.5)';
+  ctx.strokeStyle = 'rgba(180,140,60,0.35)';
   ctx.lineWidth = 2;
   for(let col = 0; col < n; col++){
     ctx.beginPath();
@@ -403,7 +403,7 @@ function drawLadder(pathUpTo, pathPositions){
     ctx.stroke();
   }
 
-  ctx.strokeStyle = 'rgba(107,124,147,0.45)';
+  ctx.strokeStyle = 'rgba(180,140,60,0.30)';
   ctx.lineWidth = 2;
   nlData.conns.forEach(({row,col}) => {
     const x1 = colX(col,m), x2 = colX(col+1,m);
