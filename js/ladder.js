@@ -535,16 +535,18 @@ function showNlResult(winPos){
 function spawnConfetti(){
   const area = document.getElementById('nl-confetti-area');
   area.innerHTML = '';
-  const colors = ['#8fa8c4','#c8b89a','#dcb8c8','#a8c4a0','#c4c0d8'];
-  for(let i=0; i<40; i++){
-    const el = document.createElement('div');
+  for(let i=0; i<36; i++){
+    const el = document.createElement('img');
     el.className = 'confetti-p';
+    el.src = 'assets/ladder/result-confetti-leaf.png';
+    const size = 14 + Math.random() * 13;
+    const rot = (Math.random() > 0.5 ? '' : '-') + (120 + Math.random() * 300) + 'deg';
     el.style.cssText = `
       left:${Math.random()*100}%;
-      background:${colors[i%colors.length]};
-      --dur:${1.2+Math.random()*0.8}s;
-      --delay:${Math.random()*0.6}s;
-      border-radius:${Math.random()>0.5?'50%':'3px'};
+      width:${size}px; height:${size}px;
+      --dur:${1.1+Math.random()*1.1}s;
+      --delay:${Math.random()*0.7}s;
+      --rot:${rot};
     `;
     area.appendChild(el);
   }

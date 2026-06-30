@@ -385,7 +385,7 @@ body{ background: #b8d8f0; }
   display: flex; align-items: center; justify-content: center; padding: 32px;
 }
 .tier-modal-box {
-  background: linear-gradient(145deg, rgba(255,253,228,.97) 0%, rgba(255,244,192,.97) 100%);
+  background: linear-gradient(165deg, rgba(255,253,235,.98) 0%, rgba(255,247,210,.98) 55%, rgba(255,240,185,.97) 100%);
   border: 1.5px solid rgba(200,150,25,.38);
   border-radius: 28px;
   box-shadow:
@@ -396,8 +396,15 @@ body{ background: #b8d8f0; }
   min-height: 640px;
   max-height: calc(100vh - 64px);
   overflow-y: auto;
-  padding: 40px 44px 32px;
+  padding: 52px 44px 32px;
   position: relative;
+}
+.modal-vine-deco {
+  position: absolute;
+  top: -22px; left: 50%; transform: translateX(-50%);
+  width: min(520px, 92%); height: auto;
+  pointer-events: none; z-index: 10;
+  filter: drop-shadow(0 4px 14px rgba(100,65,0,.22));
 }
 @media(max-width:600px) {
   .tier-modal-box {
@@ -430,12 +437,18 @@ body{ background: #b8d8f0; }
 /* ── STEP TABS ── */
 .step-tabs { display: flex; gap: 8px; margin-bottom: 28px; }
 .step-tab {
-  padding: 9px 22px; border-radius: 22px; font-size: 13px; font-weight: 700; letter-spacing: .4px;
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 22px; font-size: 13px; font-weight: 700; letter-spacing: .3px;
   font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif;
-  color: rgba(130,75,15,.50);
-  background: rgba(255,220,100,.18);
-  border: 1.5px solid rgba(200,145,25,.22);
+  color: rgba(130,75,15,.45);
+  background: rgba(255,220,100,.14);
+  border: 1.5px solid rgba(200,145,25,.18);
   cursor: default; transition: all .22s;
+}
+.step-tab-icon {
+  width: 22px; height: 22px; object-fit: contain;
+  opacity: 0.45; transition: opacity .22s;
+  flex-shrink: 0;
 }
 .step-tab.active {
   background: linear-gradient(135deg, #FFD60A, #FFA800);
@@ -444,10 +457,12 @@ body{ background: #b8d8f0; }
   box-shadow: 0 4px 18px rgba(255,180,0,.35), 0 2px 8px rgba(120,60,0,.18);
   font-weight: 700;
 }
+.step-tab.active .step-tab-icon { opacity: 1; }
 .step-tab.done {
   background: rgba(200,160,40,.20); color: rgba(130,75,15,.75);
   border-color: rgba(200,150,30,.40);
 }
+.step-tab.done .step-tab-icon { opacity: 0.70; }
 
 /* ── ITEM / PENALTY GRIDS ── */
 .sel-status {
@@ -506,24 +521,25 @@ body{ background: #b8d8f0; }
 /* ── CTA ROW + BUTTONS ── */
 .cta-row { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; margin-top: 24px; }
 .btn-primary {
-  padding: 12px 28px; border-radius: 24px;
-  background: linear-gradient(135deg, #FFD60A, #FFA800);
+  padding: 13px 32px; border-radius: 30px;
+  background: linear-gradient(135deg, #FFD60A 0%, #FFA800 65%, #FF8C00 100%);
   color: #4A2800; border: none; cursor: pointer;
   font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif;
   font-size: 14px; font-weight: 700; letter-spacing: .5px;
-  box-shadow: 0 4px 18px rgba(255,160,0,.38); transition: all .22s;
+  box-shadow: 0 4px 18px rgba(255,160,0,.40), inset 0 1px 0 rgba(255,255,180,.55);
+  transition: all .22s;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,160,0,.55); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,160,0,.55), inset 0 1px 0 rgba(255,255,200,.60); }
 .btn-primary:disabled { opacity: .35; cursor: not-allowed; transform: none; box-shadow: none; }
 .btn-ghost {
-  padding: 12px 22px; border-radius: 24px;
-  background: rgba(255,244,200,.60); color: rgba(100,52,8,.75);
-  border: 1.5px solid rgba(200,145,25,.40);
+  padding: 13px 24px; border-radius: 30px;
+  background: rgba(255,248,210,.55); color: rgba(100,52,8,.75);
+  border: 1.5px solid rgba(200,145,25,.35);
   cursor: pointer;
   font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif;
   font-size: 14px; font-weight: 700; letter-spacing: .5px; transition: all .22s;
 }
-.btn-ghost:hover { border-color: rgba(200,140,20,.70); color: #4A2800; background: rgba(255,235,150,.72); }
+.btn-ghost:hover { border-color: rgba(200,140,20,.65); color: #4A2800; background: rgba(255,238,160,.75); transform: translateY(-1px); }
 
 /* ══ NAVER LADDER ══ */
 .nl-wrap { display: flex; flex-direction: column; gap: 0; }
@@ -553,14 +569,12 @@ body{ background: #b8d8f0; }
 .nl-board-area canvas { display: block; width: 100%; height: auto; }
 .nl-board-cover {
   position: absolute; inset: 0;
-  background: center/cover no-repeat url('../assets/ladder/ladder-cover.png');
+  background:
+    center/contain no-repeat url('../assets/ladder/ladder-board-blur-cover.png'),
+    linear-gradient(145deg, rgba(180,110,20,.75) 0%, rgba(90,45,5,.82) 100%);
   border-radius: 8px;
   display: flex; align-items: flex-end; justify-content: center;
   padding-bottom: 16px; cursor: pointer;
-}
-.nl-board-cover::before {
-  content: ''; position: absolute; inset: 0;
-  background: rgba(80,40,5,.35); border-radius: 8px;
 }
 .nl-board-cover-label {
   position: relative; z-index: 1;
@@ -603,39 +617,67 @@ body{ background: #b8d8f0; }
 /* ══ RESULT OVERLAY ══ */
 .nl-result-overlay {
   position: fixed; inset: 0; z-index: 500;
-  background: rgba(100,55,5,.60); backdrop-filter: blur(10px);
+  background: rgba(80,40,2,.65); backdrop-filter: blur(12px);
   display: flex; align-items: center; justify-content: center; animation: fadeIn .4s ease;
 }
+.nl-result-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  max-width: 440px; width: 90%;
+}
+.nl-result-char {
+  width: 170px; height: auto; position: relative; z-index: 2;
+  margin-bottom: -55px;
+  filter: drop-shadow(0 8px 24px rgba(80,45,0,.35));
+  animation: popIn .45s .05s cubic-bezier(.34,1.56,.64,1) both;
+}
 .nl-result-box {
-  background: linear-gradient(145deg, rgba(255,253,228,.98), rgba(255,242,185,.97));
+  background: linear-gradient(165deg, rgba(255,253,235,.99) 0%, rgba(255,247,210,.98) 55%, rgba(255,239,182,.97) 100%);
   border: 2px solid rgba(200,150,25,.45);
   border-radius: 28px;
-  box-shadow: 0 32px 100px rgba(100,55,0,.35), inset 0 2px 0 rgba(255,255,210,.80);
-  padding: 40px 36px 32px; text-align: center; max-width: 440px; width: 90%;
+  box-shadow: 0 32px 100px rgba(100,55,0,.38), inset 0 2px 0 rgba(255,255,210,.80);
+  padding: 68px 36px 32px; text-align: center; width: 100%;
   position: relative; overflow: hidden; animation: popIn .5s cubic-bezier(.34,1.56,.64,1);
 }
 .nl-confetti-area { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.confetti-p { position: absolute; width: 8px; height: 8px; border-radius: 2px; animation: confettiFall var(--dur,1.5s) ease-in var(--delay,0s) forwards; }
+.confetti-p {
+  position: absolute;
+  animation: confettiLeafFall var(--dur,1.5s) ease-in var(--delay,0s) forwards;
+}
+@keyframes confettiLeafFall {
+  0%   { transform: translateY(-10px) rotate(0deg) scale(1); opacity: 1; }
+  80%  { opacity: .8; }
+  100% { transform: translateY(340px) rotate(var(--rot, 320deg)) scale(.5); opacity: 0; }
+}
 .nl-congrats {
-  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 28px; font-weight: 700;
-  color: #4A2800; margin-bottom: 6px;
+  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 26px; font-weight: 700;
+  color: #4A2800; margin-bottom: 4px;
   text-shadow: 0 2px 8px rgba(255,200,50,.55);
 }
 .nl-congrats-sub {
   font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif; font-weight: 700;
-  font-size: 13px; color: rgba(120,65,10,.70); letter-spacing: .8px; margin-bottom: 22px;
+  font-size: 12px; color: rgba(120,65,10,.65); letter-spacing: .8px; margin-bottom: 16px;
 }
 .nl-win-num {
-  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 52px; font-weight: 700;
+  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 48px; font-weight: 700;
   background: linear-gradient(135deg, #FFD60A, #FFA800);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text; line-height: 1;
   filter: drop-shadow(0 2px 6px rgba(255,160,0,.50));
 }
-.nl-win-arrow { font-size: 20px; color: rgba(180,120,20,.55); margin: 8px 0; }
+.nl-win-arrow { font-size: 14px; color: rgba(180,120,20,.50); margin: 6px 0; }
+.nl-prize-frame-wrap {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  margin: 4px auto 20px; max-width: 360px;
+}
+.nl-prize-frame-img {
+  width: 100%; height: auto; display: block;
+  filter: drop-shadow(0 4px 14px rgba(140,90,0,.28));
+}
 .nl-win-item {
-  font-family: 'Cafe24 Ssurround', 'Noto Serif KR', serif; font-size: 20px; font-weight: 700;
-  color: #4A2800; margin-bottom: 24px;
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-family: 'Cafe24 Ssurround', 'Noto Serif KR', serif; font-size: clamp(13px,2.8vw,18px); font-weight: 700;
+  color: #4A2800; width: 58%; text-align: center; word-break: keep-all; line-height: 1.3;
+  margin: 0;
 }
 .nl-all-results {
   border-top: 1.5px solid rgba(200,150,25,.28); padding-top: 16px;

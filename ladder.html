@@ -43,14 +43,24 @@
 <!-- ══ TIER MODAL ══ -->
 <div class="tier-modal-overlay" id="tier-modal" style="display:none;" onclick="handleModalBgClick(event)">
   <div class="tier-modal-box" id="tier-modal-box">
+    <img class="modal-vine-deco" src="assets/ladder/modal-vine-top.png" alt="" aria-hidden="true">
     <button class="tier-modal-close" onclick="closeTierModal()">✕</button>
     <div class="tier-modal-title" id="tm-title">1426</div>
     <div class="tier-modal-sub" id="tm-sub">상품 3개 선택 후 벌칙 2개 선택</div>
 
     <div class="step-tabs">
-      <div class="step-tab active" id="tab-items">① 상품 선택</div>
-      <div class="step-tab" id="tab-penalty">② 벌칙 선택</div>
-      <div class="step-tab" id="tab-ladder">③ 사다리</div>
+      <div class="step-tab active" id="tab-items">
+        <img src="assets/ladder/step-icon-items.png" class="step-tab-icon" alt="" aria-hidden="true">
+        <span>상품 선택</span>
+      </div>
+      <div class="step-tab" id="tab-penalty">
+        <img src="assets/ladder/step-icon-penalty.png" class="step-tab-icon" alt="" aria-hidden="true">
+        <span>벌칙 선택</span>
+      </div>
+      <div class="step-tab" id="tab-ladder">
+        <img src="assets/ladder/step-icon-ladder.png" class="step-tab-icon" alt="" aria-hidden="true">
+        <span>사다리</span>
+      </div>
     </div>
 
     <!-- 상품 선택 -->
@@ -77,7 +87,6 @@
       <div class="nl-board-area" id="nl-board-area" onclick="nlToggleBoardBlur()" style="cursor:pointer;">
         <canvas id="nl-canvas"></canvas>
         <div class="nl-board-cover" id="nl-board-cover">
-          <!-- 미유 캐릭터 이미지 자리 — img 태그나 background-image로 교체 -->
           <div class="nl-board-cover-label">👆 클릭해서 사다리 보기</div>
         </div>
       </div>
@@ -95,17 +104,23 @@
 
 <!-- ══ RESULT OVERLAY ══ -->
 <div class="nl-result-overlay" id="nl-result-overlay" style="display:none;">
-  <div class="nl-result-box">
-    <div class="nl-confetti-area" id="nl-confetti-area"></div>
-    <div class="nl-congrats">🎉 축하합니다!</div>
-    <div class="nl-congrats-sub" id="nl-congrats-sub">번호의 당첨 상품</div>
-    <div class="nl-win-num" id="nl-win-num">1</div>
-    <div class="nl-win-arrow">↓</div>
-    <div class="nl-win-item" id="nl-win-item">상품명</div>
-    <div class="nl-all-results" id="nl-all-results"></div>
-    <div class="cta-row" style="justify-content:center;">
-      <button class="btn-ghost" onclick="nlReset()">🔄 다시 하기</button>
-      <button class="btn-ghost" onclick="closeTierModal()">닫기</button>
+  <div class="nl-result-wrap">
+    <img class="nl-result-char" src="assets/ladder/result-win-character.png" alt="">
+    <div class="nl-result-box">
+      <div class="nl-confetti-area" id="nl-confetti-area"></div>
+      <div class="nl-congrats">🎉 축하합니다!</div>
+      <div class="nl-congrats-sub" id="nl-congrats-sub">번호의 당첨 상품</div>
+      <div class="nl-win-num" id="nl-win-num">1</div>
+      <div class="nl-win-arrow">✦</div>
+      <div class="nl-prize-frame-wrap">
+        <img class="nl-prize-frame-img" src="assets/ladder/result-prize-frame.png" alt="" aria-hidden="true">
+        <div class="nl-win-item" id="nl-win-item">상품명</div>
+      </div>
+      <div class="nl-all-results" id="nl-all-results"></div>
+      <div class="cta-row" style="justify-content:center;">
+        <button class="btn-ghost" onclick="nlReset()">🔄 다시 하기</button>
+        <button class="btn-ghost" onclick="closeTierModal()">닫기</button>
+      </div>
     </div>
   </div>
 </div>
