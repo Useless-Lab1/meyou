@@ -1,16 +1,16 @@
 ﻿/* ════ REACTION HOME PAGE ════ */
 body{ overflow:hidden; height:100vh; background:#1a0a0a; }
 .rc-bg{
-  position:fixed; inset:62px 0 0 0; z-index:0;
+  position:fixed; inset:0; z-index:0;
   background: url('../assets/reaction/rc-bg.jpg') center top / cover no-repeat;
 }
 
 .rc-home-wrap{
-  position:fixed; inset:62px 0 0 0;
+  position:fixed; inset:0;
   display:flex; flex-direction:column;
   align-items:center; justify-content:flex-start;
   gap:clamp(12px,1.8vh,28px);
-  padding:clamp(28px,5.5vh,80px) 40px clamp(30px,8vh,80px);
+  padding:calc(62px + clamp(28px,5.5vh,80px)) 40px clamp(30px,8vh,80px);
   z-index:10;
   text-align:center;
 }
@@ -89,7 +89,7 @@ body{ overflow:hidden; height:100vh; background:#1a0a0a; }
 }
 
 /* ════ NAV OVERRIDES ════ */
-.g-nav{background:linear-gradient(135deg,rgba(255,245,210,0.12),rgba(240,220,160,0.08));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid rgba(200,160,60,0.10);}
+.g-nav{background:linear-gradient(135deg,rgba(255,245,210,0.30),rgba(240,220,160,0.22));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid rgba(200,160,60,0.18);}
 .g-nav-brand{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;letter-spacing:2px;color:rgba(70,35,5,0.92);}
 .g-nav-link{color:rgba(70,35,5,0.70);}
 .g-nav-link:hover{color:rgba(70,35,5,0.95);background:rgba(200,140,30,0.15);}
