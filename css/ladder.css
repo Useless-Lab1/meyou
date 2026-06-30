@@ -392,9 +392,9 @@ body{ background: #b8d8f0; }
     0 32px 100px rgba(100,55,0,.28),
     0 0 0 1px rgba(255,220,100,.18) inset,
     inset 0 2px 0 rgba(255,255,220,.70);
-  width: min(1040px, calc(100vw - 64px));
+  width: min(1040px, calc(100vw - 24px));
   min-height: 640px;
-  max-height: calc(100vh - 64px);
+  max-height: calc(100svh - 32px);
   overflow-y: auto;
   padding: 52px 44px 32px;
   position: relative;
@@ -446,9 +446,8 @@ body{ background: #b8d8f0; }
   cursor: default; transition: all .22s;
 }
 .step-tab-icon {
-  width: 22px; height: 22px; object-fit: contain;
-  opacity: 0.45; transition: opacity .22s;
-  flex-shrink: 0;
+  width: 26px; height: 26px; object-fit: contain;
+  flex-shrink: 0; transition: transform .22s;
 }
 .step-tab.active {
   background: linear-gradient(135deg, #FFD60A, #FFA800);
@@ -457,12 +456,12 @@ body{ background: #b8d8f0; }
   box-shadow: 0 4px 18px rgba(255,180,0,.35), 0 2px 8px rgba(120,60,0,.18);
   font-weight: 700;
 }
-.step-tab.active .step-tab-icon { opacity: 1; }
+.step-tab.active .step-tab-icon { transform: scale(1.12); }
 .step-tab.done {
   background: rgba(200,160,40,.20); color: rgba(130,75,15,.75);
   border-color: rgba(200,150,30,.40);
 }
-.step-tab.done .step-tab-icon { opacity: 0.70; }
+
 
 /* ── ITEM / PENALTY GRIDS ── */
 .sel-status {
@@ -619,14 +618,15 @@ body{ background: #b8d8f0; }
   position: fixed; inset: 0; z-index: 500;
   background: rgba(80,40,2,.65); backdrop-filter: blur(12px);
   display: flex; align-items: center; justify-content: center; animation: fadeIn .4s ease;
+  padding: 16px;
 }
 .nl-result-wrap {
   display: flex; flex-direction: column; align-items: center;
-  max-width: 440px; width: 90%;
+  max-width: 520px; width: 100%;
 }
 .nl-result-char {
-  width: 170px; height: auto; position: relative; z-index: 2;
-  margin-bottom: -55px;
+  width: 210px; height: auto; position: relative; z-index: 2;
+  margin-bottom: -70px;
   filter: drop-shadow(0 8px 24px rgba(80,45,0,.35));
   animation: popIn .45s .05s cubic-bezier(.34,1.56,.64,1) both;
 }
@@ -635,7 +635,7 @@ body{ background: #b8d8f0; }
   border: 2px solid rgba(200,150,25,.45);
   border-radius: 28px;
   box-shadow: 0 32px 100px rgba(100,55,0,.38), inset 0 2px 0 rgba(255,255,210,.80);
-  padding: 68px 36px 32px; text-align: center; width: 100%;
+  padding: 80px 40px 36px; text-align: center; width: 100%;
   position: relative; overflow: hidden; animation: popIn .5s cubic-bezier(.34,1.56,.64,1);
 }
 .nl-confetti-area { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
@@ -649,25 +649,19 @@ body{ background: #b8d8f0; }
   100% { transform: translateY(340px) rotate(var(--rot, 320deg)) scale(.5); opacity: 0; }
 }
 .nl-congrats {
-  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 26px; font-weight: 700;
-  color: #4A2800; margin-bottom: 4px;
+  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 32px; font-weight: 700;
+  color: #4A2800; margin-bottom: 6px;
   text-shadow: 0 2px 8px rgba(255,200,50,.55);
 }
 .nl-congrats-sub {
   font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif; font-weight: 700;
-  font-size: 12px; color: rgba(120,65,10,.65); letter-spacing: .8px; margin-bottom: 16px;
+  font-size: 14px; color: rgba(120,65,10,.65); letter-spacing: .8px; margin-bottom: 14px;
 }
-.nl-win-num {
-  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 48px; font-weight: 700;
-  background: linear-gradient(135deg, #FFD60A, #FFA800);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; line-height: 1;
-  filter: drop-shadow(0 2px 6px rgba(255,160,0,.50));
-}
-.nl-win-arrow { font-size: 14px; color: rgba(180,120,20,.50); margin: 6px 0; }
+.nl-win-num { display: none; }
+.nl-win-arrow { display: none; }
 .nl-prize-frame-wrap {
   position: relative; display: flex; align-items: center; justify-content: center;
-  margin: 4px auto 20px; max-width: 360px;
+  margin: 0 auto 24px; width: 100%; max-width: 460px;
 }
 .nl-prize-frame-img {
   width: 100%; height: auto; display: block;
@@ -675,22 +669,23 @@ body{ background: #b8d8f0; }
 }
 .nl-win-item {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  font-family: 'Cafe24 Ssurround', 'Noto Serif KR', serif; font-size: clamp(13px,2.8vw,18px); font-weight: 700;
+  font-family: 'Cafe24 Ssurround', 'Noto Serif KR', serif;
+  font-size: clamp(18px, 4.5vw, 26px); font-weight: 700;
   color: #4A2800; width: 58%; text-align: center; word-break: keep-all; line-height: 1.3;
   margin: 0;
 }
 .nl-all-results {
-  border-top: 1.5px solid rgba(200,150,25,.28); padding-top: 16px;
-  display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px;
+  border-top: 1.5px solid rgba(200,150,25,.28); padding-top: 14px;
+  display: flex; flex-direction: column; gap: 7px; margin-bottom: 22px;
 }
 .nl-result-row {
   display: flex; align-items: center; gap: 10px; justify-content: center;
-  font-size: 13px; color: rgba(100,52,8,.65);
+  font-size: 14px; color: rgba(100,52,8,.65);
   font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif; font-weight: 700;
 }
 .nl-result-row .rr-num {
-  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 15px; font-weight: 700;
-  color: #4A2800; min-width: 24px;
+  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif; font-size: 16px; font-weight: 700;
+  color: #4A2800; min-width: 28px;
 }
 .nl-result-row .rr-arrow { color: rgba(180,120,20,.50); }
 .nl-result-row .rr-item { color: rgba(100,52,8,.65); }
@@ -716,4 +711,24 @@ body{ background: #b8d8f0; }
   .tier-left-group, .tier-right-cards { grid-template-columns: 1fr 1fr; }
   .ladder-center-slot { display: none !important; }
   .card-img-area { height: clamp(120px, 35vw, 180px); }
+}
+
+/* ══ 모바일 결과화면 최적화 ══ */
+@media (max-width: 480px) {
+  .nl-result-char { width: 160px; margin-bottom: -55px; }
+  .nl-result-box { padding: 68px 24px 28px; border-radius: 20px; }
+  .nl-congrats { font-size: 26px; }
+  .nl-congrats-sub { font-size: 13px; }
+  .nl-prize-frame-wrap { max-width: 100%; }
+  .nl-win-item { font-size: clamp(17px, 5vw, 22px); }
+  .tier-modal-box {
+    width: calc(100vw - 12px);
+    padding: 44px 20px 24px;
+    border-radius: 20px;
+    min-height: unset;
+    max-height: calc(100svh - 20px);
+  }
+  .step-tabs { gap: 6px; }
+  .step-tab { padding: 8px 10px; font-size: 12px; }
+  .step-tab-icon { width: 22px; height: 22px; }
 }
