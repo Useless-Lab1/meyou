@@ -576,20 +576,13 @@ body{ background: #b8d8f0; }
   padding-bottom: 16px; cursor: pointer;
   z-index: 3;
 }
-/* 보드 위 캐릭터 & 해바라기 */
+/* 보드 위 캐릭터 */
 .board-char-img {
   position: absolute;
   left: 50%; top: 0; transform: translateX(-50%);
   height: 100%; width: auto; max-width: 38%;
-  pointer-events: none; z-index: 2;
+  pointer-events: none; z-index: 4;
   filter: drop-shadow(0 4px 20px rgba(80,40,0,.25));
-}
-.board-sf-left {
-  position: absolute;
-  left: 4%; bottom: 0;
-  width: 18%; height: auto;
-  pointer-events: none; z-index: 2;
-  filter: drop-shadow(0 4px 14px rgba(100,65,0,.18));
 }
 .nl-board-cover-label {
   position: relative; z-index: 1;

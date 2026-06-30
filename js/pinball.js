@@ -302,8 +302,13 @@ function mrBatchDelta(d) {
 }
 
 function waitAndInjectMarbles() {
+  let retries = 0;
   const _do = () => {
-    if (!window.roulette || !window.roulette.isReady) { setTimeout(_do, 150); return; }
+    if (!window.roulette || !window.roulette.isReady) {
+      if (++retries < 200) { setTimeout(_do, 150); }
+      else { console.warn('[meyou] 마블룰렛 초기화 타임아웃'); }
+      return;
+    }
     updateRouletteInputFromItems();
   };
   _do();
@@ -329,7 +334,24 @@ function setWinnerMode(mode) {
 }
 
 function startMarbleRoulette() {
-  if (!window.roulette || !window.roulette.isReady) { alert('마블 룰렛이 아직 로딩 중입니다.'); return; }
+  if (!window.roulette || !window.roulette.isReady) {
+    const btn = document.getElementById('btn-marble-start');
+    const origText = btn ? btn.textContent : '';
+    if (btn) btn.textContent = '⏳ 로딩 중...';
+    let tries = 0;
+    const wait = setInterval(() => {
+      if (window.roulette && window.roulette.isReady) {
+        clearInterval(wait);
+        if (btn) btn.textContent = origText;
+        startMarbleRoulette();
+      } else if (++tries > 40) {
+        clearInterval(wait);
+        if (btn) btn.textContent = origText;
+        alert('마블 룰렛 로딩 실패. 페이지를 새로고침 후 다시 시도해주세요.');
+      }
+    }, 250);
+    return;
+  }
   const total = window.roulette.getCount();
   if (!total) { alert('참가 공이 없습니다.'); return; }
   const rank = mrWinnerMode === 'last' ? total - 1 : 0;
