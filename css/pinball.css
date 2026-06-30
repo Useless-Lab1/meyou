@@ -326,7 +326,7 @@ body{
   width:100%; height:100%; min-height:0; overflow:hidden;
   -webkit-mask-image:radial-gradient(circle closest-side at 50% 50%, black 92%, transparent 100%);
   mask-image:radial-gradient(circle closest-side at 50% 50%, black 92%, transparent 100%);
-  padding:10% 8%;
+  padding:6% 8% 14% 8%;
   cursor:pointer; text-align:center;
   position:relative;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
@@ -338,34 +338,9 @@ body{
   filter:drop-shadow(0 4px 18px rgba(255,190,0,.55));
 }
 .ball-card.selected{
-  transform:scale(1.18);
-  filter:drop-shadow(0 0 28px rgba(255,200,0,.95)) drop-shadow(0 0 8px rgba(255,160,0,.70)) brightness(1.15);
+  transform:scale(1.22);
+  filter:drop-shadow(0 0 2px rgba(255,230,0,1)) drop-shadow(0 0 10px rgba(255,215,0,.95)) drop-shadow(0 0 22px rgba(255,185,0,.75));
   z-index:2;
-}
-.ball-card.selected::after{
-  content:'★';
-  position:absolute; top:10%; right:10%;
-  width:28px; height:28px; border-radius:50%;
-  background:linear-gradient(135deg,#FFD60A,#FF8C00);
-  color:#4A2800; font-size:15px; font-weight:700;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 12px rgba(255,180,0,.7);
-}
-.ball-n{
-  position:absolute; top:20%; left:50%; transform:translateX(-50%);
-  font-size:8px; font-weight:700;
-  color:rgba(120,70,0,.55);
-  font-family:'Cafe24 Ssurround',sans-serif;
-  line-height:1;
-}
-.ball-sel-badge{
-  position:absolute; top:13%; right:13%;
-  width:20px; height:20px; border-radius:50%;
-  background:linear-gradient(135deg,#FFD60A,#FF8C00); color:#4A2800;
-  font-size:9px; font-weight:700;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 8px rgba(255,180,0,.55);
-  font-family:'Cafe24 Ssurround',sans-serif;
 }
 .ball-ic{
   font-size:clamp(18px,2.0vw,28px);

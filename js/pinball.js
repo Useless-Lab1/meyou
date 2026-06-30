@@ -34,7 +34,7 @@ let PINBALL_ITEMS = [
   {ic:'🏋️',tx:'스쿼트 30개',balls:15},
   {ic:'💗',tx:'사랑해',balls:15},
   {ic:'📝',tx:'닉네임 N행시',balls:15},
-  {ic:'🎧',tx:'플리 탑10 VOD',balls:15},
+  {ic:'🎧',tx:'플리탑10 VOD',balls:15},
   {ic:'☕',tx:'뮤의 카페인',balls:15},
   {ic:'🎡',tx:'126룰렛 6회',balls:15},
   {ic:'🚫',tx:'광고제거 1달',balls:15},
@@ -42,12 +42,12 @@ let PINBALL_ITEMS = [
   {ic:'📅',tx:'일일애칭',balls:15},
   {ic:'💌',tx:'휴방안부쪽지',balls:15},
   {ic:'🕐',tx:'연/단 40분',balls:15},
-  {ic:'🐮',tx:'찐한 애교음메 1분',balls:15},
-  {ic:'🌅',tx:'굿모닝/굿나잇 음메 3분',balls:15},
+  {ic:'🐮',tx:'찐한애교음메1분',balls:15},
+  {ic:'🌅',tx:'굿모닝/굿나잇|음메 3분',balls:15},
   {ic:'🎵',tx:'애교송',balls:15},
   {ic:'💬',tx:'애교대사',balls:15},
   {ic:'💋',tx:'메도먼트',balls:15},
-  {ic:'🔥',tx:'역팬5 or 꽝쉴드 1일',balls:15}
+  {ic:'🔥',tx:'역팬5or꽝쉴드1일',balls:15}
 ];
 
 const AEGYO_DATA = [
@@ -163,10 +163,8 @@ function renderBallGrid() {
     const isSel = selIdx > -1;
     const delay = delays[i % delays.length];
     return `<div class="ball-card${isSel ? ' selected' : ''}" onclick="toggleBall(${i})" style="animation-delay:${delay}s">
-      <div class="ball-n">${i + 1}</div>
-      ${isSel ? `<div class="ball-sel-badge">${selIdx + 1}</div>` : ''}
       <div class="ball-ic">${it.ic}</div>
-      <div class="ball-tx">${it.tx}</div>
+      <div class="ball-tx">${it.tx.replace('|', '<br>')}</div>
     </div>`;
   }).join('');
 }
@@ -225,7 +223,7 @@ let mrGoalListener = null;
 
 function getSelectedPinballItems() {
   const items = selBalls.map(i => ({
-    id: 'item-' + i, label: PINBALL_ITEMS[i].tx, type: 'reward', balls: 15
+    id: 'item-' + i, label: PINBALL_ITEMS[i].tx.replace('|', ' '), type: 'reward', balls: 15
   }));
   if (selPenPin !== null) {
     items.push({ id: 'pen-' + selPenPin, label: PENALTIES[selPenPin].text, type: 'penalty', balls: 15 });
