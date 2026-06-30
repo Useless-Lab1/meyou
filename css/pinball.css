@@ -326,31 +326,33 @@ body{
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
   animation:floatCard 3.6s ease-in-out infinite;
 }
-.ball-frame{
+.ball-frame-img{
   position:absolute; inset:0;
-  background-image:url('../assets/pinball/pb-circle-frame.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
+  width:100%; height:100%;
+  object-fit:contain;
   pointer-events:none;
-  transition:transform .22s cubic-bezier(.34,1.4,.64,1);
+  transition:transform .22s cubic-bezier(.34,1.4,.64,1), filter .22s;
 }
-.ball-card:hover .ball-frame{
+.ball-card:hover .ball-frame-img{
   transform:scale(1.06);
   filter:drop-shadow(0 4px 18px rgba(255,190,0,.45));
 }
 .ball-card.selected{
+  animation:none;
   z-index:2;
 }
-.ball-card.selected .ball-frame{
+.ball-card.selected .ball-frame-img{
   transform:scale(1.10);
+  filter:drop-shadow(0 6px 24px rgba(255,190,0,.65));
 }
 .ball-ic{
+  position:relative; z-index:1;
   font-size:clamp(18px,2.0vw,28px);
   filter:drop-shadow(0 2px 4px rgba(120,70,0,.15));
   line-height:1;
 }
 .ball-tx{
+  position:relative; z-index:1;
   font-size:clamp(12px,1.0vw,15px); font-weight:700;
   color:rgba(80,45,0,.88);
   font-family:'Cafe24 Ssurround',sans-serif;
