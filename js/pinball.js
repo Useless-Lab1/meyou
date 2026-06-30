@@ -157,17 +157,11 @@ let selPenPin = null;
 function renderBallGrid() {
   document.getElementById('pball-status').innerHTML =
     `<span>${selBalls.length}</span> / 3 선택됨`;
-  const delays = [0, 0.5, 1.0, 1.5, 0.25, 0.75, 1.25, 1.75, 0.4, 0.9, 1.4, 0.15, 0.65, 1.15, 1.65, 0.35, 0.85];
   document.getElementById('pball-grid').innerHTML = PINBALL_ITEMS.map((it, i) => {
-    const selIdx = selBalls.indexOf(i);
-    const isSel = selIdx > -1;
-    const delay = delays[i % delays.length];
-    return `<div class="ball-card${isSel ? ' selected' : ''}" onclick="toggleBall(${i})" style="animation-delay:${delay}s">
-      <img class="ball-frame-img" src="assets/pinball/pb-oval-frame.png" alt="">
-      <div class="ball-content">
-        <span class="ball-ic">${it.ic}</span>
-        <span class="ball-tx">${it.tx.replace('|', ' ')}</span>
-      </div>
+    const isSel = selBalls.indexOf(i) > -1;
+    return `<div class="ball-card${isSel ? ' selected' : ''}" onclick="toggleBall(${i})">
+      <span class="ball-ic">${it.ic}</span>
+      <span class="ball-tx">${it.tx.replace('|', ' ')}</span>
     </div>`;
   }).join('');
 }
