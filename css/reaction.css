@@ -104,7 +104,7 @@ body {
   color: #eeeaff;
   transition: background 0.5s, color 0.4s;
 }
-body[data-view="roast"] { background: #060408; color: #ccc6c0; }
+body[data-view="roast"] { background: transparent; color: #ccc6c0; overflow-y: auto; height: auto; }
 body[data-view="aegyo"] { background: #fff3f7; color: #3c1f2e; }
 body::after { display: none; }
 a { color: inherit; text-decoration: none; }
@@ -144,6 +144,7 @@ body[data-view="roast"] .tab.active { background: linear-gradient(135deg, #7a141
 body[data-view="aegyo"] .tab.active { background: linear-gradient(135deg, #ec6fab, #ffb8d6); box-shadow: 0 3px 14px rgba(236,111,171,0.36); }
 /* SECTIONS */
 .section { display: none; position: relative; z-index: 1; }
+#roast { padding-top: 62px; }
 .section.active { display: block; }
 /* HOME */
 .home-wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px 80px; }
@@ -176,19 +177,20 @@ body[data-view="aegyo"] .tab.active { background: linear-gradient(135deg, #ec6fa
 .choice-card-label span { font-size: 10.5px; color: rgba(255,255,255,0.65); letter-spacing: 0.04em; }
 /* SECTION HERO */
 .section-hero { display: grid; overflow: hidden; height: clamp(360px, 42vw, 560px); }
-.roast-hero { grid-template-columns: clamp(280px, 30%, 420px) 1fr; background: #060408; }
+.roast-hero { grid-template-columns: 1fr; background: transparent; overflow: visible; height: auto; padding: 52px 0; position: relative; }
 .aegyo-hero { grid-template-columns: 1fr clamp(280px, 30%, 420px); background: #fff3f7; }
 .section-hero-bg { display: none; }
 .section-hero-overlay { display: none; }
 .hero-text-col { display: flex; flex-direction: column; justify-content: center; padding: 0 48px; position: relative; z-index: 2; flex-shrink: 0; }
-.roast-hero .hero-text-col { background: #060408; order: 1; }
+.roast-hero .hero-text-col { background: transparent; order: 1; text-align: center; align-items: center; }
 .aegyo-hero .hero-text-col { background: #fff3f7; text-align: right; align-items: flex-end; order: 2; }
 .hero-img-col { position: relative; overflow: hidden; min-width: 0; display: flex; align-items: center; justify-content: center; }
-.roast-hero .hero-img-col { order: 2; background: #060408; }
+.roast-hero .hero-img-col { position: absolute; bottom: 100%; right: 10%; width: clamp(200px, 24vw, 340px); height: clamp(300px, 40vw, 520px); overflow: visible; background: transparent; order: 2; }
 .aegyo-hero .hero-img-col { order: 1; background: #fff3f7; }
 .hero-img-col img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); }
+.roast-hero .hero-img-col img { -webkit-mask-image: none; mask-image: none; }
 .hero-img-col::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
-.roast-hero .hero-img-col::after { background: linear-gradient(90deg, #060408 0%, rgba(6,4,8,0.55) 12%, transparent 30%, transparent 70%, rgba(6,4,8,0.4) 88%, #060408 100%); }
+.roast-hero .hero-img-col::after { display: none; }
 
 .aegyo-hero .hero-img-col::before { display: none; }
 .aegyo-hero .hero-img-col::after { background: linear-gradient(90deg, #fff3f7 0%, rgba(255,243,247,0.55) 12%, transparent 30%, transparent 70%, rgba(255,243,247,0.4) 88%, #fff3f7 100%); }
@@ -197,7 +199,7 @@ body[data-view="aegyo"] .tab.active { background: linear-gradient(135deg, #ec6fa
 .roast-hero .hero-eyebrow { color: rgba(160,100,100,0.52); }
 .aegyo-hero .hero-eyebrow { color: rgba(220,100,160,0.52); }
 .hero-title { font-family: 'Gowun Batang', serif; font-size: clamp(40px, 5.5vw, 68px); font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 12px; }
-.roast-hero .hero-title { color: #e4dcd4; }
+.roast-hero .hero-title { color: #e4dcd4; white-space: nowrap; font-size: clamp(28px, 3.8vw, 54px); }
 .aegyo-hero .hero-title { color: #3c1f2e; }
 .hero-title em { font-style: normal; opacity: 0.44; }
 .hero-sub { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
