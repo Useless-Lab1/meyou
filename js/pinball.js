@@ -46,7 +46,7 @@ let PINBALL_ITEMS = [
   {ic:'🌅',tx:'굿모닝/굿나잇|음메 3분',balls:15},
   {ic:'🎵',tx:'애교송',balls:15},
   {ic:'💬',tx:'애교대사',balls:15},
-  {ic:'💋',tx:'메도먼트',balls:15},
+  {ic:'💋',tx:'매도멘트',balls:15},
   {ic:'🔥',tx:'역팬5or꽝쉴드1일',balls:15}
 ];
 
@@ -159,7 +159,11 @@ function renderBallGrid() {
     `<span>${selBalls.length}</span> / 3 선택됨`;
   document.getElementById('pball-grid').innerHTML = PINBALL_ITEMS.map((it, i) => {
     const isSel = selBalls.indexOf(i) > -1;
-    return `<div class="ball-card${isSel ? ' selected' : ''}" onclick="toggleBall(${i})">
+    return `<div class="ball-card${isSel ? ' selected' : ''}" data-col="${i % 4}" onclick="toggleBall(${i})">
+      <img class="card-corner card-corner-tl" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="card-corner card-corner-tr" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="card-corner card-corner-bl" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="card-corner card-corner-br" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
       <span class="ball-ic">${it.ic}</span>
       <span class="ball-tx">${it.tx.replace('|', ' ')}</span>
     </div>`;
@@ -168,7 +172,11 @@ function renderBallGrid() {
 
 function renderPenList() {
   document.getElementById('pen-list').innerHTML = PENALTIES.map((p, i) => `
-    <div class="pen-item${selPenPin === i ? ' selected' : ''}" onclick="togglePenPin(${i})">
+    <div class="pen-item${selPenPin === i ? ' selected' : ''}" data-col="${i % 4}" onclick="togglePenPin(${i})">
+      <img class="card-corner card-corner-tl" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="card-corner card-corner-tr" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="card-corner card-corner-bl" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="card-corner card-corner-br" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
       <span class="p-icon">${p.icon}</span>${p.text}
     </div>
   `).join('');
