@@ -322,6 +322,8 @@ function buildNaverLadder(){
   renderNlItems();
   drawLadder(null);
   document.getElementById('nl-board-cover').style.display = 'flex';
+  const _charImg0 = document.querySelector('.board-char-img');
+  if(_charImg0) _charImg0.style.display = '';
 }
 
 function renderNlNumbers(){
@@ -356,6 +358,8 @@ function nlToggleBoardBlur(){
   if(nlAnimating) return;
   nlBoardBlurOn = !nlBoardBlurOn;
   document.getElementById('nl-board-cover').style.display = nlBoardBlurOn ? 'flex' : 'none';
+  const _charImg = document.querySelector('.board-char-img');
+  if(_charImg) _charImg.style.display = nlBoardBlurOn ? '' : 'none';
 }
 
 function nlToggleItemsBlur(){
@@ -387,8 +391,10 @@ function drawLadder(pathUpTo, pathPositions){
   const PW = parent.clientWidth || 600;
   const { n, ROWS } = nlData;
   const H = Math.min(320, Math.max(200, Math.round(PW * 0.55)));
-  canvas.width = PW;
-  canvas.height = H;
+  if(canvas.width !== PW || canvas.height !== H){
+    canvas.width = PW;
+    canvas.height = H;
+  }
 
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0,0,PW,H);
@@ -469,9 +475,12 @@ function nlPlay(){
   nlBoardBlurOn = false;
   nlItemsBlurOn = false;
   document.getElementById('nl-board-cover').style.display = 'none';
+  const _playChar = document.querySelector('.board-char-img');
+  if(_playChar) _playChar.style.display = 'none';
   document.getElementById('nl-items-blur-hint').style.display = 'none';
   document.querySelectorAll('.nl-item').forEach(el => el.classList.remove('blur-on'));
 
+  drawLadder(null, null);
   const pts = calcPathPoints();
 
   const SAMPLE_STEP = 2;

@@ -168,7 +168,7 @@ body{
 }
 .pball-modal-shell{
   position:relative; z-index:1;
-  width:94vw; max-width:1020px; height:88vh;
+  width:96vw; max-width:1160px; height:88vh;
   background:linear-gradient(160deg,rgba(255,253,230,.97) 0%,rgba(255,246,190,.97) 100%);
   border:2px solid rgba(255,200,50,.5);
   border-radius:22px;
@@ -338,13 +338,13 @@ body{
   z-index:2;
 }
 .ball-card.selected::after{
-  content:'✓';
-  position:absolute; top:14%; right:14%;
-  width:22px; height:22px; border-radius:50%;
+  content:'★';
+  position:absolute; top:10%; right:10%;
+  width:28px; height:28px; border-radius:50%;
   background:linear-gradient(135deg,#FFD60A,#FF8C00);
-  color:#4A2800; font-size:11px; font-weight:700;
+  color:#4A2800; font-size:15px; font-weight:700;
   display:flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 8px rgba(255,180,0,.55);
+  box-shadow:0 2px 12px rgba(255,180,0,.7);
 }
 .ball-n{
   position:absolute; top:20%; left:50%; transform:translateX(-50%);
