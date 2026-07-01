@@ -141,6 +141,7 @@ let nlItemsBlurOn = true;
 let nlAnimating = false;
 let nlRafId = null;
 let nlResultTimeout = null;
+let nlGen = 0; // 세대 번호: buildNaverLadder마다 증가, 이전 콜백 무효화용
 
 // ════ TIER CARDS ════
 function makeTierCard(t, i){
@@ -320,6 +321,7 @@ function buildNaverLadder(){
     mapping[start] = pos;
   }
 
+  nlGen++; // 이전 step/setTimeout 콜백 무효화
   nlData = { n, items: shuffled, conns, ROWS, mapping, myPos: null };
   nlBoardBlurOn = true;
   nlItemsBlurOn = true;
@@ -506,8 +508,10 @@ function nlPlay(){
   const SPEED = 480;
   const DURATION = (total * SAMPLE_STEP / SPEED) * 1000;
   const start = performance.now();
+  const myGen = nlGen; // 이 실행의 세대 번호 캡처
 
   function step(now){
+    if(myGen !== nlGen){ nlAnimating = false; return; } // 세대 불일치 → 무효 콜백
     const elapsed = now - start;
     const progress = Math.min(elapsed / DURATION, 1);
     const idx = Math.floor(progress * total);
@@ -516,7 +520,10 @@ function nlPlay(){
     else {
       drawLadder(total, sampled);
       const winPos = nlData.mapping[nlData.myPos];
-      nlResultTimeout = setTimeout(() => showNlResult(winPos), 1000);
+      nlResultTimeout = setTimeout(() => {
+        if(myGen !== nlGen) return; // 세대 불일치 → 무효
+        showNlResult(winPos);
+      }, 1000);
     }
   }
   nlRafId = requestAnimationFrame(step);
