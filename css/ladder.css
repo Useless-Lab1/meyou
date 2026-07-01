@@ -475,7 +475,23 @@ body{ background: #b8d8f0; }
   display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 12px; margin-bottom: 20px;
 }
+.chip-corner {
+  position: absolute;
+  width: 22px; height: auto;
+  pointer-events: none;
+  opacity: 0.55;
+  filter: drop-shadow(0 1px 3px rgba(200,140,0,.2));
+  transition: opacity .2s, filter .2s;
+}
+.chip-corner-tl { top: -4px; left: -4px; }
+.chip-corner-tr { top: -4px; right: -4px; transform: scaleX(-1); }
+.chip-corner-bl { bottom: -4px; left: -4px; transform: scaleY(-1); }
+.chip-corner-br { bottom: -4px; right: -4px; transform: scale(-1,-1); }
+.item-chip.selected .chip-corner,
+.penalty-chip.selected .chip-corner { opacity: 0.9; filter: brightness(1.4) drop-shadow(0 1px 5px rgba(255,180,0,.5)); }
+
 .item-chip {
+  position: relative;
   min-height: 46px; padding: 11px 16px;
   display: flex; align-items: center; justify-content: center; text-align: center;
   border-radius: 14px; border: 1.5px solid rgba(200,150,30,.28);
@@ -500,6 +516,7 @@ body{ background: #b8d8f0; }
   gap: 12px; margin-bottom: 20px;
 }
 .penalty-chip {
+  position: relative;
   min-height: 46px; padding: 11px 14px;
   display: flex; align-items: center; justify-content: center; text-align: center;
   border-radius: 14px; border: 1.5px solid rgba(200,150,30,.28);
