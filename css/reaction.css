@@ -193,9 +193,9 @@ body[data-view="aegyo"] .tab.active { background: linear-gradient(135deg, #ec6fa
 .hero-img-col img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%); }
 .hero-img-col::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
 .roast-char-anchor { position: relative; height: 0; overflow: visible; }
-.roast-char-img { position: absolute; bottom: -18px; right: 16%; width: clamp(220px, 26vw, 380px); height: clamp(320px, 42vw, 560px); object-fit: contain; object-position: center bottom; display: block; pointer-events: none; z-index: 5; }
+.roast-char-img { position: absolute; bottom: -18px; right: 36%; width: clamp(220px, 26vw, 380px); height: clamp(320px, 42vw, 560px); object-fit: contain; object-position: center bottom; display: block; pointer-events: none; z-index: 5; }
 .aegyo-char-anchor { position: relative; height: 0; overflow: visible; }
-.aegyo-char-img { position: absolute; bottom: -18px; right: 16%; width: clamp(220px, 26vw, 380px); height: clamp(320px, 42vw, 560px); object-fit: contain; object-position: center bottom; display: block; pointer-events: none; z-index: 5; }
+.aegyo-char-img { position: absolute; bottom: -18px; right: 36%; width: clamp(220px, 26vw, 380px); height: clamp(320px, 42vw, 560px); object-fit: contain; object-position: center bottom; display: block; pointer-events: none; z-index: 5; }
 
 .aegyo-hero .hero-img-col::before { display: none; }
 .aegyo-hero .hero-img-col::after { background: linear-gradient(90deg, #fff3f7 0%, rgba(255,243,247,0.55) 12%, transparent 30%, transparent 70%, rgba(255,243,247,0.4) 88%, #fff3f7 100%); }
