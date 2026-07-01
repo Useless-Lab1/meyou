@@ -251,7 +251,7 @@ function renderItems(){
   document.getElementById('items-grid').innerHTML = t.items.map((it,i) => `
     <div class="item-chip${selItems.includes(i)?' selected':''}" onclick="toggleItem(${i})">${CHIP_CORNER}${it}</div>
   `).join('');
-  document.getElementById('btn-to-penalty').disabled = selItems.length < t.pick;
+  document.getElementById('btn-to-penalty').disabled = selItems.length < 1;
 }
 
 function toggleItem(i){
@@ -272,7 +272,7 @@ function renderPenalties(){
   document.getElementById('penalty-grid').innerHTML = PENALTIES.map((p,i) => `
     <div class="penalty-chip${selPenalties.includes(i)?' selected':''}" onclick="togglePenalty(${i})">${CHIP_CORNER}${p.icon} ${p.text}</div>
   `).join('');
-  document.getElementById('btn-to-ladder').disabled = selPenalties.length < t.penPick;
+  document.getElementById('btn-to-ladder').disabled = false;
 }
 
 function togglePenalty(i){
@@ -537,7 +537,12 @@ function showNlResult(winPos){
 
   document.getElementById('nl-win-num').textContent = (myPos+1) + '번';
   document.getElementById('nl-congrats-sub').textContent = (myPos+1) + '번의 당첨 상품';
-  document.getElementById('nl-win-item').innerHTML = winItem;
+  const _winEl = document.getElementById('nl-win-item');
+  _winEl.innerHTML = '';
+  winItem.split('<br>').forEach((part, i) => {
+    if (i > 0) _winEl.appendChild(document.createElement('br'));
+    _winEl.appendChild(document.createTextNode(part));
+  });
 
   document.getElementById('nl-all-results').innerHTML = Array.from({length:n},(_,i)=>`
     <div class="nl-result-row${i===myPos?' rr-mine':''}">
