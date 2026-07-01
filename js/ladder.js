@@ -537,7 +537,7 @@ function showNlResult(winPos){
 
   document.getElementById('nl-win-num').textContent = (myPos+1) + '번';
   document.getElementById('nl-congrats-sub').textContent = (myPos+1) + '번의 당첨 상품';
-  document.getElementById('nl-win-item').textContent = winItem;
+  document.getElementById('nl-win-item').innerHTML = winItem;
 
   document.getElementById('nl-all-results').innerHTML = Array.from({length:n},(_,i)=>`
     <div class="nl-result-row${i===myPos?' rr-mine':''}">
