@@ -237,7 +237,7 @@ body{ background: #b8d8f0; }
   font-family: 'Jalnan', 'Noto Sans KR', sans-serif;
   font-size: clamp(12px, 1.02vw, 15px);
   font-weight: normal;
-  font-style: normal;
+  font-style: italic;
   color: rgba(75, 38, 2, 0.96);
   line-height: 1.22;
   word-break: keep-all;
@@ -300,6 +300,7 @@ body{ background: #b8d8f0; }
   font-family: 'Jalnan', 'Noto Sans KR', sans-serif;
   font-size: clamp(12px, 1.02vw, 15.5px);
   font-weight: normal;
+  font-style: italic;
   color: rgba(60, 28, 0, 1);
   text-align: center;
   line-height: 1.75;
@@ -481,7 +482,7 @@ body{ background: #b8d8f0; }
   background: rgba(255,244,200,.55);
   cursor: pointer;
   font-family: 'Jalnan', 'Noto Sans KR', sans-serif;
-  font-size: 13px; font-weight: normal; color: rgba(100,52,8,1);
+  font-size: 13px; font-weight: normal; font-style: italic; color: rgba(100,52,8,1);
   transition: all .18s; line-height: 1.4;
 }
 .item-chip:hover {
