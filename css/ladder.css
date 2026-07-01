@@ -480,8 +480,8 @@ body{ background: #b8d8f0; }
   border-radius: 14px; border: 1.5px solid rgba(200,150,30,.28);
   background: rgba(255,244,200,.55);
   cursor: pointer;
-  font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif;
-  font-size: 13px; font-weight: 700; color: rgba(100,52,8,.75);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px; font-weight: 700; color: rgba(100,52,8,1);
   transition: all .18s; line-height: 1.4;
 }
 .item-chip:hover {
@@ -504,8 +504,8 @@ body{ background: #b8d8f0; }
   border-radius: 14px; border: 1.5px solid rgba(200,150,30,.28);
   background: rgba(255,244,200,.55);
   cursor: pointer;
-  font-family: 'Cafe24 Ssurround', 'Noto Sans KR', sans-serif;
-  font-size: 13px; font-weight: 700; color: rgba(100,52,8,.75);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px; font-weight: 700; color: rgba(100,52,8,1);
   transition: all .18s;
 }
 .penalty-chip:hover {
