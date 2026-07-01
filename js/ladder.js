@@ -18,6 +18,8 @@ const TIERS = [
   }
 ];
 
+const CHIP_CORNER = `<img class="chip-corner chip-corner-tl" src="assets/ladder/vine-corner.png" aria-hidden="true"><img class="chip-corner chip-corner-tr" src="assets/ladder/vine-corner.png" aria-hidden="true"><img class="chip-corner chip-corner-bl" src="assets/ladder/vine-corner.png" aria-hidden="true"><img class="chip-corner chip-corner-br" src="assets/ladder/vine-corner.png" aria-hidden="true">`;
+
 const PENALTIES = [
   {icon:'🏷️',text:'구독닉 변경'},
   {icon:'🛡️',text:'3일 뮤지킴이<br>(실패시 벌칙)'},
@@ -246,9 +248,8 @@ function goToStep(step){
 function renderItems(){
   const t = TIERS[currentTier];
   document.getElementById('items-status').innerHTML = `<span>${selItems.length}</span> / ${t.pick} 선택`;
-  const CORNER = `<img class="chip-corner chip-corner-tl" src="assets/ladder/vine-corner.png" aria-hidden="true"><img class="chip-corner chip-corner-tr" src="assets/ladder/vine-corner.png" aria-hidden="true"><img class="chip-corner chip-corner-bl" src="assets/ladder/vine-corner.png" aria-hidden="true"><img class="chip-corner chip-corner-br" src="assets/ladder/vine-corner.png" aria-hidden="true">`;
   document.getElementById('items-grid').innerHTML = t.items.map((it,i) => `
-    <div class="item-chip${selItems.includes(i)?' selected':''}" onclick="toggleItem(${i})">${CORNER}${it}</div>
+    <div class="item-chip${selItems.includes(i)?' selected':''}" onclick="toggleItem(${i})">${CHIP_CORNER}${it}</div>
   `).join('');
   document.getElementById('btn-to-penalty').disabled = selItems.length < t.pick;
 }
@@ -269,7 +270,7 @@ function renderPenalties(){
   }
   document.getElementById('penalty-status').innerHTML = `<span>${selPenalties.length}</span> / ${t.penPick} 선택`;
   document.getElementById('penalty-grid').innerHTML = PENALTIES.map((p,i) => `
-    <div class="penalty-chip${selPenalties.includes(i)?' selected':''}" onclick="togglePenalty(${i})">${CORNER}${p.icon} ${p.text}</div>
+    <div class="penalty-chip${selPenalties.includes(i)?' selected':''}" onclick="togglePenalty(${i})">${CHIP_CORNER}${p.icon} ${p.text}</div>
   `).join('');
   document.getElementById('btn-to-ladder').disabled = selPenalties.length < t.penPick;
 }
