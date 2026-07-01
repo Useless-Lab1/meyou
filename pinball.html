@@ -137,6 +137,21 @@
     </div>
     <div class="marble-modal-body">
       <div class="marble-roulette-frame">
+        <!-- ══ MARBLE RESULT OVERLAY ══ -->
+        <div class="mr-overlay" id="mr-overlay" style="display:none;" onclick="closeMrOverlay()">
+          <div class="mr-overlay-wrap" onclick="event.stopPropagation()">
+            <img class="mr-overlay-char" src="assets/ladder/result-win-character.png" alt="">
+            <div class="mr-overlay-box">
+              <div class="mr-overlay-confetti" id="mr-overlay-confetti"></div>
+              <div class="mr-overlay-congrats">🎉 당첨!</div>
+              <div class="mr-overlay-prize-wrap">
+                <img class="mr-overlay-frame" src="assets/ladder/result-prize-frame.png" alt="" aria-hidden="true">
+                <div class="mr-overlay-name" id="mr-overlay-name">—</div>
+              </div>
+              <button class="mr-overlay-close" onclick="closeMrOverlay()">✕ 닫기</button>
+            </div>
+          </div>
+        </div>
         <div class="marble-roulette-host" id="marble-roulette-canvas-host"></div>
       </div>
       <div class="marble-settings-panel">

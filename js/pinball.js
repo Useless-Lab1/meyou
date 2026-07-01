@@ -228,7 +228,7 @@ let mrGoalListener = null;
 
 function getSelectedPinballItems() {
   const items = selBalls.map(i => ({
-    id: 'item-' + i, label: PINBALL_ITEMS[i].tx.replace('|', ' '), type: 'reward', balls: 15
+    id: 'item-' + i, label: PINBALL_ITEMS[i].tx.replace('|', ' '), tx: PINBALL_ITEMS[i].tx, type: 'reward', balls: 15
   }));
   if (selPenPin !== null) {
     items.push({ id: 'pen-' + selPenPin, label: PENALTIES[selPenPin].text, type: 'penalty', balls: 15 });
@@ -384,11 +384,32 @@ function resetMarbleRoulette() {
 }
 
 function handleMarbleResult(winnerName) {
+  const normalized = winnerName.replace(/／/g, '/');
+  const item = mrItems.find(it => it.label === normalized);
+  const displayHtml = item && item.tx
+    ? item.tx.replace(/\//g, '／').replace('|', '<br>')
+    : winnerName;
+
   document.getElementById('marble-result-panel').innerHTML = `
     <div class="mr-result">
       <div class="mr-result-label">🎉 당첨!</div>
-      <div class="mr-result-name">${winnerName}</div>
+      <div class="mr-result-name">${displayHtml}</div>
     </div>`;
+
+  const overlay = document.getElementById('mr-overlay');
+  document.getElementById('mr-overlay-name').innerHTML = displayHtml;
+  const confetti = document.getElementById('mr-overlay-confetti');
+  confetti.innerHTML = '';
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.style.cssText = `position:absolute;width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:2px;background:hsl(${Math.random()*60+30},100%,55%);left:${Math.random()*100}%;top:${-10-Math.random()*20}%;animation:mr-confetti-fall ${1.2+Math.random()*1.2}s ${Math.random()*0.5}s ease-in forwards;`;
+    confetti.appendChild(s);
+  }
+  overlay.style.display = 'flex';
+}
+
+function closeMrOverlay() {
+  document.getElementById('mr-overlay').style.display = 'none';
 }
 
 // ──────────────────────── UTILS ────────────────────────

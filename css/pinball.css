@@ -438,6 +438,67 @@ body{
   50%{ transform:translateY(-7px); }
 }
 
+/* ════ MARBLE RESULT OVERLAY ════ */
+.mr-overlay{
+  position:absolute;inset:0;z-index:20;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(6,3,0,.80);
+  animation:mr-ov-in .3s ease;
+  border-radius:inherit;
+}
+@keyframes mr-ov-in{from{opacity:0;}to{opacity:1;}}
+.mr-overlay-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;
+}
+.mr-overlay-char{
+  width:clamp(120px,15vw,180px);height:auto;
+  object-fit:contain;flex-shrink:0;
+  position:relative;z-index:2;
+  margin-bottom:-60px;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,.5));
+  animation:mr-pop .45s .05s cubic-bezier(.34,1.56,.64,1) both;
+}
+.mr-overlay-box{
+  position:relative;
+  background:linear-gradient(160deg,rgba(28,16,2,.97),rgba(18,10,1,.97));
+  border:1.5px solid rgba(255,200,50,.25);
+  border-radius:20px;
+  padding:70px 36px 28px;
+  min-width:240px;max-width:300px;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  box-shadow:0 24px 80px rgba(0,0,0,.6),0 0 60px rgba(255,180,0,.08);
+}
+.mr-overlay-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:20px;}
+.mr-overlay-congrats{
+  font-family:'Gowun Batang',serif;font-size:22px;font-weight:700;
+  color:rgba(255,220,100,.95);letter-spacing:3px;
+  text-shadow:0 0 20px rgba(255,200,60,.5);
+}
+.mr-overlay-prize-wrap{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  width:100%;
+}
+.mr-overlay-frame{width:100%;max-width:260px;height:auto;display:block;}
+.mr-overlay-name{
+  position:absolute;
+  font-family:'Gowun Batang',serif;font-size:clamp(13px,1.5vw,18px);font-weight:700;
+  color:#4A2800;letter-spacing:1px;word-break:keep-all;text-align:center;
+  padding:0 24px;line-height:1.35;
+  animation:mr-pop .5s cubic-bezier(.34,1.56,.64,1);
+}
+.mr-overlay-close{
+  margin-top:4px;padding:9px 28px;border-radius:30px;
+  background:rgba(255,200,40,.12);border:1px solid rgba(255,200,40,.25);
+  color:rgba(255,220,100,.7);font-size:13px;cursor:pointer;
+  font-family:'Cafe24 Ssurround',sans-serif;font-weight:700;letter-spacing:1px;
+  transition:background .2s;
+}
+.mr-overlay-close:hover{background:rgba(255,200,40,.22);}
+@keyframes mr-confetti-fall{
+  to{transform:translateY(420px) rotate(360deg);opacity:0;}
+}
+
 /* ════ MARBLE ROULETTE MODAL (Step 3) ════ */
 .marble-modal{
   position:fixed;inset:0;z-index:2000;
