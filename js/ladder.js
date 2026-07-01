@@ -140,6 +140,7 @@ let nlBoardBlurOn = true;
 let nlItemsBlurOn = true;
 let nlAnimating = false;
 let nlRafId = null;
+let nlResultTimeout = null;
 
 // ════ TIER CARDS ════
 function makeTierCard(t, i){
@@ -218,6 +219,8 @@ function closeTierModal(){
   document.getElementById('tier-modal').style.display = 'none';
   document.getElementById('nl-result-overlay').style.display = 'none';
   if(nlRafId){ cancelAnimationFrame(nlRafId); nlRafId = null; }
+  if(nlResultTimeout){ clearTimeout(nlResultTimeout); nlResultTimeout = null; }
+  nlAnimating = false;
 }
 
 function handleModalBgClick(e){
@@ -280,6 +283,11 @@ function clearPenalties(){ selPenalties=[]; renderPenalties(); }
 
 // ════ NAVER LADDER ════
 function buildNaverLadder(){
+  // 이전 실행 잔여 애니메이션·타이머 무조건 정리
+  if(nlRafId){ cancelAnimationFrame(nlRafId); nlRafId = null; }
+  if(nlResultTimeout){ clearTimeout(nlResultTimeout); nlResultTimeout = null; }
+  nlAnimating = false;
+
   const t = TIERS[currentTier];
   const rawItems = selItems.map(i => t.items[i]);
   const rawPens  = selPenalties.map(i => PENALTIES[i].text);
@@ -508,7 +516,7 @@ function nlPlay(){
     else {
       drawLadder(total, sampled);
       const winPos = nlData.mapping[nlData.myPos];
-      setTimeout(() => showNlResult(winPos), 1000);
+      nlResultTimeout = setTimeout(() => showNlResult(winPos), 1000);
     }
   }
   nlRafId = requestAnimationFrame(step);
@@ -564,6 +572,7 @@ function spawnConfetti(){
 function nlReset(){
   document.getElementById('nl-result-overlay').style.display = 'none';
   if(nlRafId){ cancelAnimationFrame(nlRafId); nlRafId = null; }
+  if(nlResultTimeout){ clearTimeout(nlResultTimeout); nlResultTimeout = null; }
   nlAnimating = false;
   buildNaverLadder();
 }
