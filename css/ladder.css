@@ -234,10 +234,10 @@ body{ background: #b8d8f0; }
 }
 .tier-item-row:last-child { border-bottom: none; }
 .tier-item-text {
-  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif;
+  font-family: 'Jalnan2', 'Noto Sans KR', sans-serif;
   font-size: clamp(12px, 1.02vw, 15px);
-  font-weight: 700;
-  font-style: italic;
+  font-weight: normal;
+  font-style: normal;
   color: rgba(75, 38, 2, 0.96);
   line-height: 1.22;
   word-break: keep-all;
@@ -297,9 +297,9 @@ body{ background: #b8d8f0; }
 
 /* 벌칙 인라인 텍스트 (· 구분) */
 .penalty-inline-text {
-  font-family: 'Cafe24 Ssurround', 'Gowun Batang', serif;
+  font-family: 'Jalnan2', 'Noto Sans KR', sans-serif;
   font-size: clamp(12px, 1.02vw, 15.5px);
-  font-weight: 700;
+  font-weight: normal;
   color: rgba(60, 28, 0, 1);
   text-align: center;
   line-height: 1.75;
