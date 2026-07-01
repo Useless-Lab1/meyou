@@ -320,7 +320,10 @@ function waitAndInjectMarbles() {
 function updateRouletteInputFromItems() {
   const names = mrItems
     .filter(it => it.balls > 0)
-    .map(it => it.balls > 1 ? `${it.label}*${it.balls}` : it.label);
+    .map(it => {
+      const label = it.label.replace(/\//g, '／');
+      return it.balls > 1 ? `${label}*${it.balls}` : label;
+    });
   if (!names.length) return;
   window.roulette.setMarbles(names);
   const total = window.roulette.getCount();
@@ -362,6 +365,15 @@ function startMarbleRoulette() {
   if (window.options) window.options.winningRank = rank;
   window.roulette.start();
   document.getElementById('marble-result-panel').innerHTML = '';
+}
+
+function shuffleMarbles() {
+  for (let i = mrItems.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [mrItems[i], mrItems[j]] = [mrItems[j], mrItems[i]];
+  }
+  renderMarbleSettings();
+  waitAndInjectMarbles();
 }
 
 function resetMarbleRoulette() {

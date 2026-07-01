@@ -540,9 +540,10 @@ body{
   background:linear-gradient(135deg,rgba(255,210,40,.28),rgba(255,170,20,.18));
   border-color:rgba(255,200,40,.5);color:rgba(255,230,100,.95);
 }
-.msp-actions{display:flex;gap:8px;}
+.msp-actions{display:flex;gap:6px;}
+.msp-actions>*{flex:1;text-align:center;}
 .msp-actions .btn-primary{
-  flex:1;padding:11px 10px;font-size:13px;
+  padding:10px 6px;font-size:12px;
   background:linear-gradient(135deg,#FFD60A,#FFA800);
   color:#4A2800;border:none;border-radius:10px;cursor:pointer;font-weight:700;
   box-shadow:0 4px 14px rgba(255,180,0,.35);transition:all .2s;
@@ -551,7 +552,13 @@ body{
   background:linear-gradient(135deg,#FFE040,#FFB820);
   box-shadow:0 6px 18px rgba(255,180,0,.5);
 }
-.msp-actions .pb-ghost-btn{flex-shrink:0;}
+.msp-actions .pb-ghost-btn{
+  padding:10px 6px;font-size:12px;
+  background:rgba(255,200,40,.08);border:1px solid rgba(255,200,40,.12);
+  border-radius:8px;color:rgba(255,200,80,.75);
+  font-family:'Cafe24 Ssurround',sans-serif;
+}
+.msp-actions .pb-ghost-btn:hover{background:rgba(255,200,40,.2);}
 .marble-result-panel{
   flex:1;display:flex;align-items:center;justify-content:center;min-height:60px;
 }
