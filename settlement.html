@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>월말정산 — MEYOU RADIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/settlement.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- 하단 섹션 점 네비 -->
+<div class="s-nav">
+  <div class="s-nav-dot" onclick="goTo(0)" title="인트로"></div>
+  <div class="s-nav-dot" onclick="goTo(1)" title="참여시간"></div>
+  <div class="s-nav-dot" onclick="goTo(2)" title="채팅수"></div>
+  <div class="s-nav-dot" onclick="goTo(3)" title="금칙어"></div>
+  <div class="s-nav-dot" onclick="goTo(4)" title="채팅금지"></div>
+  <div class="s-nav-dot" onclick="goTo(5)" title="후원"></div>
+</div>
+
+<!-- ════════ 0. 인트로 ════════ -->
+<section class="s-section" id="s-intro">
+  <div class="intro-emblem">🏆</div>
+  <div class="intro-label">MEYOU RADIO</div>
+  <div class="intro-line"></div>
+  <div class="intro-year-title" id="intro-year-title">2025년 6월</div>
+  <div class="intro-sub">월말정산</div>
+  <div class="intro-line"></div>
+  <button class="s-btn" onclick="goTo(1)">✨ 시작하기</button>
+</section>
+
+<!-- ════════ 1. 참여시간 ════════ -->
+<section class="s-section" id="s-watch">
+  <div class="s-cat-header">
+    <div class="s-cat-label">CATEGORY 1</div>
+    <div class="s-cat-title">🕐 방송 참여시간</div>
+    <div class="s-cat-divider"></div>
+  </div>
+  <div class="s-list-stack" id="watch-list"></div>
+  <div class="s-footer">
+    <button class="s-btn-ghost" onclick="goTo(0)">← 뒤로</button>
+    <button class="s-btn" onclick="goTo(2)">다음 →</button>
+  </div>
+</section>
+
+<!-- ════════ 2. 채팅수 ════════ -->
+<section class="s-section" id="s-chat">
+  <div class="s-cat-header">
+    <div class="s-cat-label">CATEGORY 2</div>
+    <div class="s-cat-title">💬 채팅수</div>
+    <div class="s-cat-divider"></div>
+  </div>
+  <div class="s-list-stack" id="chat-list"></div>
+  <div class="s-footer">
+    <button class="s-btn-ghost" onclick="goTo(1)">← 뒤로</button>
+    <button class="s-btn" onclick="goTo(3)">다음 →</button>
+  </div>
+</section>
+
+<!-- ════════ 3. 금칙어 ════════ -->
+<section class="s-section" id="s-badword">
+  <div class="s-cat-header">
+    <div class="s-cat-label">CATEGORY 3</div>
+    <div class="s-cat-title">🚫 금칙어 사용횟수</div>
+    <div class="s-cat-divider"></div>
+  </div>
+  <div class="s-quiz-stack" id="badword-quiz"></div>
+  <div class="s-footer">
+    <button class="s-btn-ghost" onclick="goTo(2)">← 뒤로</button>
+    <button class="s-btn" onclick="goTo(4)">다음 →</button>
+  </div>
+</section>
+
+<!-- ════════ 4. 채팅금지 ════════ -->
+<section class="s-section" id="s-ban">
+  <div class="s-cat-header">
+    <div class="s-cat-label">CATEGORY 4</div>
+    <div class="s-cat-title">🔇 채팅금지 횟수</div>
+    <div class="s-cat-divider"></div>
+  </div>
+  <div class="s-quiz-stack" id="ban-quiz"></div>
+  <div class="s-footer">
+    <button class="s-btn-ghost" onclick="goTo(3)">← 뒤로</button>
+    <button class="s-btn" onclick="goTo(5)">다음 →</button>
+  </div>
+</section>
+
+<!-- ════════ 5. 후원 시상 ════════ -->
+<section class="s-section" id="s-donation">
+  <div class="award-title-wrap">
+    <div class="s-cat-label">MAIN EVENT</div>
+    <div class="award-main-title">🏆 후원 시상식</div>
+    <div class="award-sub">이달의 후원왕</div>
+  </div>
+
+  <!-- 시상대 카드 -->
+  <div class="award-stage">
+    <!-- 3등 슬롯 -->
+    <div class="award-slot award-slot-3">
+      <div class="award-card" id="award-card-3">
+        <div class="award-gif-ring">
+          <img class="award-gif" src="" alt="3등">
+        </div>
+        <div class="award-name">─</div>
+        <div class="award-rank-badge">🥉 3등</div>
+      </div>
+    </div>
+
+    <!-- 1등 슬롯 (가운데) -->
+    <div class="award-slot award-slot-1">
+      <div class="award-card" id="award-card-1">
+        <div class="award-crown">👑</div>
+        <div class="award-gif-ring">
+          <img class="award-gif" src="" alt="1등">
+        </div>
+        <div class="award-name">─</div>
+        <div class="award-rank-badge">🥇 1등</div>
+      </div>
+    </div>
+
+    <!-- 2등 슬롯 -->
+    <div class="award-slot award-slot-2">
+      <div class="award-card" id="award-card-2">
+        <div class="award-gif-ring">
+          <img class="award-gif" src="" alt="2등">
+        </div>
+        <div class="award-name">─</div>
+        <div class="award-rank-badge">🥈 2등</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 시상대 블록 -->
+  <div class="podium-wrap">
+    <div class="podium-block pd-3"></div>
+    <div class="podium-block pd-1"></div>
+    <div class="podium-block pd-2"></div>
+  </div>
+
+  <div class="award-btns">
+    <button class="s-btn-ghost" onclick="goTo(4)">← 뒤로</button>
+    <button class="s-btn" id="award-btn" onclick="revealNextAward()">🥉 3등 공개!</button>
+  </div>
+</section>
+
+<script src="js/settlement-data.js"></script>
+<script src="js/settlement.js"></script>
+</body>
+</html>
