@@ -387,6 +387,7 @@ body{
   text-align:center;
   width:100%;
 }
+.ball-tx.tx-shift{padding-left:3%;}
 
 /* ════ PEN GRID ════ */
 .pen-grid{

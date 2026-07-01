@@ -165,7 +165,7 @@ function renderBallGrid() {
       <img class="card-corner card-corner-bl" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
       <img class="card-corner card-corner-br" src="assets/pinball/pb-corner.png" aria-hidden="true" onerror="this.style.display='none'">
       <span class="ball-ic">${it.ic}</span>
-      <span class="ball-tx">${it.tx.replace('|', ' ')}</span>
+      <span class="ball-tx${it.tx.includes('|') ? ' tx-shift' : ''}">${it.tx.replace('|', ' ')}</span>
     </div>`;
   }).join('');
 }
