@@ -505,7 +505,7 @@ function nlPlay(){
   }
 
   const total = sampled.length - 1;
-  const SPEED = 480;
+  const SPEED = 576;
   const DURATION = (total * SAMPLE_STEP / SPEED) * 1000;
   const start = performance.now();
   const myGen = nlGen; // 이 실행의 세대 번호 캡처
