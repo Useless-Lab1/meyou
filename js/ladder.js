@@ -143,7 +143,7 @@ let nlItemsBlurOn = true;
 let nlAnimating = false;
 let nlRafId = null;
 let nlResultTimeout = null;
-let nlGen = 0; // 세대 번호: buildNaverLadder마다 증가, 이전 콜백 무효화용
+let nlGen = 0;
 
 // ════ TIER CARDS ════
 function makeTierCard(t, i){
@@ -228,6 +228,11 @@ function closeTierModal(){
 
 function handleModalBgClick(e){
   if(e.target === document.getElementById('tier-modal')) closeTierModal();
+}
+
+function goBackFromLadder(){
+  const t = TIERS[currentTier];
+  goToStep(t.penPick > 0 ? 'penalty' : 'items');
 }
 
 function goToStep(step){
@@ -481,6 +486,7 @@ function calcPathPoints(){
 
 function nlPlay(){
   if(nlAnimating || nlData.myPos === null) return;
+  if(nlResultTimeout){ clearTimeout(nlResultTimeout); nlResultTimeout = null; }
   nlAnimating = true;
   document.getElementById('nl-play-btn').disabled = true;
 
@@ -521,9 +527,10 @@ function nlPlay(){
     if(progress < 1){ nlRafId = requestAnimationFrame(step); }
     else {
       drawLadder(total, sampled);
+      nlAnimating = false;
       const winPos = nlData.mapping[nlData.myPos];
       nlResultTimeout = setTimeout(() => {
-        if(myGen !== nlGen) return; // 세대 불일치 → 무효
+        if(myGen !== nlGen) return;
         showNlResult(winPos);
       }, 1000);
     }
